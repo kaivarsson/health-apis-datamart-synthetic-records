@@ -1,0 +1,10 @@
+AllIntP9000682,INVALID_STATUS,404,2672,https://dev-api.va.gov/services/argonaut/v0/AllergyIntolerance?patient=9000682
+ConP9000682,INVALID_STATUS,404,2250,https://dev-api.va.gov/services/argonaut/v0/Condition?patient=9000682
+DiaRepP9000682,INVALID_STATUS,404,2307,https://dev-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=9000682
+ImmP9000682,INVALID_STATUS,404,2295,https://dev-api.va.gov/services/argonaut/v0/Immunization?patient=9000682
+MedOrdP9000682,INVALID_STATUS,404,2586,https://dev-api.va.gov/services/argonaut/v0/MedicationOrder?patient=9000682
+MedStaP9000682,INVALID_STATUS,404,2658,https://dev-api.va.gov/services/argonaut/v0/MedicationStatement?patient=9000682
+ObsP9000682,INVALID_STATUS,404,2228,https://dev-api.va.gov/services/argonaut/v0/Observation?patient=9000682
+Pat9000682,INVALID_STATUS,404,2093,https://dev-api.va.gov/services/argonaut/v0/Patient/9000682
+Patid9000682,INVALID_STATUS,404,2085,https://dev-api.va.gov/services/argonaut/v0/Patient?_id=9000682
+ProP9000682,INVALID_STATUS,404,2092,https://dev-api.va.gov/services/argonaut/v0/Procedure?patient=9000682

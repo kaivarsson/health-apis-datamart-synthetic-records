@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/AllergyIntolerance?patient=9
+TIMESTAMP: 2019-08-28T23:20:15.483413Z
+HTTP_STATUS: 200
+OUTCOME: OK

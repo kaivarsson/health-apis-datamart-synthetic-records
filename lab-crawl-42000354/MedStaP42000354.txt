@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/MedicationStatement?patient=42000354
+TIMESTAMP: 2019-08-28T19:14:46.606598Z
+HTTP_STATUS: 200
+OUTCOME: OK

@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=25000126
+TIMESTAMP: 2019-08-28T17:47:31.427033Z
+HTTP_STATUS: 200
+OUTCOME: OK

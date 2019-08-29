@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Observation?patient=23000219&page=334&_count=15
+TIMESTAMP: 2019-08-28T20:40:43.918227Z
+HTTP_STATUS: 500
+OUTCOME: INVALID_STATUS

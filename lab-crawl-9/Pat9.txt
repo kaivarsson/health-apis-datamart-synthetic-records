@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/9
+TIMESTAMP: 2019-08-28T23:20:28.236435Z
+HTTP_STATUS: 500
+OUTCOME: INVALID_STATUS

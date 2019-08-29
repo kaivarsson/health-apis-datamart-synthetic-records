@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Procedure/c5726817-af53-5356-bec1-407c470680c2
+TIMESTAMP: 2019-08-28T23:32:26.163290Z
+HTTP_STATUS: 500
+OUTCOME: INVALID_STATUS

@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Procedure?patient=32000551&page=30&_count=15
+TIMESTAMP: 2019-08-28T18:50:55.114101Z
+HTTP_STATUS: 200
+OUTCOME: OK

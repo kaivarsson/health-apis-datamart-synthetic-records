@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/Observation?patient=38
+TIMESTAMP: 2019-08-29T00:42:12.763952Z
+HTTP_STATUS: 200
+OUTCOME: OK

@@ -1,0 +1,1 @@
+{"id":"ce2bb21e-5598-4494-968f-8b1fca53185d","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /Procedure/57c9794d-8d4d-5554-baba-df717a66b27e</div>"},"issue":[{"severity":"fatal","code":"exception","diagnostics":"Error: SearchFailed Timestamp:2019-08-29T00:29:03.769465Z"}]}

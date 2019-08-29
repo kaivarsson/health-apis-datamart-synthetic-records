@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/Immunization?patient=38000527
+TIMESTAMP: 2019-08-29T03:29:21.737665Z
+HTTP_STATUS: 200
+OUTCOME: OK

@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/MedicationOrder?patient=35000422
+TIMESTAMP: 2019-08-28T20:41:12.998294Z
+HTTP_STATUS: 200
+OUTCOME: OK

@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/Procedure?patient=195
+TIMESTAMP: 2019-08-29T00:22:53.500499Z
+HTTP_STATUS: 500
+OUTCOME: INVALID_STATUS

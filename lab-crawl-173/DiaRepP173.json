@@ -1,0 +1,1 @@
+{"id":"636cd246-aeb9-4234-bd35-c16d174e8271","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /DiagnosticReport</div>"},"issue":[{"severity":"fatal","code":"exception","diagnostics":"Error: SearchFailed Timestamp:2019-08-29T00:22:10.080100Z"}]}

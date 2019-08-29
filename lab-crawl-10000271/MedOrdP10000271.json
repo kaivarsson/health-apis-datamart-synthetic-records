@@ -1,0 +1,1 @@
+{"id":"31f4c443-7390-4e2b-a185-e45b5819cc60","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /MedicationOrder</div>"},"issue":[{"severity":"fatal","code":"exception","diagnostics":"Error: SearchFailed Timestamp:2019-08-29T02:23:56.569144Z"}]}

@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/MedicationStatement?patient=9
+TIMESTAMP: 2019-08-28T23:20:15.484820Z
+HTTP_STATUS: 500
+OUTCOME: INVALID_STATUS

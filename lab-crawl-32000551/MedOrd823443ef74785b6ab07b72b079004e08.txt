@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/MedicationOrder/823443ef-7478-5b6a-b07b-72b079004e08
+TIMESTAMP: 2019-08-28T18:46:26.360108Z
+HTTP_STATUS: 200
+OUTCOME: OK

@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/Patient?_id=2000163
+TIMESTAMP: 2019-08-28T19:39:02.169944Z
+HTTP_STATUS: 404
+OUTCOME: INVALID_STATUS

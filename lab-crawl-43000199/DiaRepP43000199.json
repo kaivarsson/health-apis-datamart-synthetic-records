@@ -1,0 +1,1 @@
+{"id":"4b3e8541-b5b4-4bd9-9dba-4a740499df91","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /DiagnosticReport</div>"},"issue":[{"severity":"fatal","code":"not-found","diagnostics":"Error: NotFound Timestamp:2019-08-28T20:59:37.997871Z"}]}

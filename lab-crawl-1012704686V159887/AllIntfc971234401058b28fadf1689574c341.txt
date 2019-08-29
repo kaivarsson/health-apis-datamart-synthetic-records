@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/AllergyIntolerance/fc971234-4010-58b2-8fad-f1689574c341
+TIMESTAMP: 2019-08-28T16:57:10.840687Z
+HTTP_STATUS: 200
+OUTCOME: OK

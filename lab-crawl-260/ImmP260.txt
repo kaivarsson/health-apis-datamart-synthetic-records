@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/Immunization?patient=260
+TIMESTAMP: 2019-08-28T23:27:08.911698Z
+HTTP_STATUS: 500
+OUTCOME: INVALID_STATUS

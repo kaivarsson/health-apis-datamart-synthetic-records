@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Condition?patient=17000024&page=3&_count=15
+TIMESTAMP: 2019-08-29T04:58:10.333695Z
+HTTP_STATUS: 200
+OUTCOME: OK

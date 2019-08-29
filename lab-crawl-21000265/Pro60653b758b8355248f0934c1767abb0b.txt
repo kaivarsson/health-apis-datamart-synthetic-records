@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Procedure/60653b75-8b83-5524-8f09-34c1767abb0b
+TIMESTAMP: 2019-08-29T05:18:15.849740Z
+HTTP_STATUS: 200
+OUTCOME: OK

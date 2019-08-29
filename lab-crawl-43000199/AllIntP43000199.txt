@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/AllergyIntolerance?patient=43000199
+TIMESTAMP: 2019-08-28T20:59:35.417246Z
+HTTP_STATUS: 404
+OUTCOME: INVALID_STATUS

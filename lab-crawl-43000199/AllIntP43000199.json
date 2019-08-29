@@ -1,0 +1,1 @@
+{"id":"b8741218-8b42-40ab-bd54-002a5cfe1b69","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /AllergyIntolerance</div>"},"issue":[{"severity":"fatal","code":"not-found","diagnostics":"Error: NotFound Timestamp:2019-08-28T20:59:37.800813Z"}]}

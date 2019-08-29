@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/DiagnosticReport/11b39099-2e6f-5a43-b0e8-ed00dd0cab0a
+TIMESTAMP: 2019-08-28T17:03:26.910326Z
+HTTP_STATUS: 200
+OUTCOME: OK

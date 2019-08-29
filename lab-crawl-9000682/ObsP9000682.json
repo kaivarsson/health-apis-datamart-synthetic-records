@@ -1,0 +1,1 @@
+{"id":"198deaf2-98bc-4004-b724-35ea41463685","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /Observation</div>"},"issue":[{"severity":"fatal","code":"not-found","diagnostics":"Error: NotFound Timestamp:2019-08-29T01:31:54.986798Z"}]}

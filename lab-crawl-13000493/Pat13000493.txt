@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/13000493
+TIMESTAMP: 2019-08-29T04:22:42.999272Z
+HTTP_STATUS: 200
+OUTCOME: OK

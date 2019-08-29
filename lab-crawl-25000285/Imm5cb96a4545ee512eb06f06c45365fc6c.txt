@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Immunization/5cb96a45-45ee-512e-b06f-06c45365fc6c
+TIMESTAMP: 2019-08-28T17:49:20.402623Z
+HTTP_STATUS: 200
+OUTCOME: OK

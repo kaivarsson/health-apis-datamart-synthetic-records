@@ -1,0 +1,1 @@
+{"resourceType":"Procedure","id":"f350d35a-adde-5687-8378-d104892f5845","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/29","display":"Mr. Elmer371 Kiehn525"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Colonoscopy"}]},"notPerformed":false,"performedDateTime":"2000-11-19T09:46:36Z"}

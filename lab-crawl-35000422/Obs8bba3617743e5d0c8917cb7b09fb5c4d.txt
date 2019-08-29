@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Observation/8bba3617-743e-5d0c-8917-cb7b09fb5c4d
+TIMESTAMP: 2019-08-28T20:50:34.799537Z
+HTTP_STATUS: 200
+OUTCOME: OK

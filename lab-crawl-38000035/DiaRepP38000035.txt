@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=38000035
+TIMESTAMP: 2019-08-29T03:23:36.813045Z
+HTTP_STATUS: 504
+OUTCOME: INVALID_STATUS

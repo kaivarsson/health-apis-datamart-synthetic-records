@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/Observation?patient=1000031
+TIMESTAMP: 2019-08-29T01:29:37.677432Z
+HTTP_STATUS: 500
+OUTCOME: INVALID_STATUS

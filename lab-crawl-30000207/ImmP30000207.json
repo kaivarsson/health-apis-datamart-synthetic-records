@@ -1,0 +1,1 @@
+{"id":"8f3d33d6-041c-4ee7-904b-464f723f23ea","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /Immunization</div>"},"issue":[{"severity":"fatal","code":"exception","diagnostics":"Error: SearchFailed Timestamp:2019-08-28T19:34:11.027204Z"}]}
