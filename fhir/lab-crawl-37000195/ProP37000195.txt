@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/argonaut/v0/Procedure?patient=37000195
+TIMESTAMP: 2019-08-29T19:54:09.684381Z
+HTTP_STATUS: 200
+OUTCOME: OK
