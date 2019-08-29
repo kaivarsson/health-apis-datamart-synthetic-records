@@ -1,0 +1,2 @@
+CREATE LOGIN dq WITH PASSWORD = '${db.password}';
+CREATE USER dq FOR LOGIN dq;
