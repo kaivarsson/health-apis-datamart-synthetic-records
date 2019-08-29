@@ -1,0 +1,4 @@
+QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/MedicationStatement/4f400cb7-8eae-5b20-8c82-0676cddaf035
+TIMESTAMP: 2019-08-29T19:48:09.635368Z
+HTTP_STATUS: 200
+OUTCOME: OK
