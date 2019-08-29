@@ -7,6 +7,6 @@
     <version>3.1.2</version>
   </parent>
   <artifactId>data-query-synthetic-records</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <packaging>pom</packaging>
 </project>
