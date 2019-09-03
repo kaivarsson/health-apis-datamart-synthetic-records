@@ -11,11 +11,51 @@
   <version>0.0.3-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
+    <timestamp>${maven.build.timestamp}</timestamp>
     <mssql-jdbc.version>6.2.1.jre8</mssql-jdbc.version>
     <flyway-maven-plugin.version>6.0.1</flyway-maven-plugin.version>
     <!-- TODO REMOVE THESE LATER -->
     <db.password>~shankt0pus~</db.password>
+    <db.master-user>SA</db.master-user>
+    <db.master-password>&lt;YourStrong!Passw0rd&gt;</db.master-password>
+    <db.url>jdbc:sqlserver://localhost:1433;sendStringParametersAsUnicode=false;databaseName=master</db.url>
   </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.flywaydb</groupId>
+        <artifactId>flyway-maven-plugin</artifactId>
+        <version>${flyway-maven-plugin.version}</version>
+        <configuration>
+          <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
+          <url>${db.url}</url>
+          <user>${db.master-user}</user>
+          <password>${db.master-password}</password>
+          <placeholders>
+            <db.password>${db.password}</db.password>
+          </placeholders>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>${mssql-jdbc.version}</version>
+          </dependency>
+          <!-- Fix missing classes for Flyway due to Java 12 -->
+          <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.1</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
   <profiles>
     <profile>
       <id>release</id>
@@ -25,33 +65,58 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-maven-plugin</artifactId>
             <version>${flyway-maven-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>migrate</id>
+                <goals>
+                  <goal>migrate</goal>
+                </goals>
+                <phase>install</phase>
+              </execution>
+            </executions>
             <configuration>
-              <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
-              <url>jdbc:sqlserver://localhost:1433;sendStringParametersAsUnicode=false;databaseName=master</url>
-              <user>SA</user>
-              <password>&lt;YourStrong!Passw0rd&gt;</password>
+              <table>flyway_schema_history</table>
+              <validateOnMigrate>true</validateOnMigrate>
+              <baselineOnMigrate>true</baselineOnMigrate>
+              <locations>
+                <location>filesystem:src/main/resources/db/migration</location>
+              </locations>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>local</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-maven-plugin</artifactId>
+            <version>${flyway-maven-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>clean</id>
+                <goals>
+                  <goal>migrate</goal>
+                </goals>
+                <phase>clean</phase>
+              </execution>
+            </executions>
+            <configuration>
+              <table>flyway_schema_history_cleaner</table>
+              <validateOnMigrate>true</validateOnMigrate>
+              <baselineOnMigrate>true</baselineOnMigrate>
+              <initSql><![CDATA[
+                IF OBJECT_ID('[dbo].[flyway_schema_history_cleaner]','U') IS NOT NULL DELETE FROM [dbo].[flyway_schema_history_cleaner];
+              ]]></initSql>
+              <locations>
+                <location>filesystem:src/test/resources/db/migration</location>
+              </locations>
               <placeholders>
-                <db.password>${db.password}</db.password>
+                <timestamp>${timestamp}</timestamp>
               </placeholders>
             </configuration>
-            <dependencies>
-              <dependency>
-                <groupId>com.microsoft.sqlserver</groupId>
-                <artifactId>mssql-jdbc</artifactId>
-                <version>${mssql-jdbc.version}</version>
-              </dependency>
-              <!-- Fix missing classes for Liquibase due to Java 12 -->
-              <dependency>
-                <groupId>javax.xml.bind</groupId>
-                <artifactId>jaxb-api</artifactId>
-                <version>2.3.1</version>
-              </dependency>
-              <dependency>
-                <groupId>org.glassfish.jaxb</groupId>
-                <artifactId>jaxb-runtime</artifactId>
-                <version>2.3.1</version>
-              </dependency>
-            </dependencies>
           </plugin>
         </plugins>
       </build>
