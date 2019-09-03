@@ -25,7 +25,7 @@ pipeline {
             usernameVariable: 'VASDVP_RELEASES_NEXUS_USERNAME',
             passwordVariable: 'VASDVP_RELEASES_NEXUS_PASSWORD')
         ]) {
-          sh script: build.sh
+          sh script: './build.sh'
         }
       }
     }
