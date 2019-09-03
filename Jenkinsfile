@@ -9,6 +9,7 @@ pipeline {
   agent {
     docker {
       image 'flyway/flyway:6.0.1'
+      args "--entrypoint=''"
     }
   }
   stages {
