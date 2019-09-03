@@ -15,10 +15,12 @@
     <mssql-jdbc.version>6.2.1.jre8</mssql-jdbc.version>
     <flyway-maven-plugin.version>6.0.1</flyway-maven-plugin.version>
     <!-- TODO REMOVE THESE LATER -->
+    <db.name>dq</db.name>
+    <db.user>dq</db.user>
     <db.password>~shankt0pus~</db.password>
     <db.master-user>SA</db.master-user>
     <db.master-password>&lt;YourStrong!Passw0rd&gt;</db.master-password>
-    <db.url>jdbc:sqlserver://localhost:1433;sendStringParametersAsUnicode=false;databaseName=master</db.url>
+    <db.url>jdbc:sqlserver://localhost:1433;sendStringParametersAsUnicode=false</db.url>
   </properties>
   <build>
     <plugins>
@@ -28,10 +30,11 @@
         <version>${flyway-maven-plugin.version}</version>
         <configuration>
           <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
-          <url>${db.url}</url>
           <user>${db.master-user}</user>
           <password>${db.master-password}</password>
           <placeholders>
+            <db.name>${db.name}</db.name>
+            <db.user>${db.user}</db.user>
             <db.password>${db.password}</db.password>
           </placeholders>
         </configuration>
@@ -67,21 +70,41 @@
             <version>${flyway-maven-plugin.version}</version>
             <executions>
               <execution>
+                <id>initialize</id>
+                <goals>
+                  <goal>migrate</goal>
+                </goals>
+                <phase>install</phase>
+                <configuration>
+                  <url>${db.url};databaseName=master</url>
+                  <table>flyway_schema_history</table>
+                  <validateOnMigrate>true</validateOnMigrate>
+                  <baselineOnMigrate>true</baselineOnMigrate>
+                  <locations>
+                    <location>filesystem:src/main/resources/db/initialization</location>
+                  </locations>
+                </configuration>
+              </execution>
+              <execution>
                 <id>migrate</id>
                 <goals>
                   <goal>migrate</goal>
                 </goals>
                 <phase>install</phase>
+                <configuration>
+                  <url>${db.url};databaseName=${db.name}</url>
+                  <table>flyway_schema_history</table>
+                  <validateOnMigrate>true</validateOnMigrate>
+                  <baselineOnMigrate>true</baselineOnMigrate>
+                  <schemas>
+                    <schema>app</schema>
+                  </schemas>
+                  <locations>
+                    <location>filesystem:src/main/resources/db/migration</location>
+                  </locations>
+                </configuration>
               </execution>
             </executions>
-            <configuration>
-              <table>flyway_schema_history</table>
-              <validateOnMigrate>true</validateOnMigrate>
-              <baselineOnMigrate>true</baselineOnMigrate>
-              <locations>
-                <location>filesystem:src/main/resources/db/migration</location>
-              </locations>
-            </configuration>
           </plugin>
         </plugins>
       </build>
@@ -104,6 +127,7 @@
               </execution>
             </executions>
             <configuration>
+              <url>${db.url};databaseName=master</url>
               <table>flyway_schema_history_cleaner</table>
               <validateOnMigrate>true</validateOnMigrate>
               <baselineOnMigrate>true</baselineOnMigrate>
