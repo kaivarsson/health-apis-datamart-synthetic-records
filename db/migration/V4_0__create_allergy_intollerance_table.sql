@@ -1,4 +1,4 @@
-CREATE TABLE [${db.name}].[app].[AllergyIntolerance](
+CREATE TABLE [${db_name}].[app].[AllergyIntolerance](
 	[CDWId] [varchar](50) NOT NULL,
 	[PatientFullICN] [varchar](50) NOT NULL,
 	[AllergyIntolerance] [varchar](max) NULL,
@@ -12,7 +12,7 @@ CREATE TABLE [${db.name}].[app].[AllergyIntolerance](
 )
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-CREATE NONCLUSTERED INDEX [IX_AllergyIntolerance_PatientFullICN] ON [${db.name}].[app].[AllergyIntolerance]
+CREATE NONCLUSTERED INDEX [IX_AllergyIntolerance_PatientFullICN] ON [${db_name}].[app].[AllergyIntolerance]
 (
 	[PatientFullICN] ASC
 )

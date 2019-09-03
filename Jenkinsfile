@@ -12,19 +12,30 @@ pipeline {
       args "--entrypoint=''"
     }
   }
+  environment {
+    ENVIRONMENT = "${["staging_lab", "lab"].contains(env.BRANCH_NAME) ? env.BRANCH_NAME.replaceAll('_','-') : "staging_lab"}"
+  }
   stages {
     stage('Build') {
       steps {
         withCredentials([
           usernamePassword(
-            credentialsId: 'HEALTH_APIS_RELEASES_NEXUS_USERNAME_PASSWORD',
-            usernameVariable: 'HEALTH_APIS_RELEASES_NEXUS_USERNAME',
-            passwordVariable: 'HEALTH_APIS_RELEASES_NEXUS_PASSWORD'),
+            credentialsId: 'LABMASTER_USERNAME_PASSWORD',
+            usernameVariable: 'LABMASTER_USERNAME',
+            passwordVariable: 'LABMASTER_PASSWORD'),
           usernamePassword(
-            credentialsId: 'VASDVP_RELEASES_NEXUS_USERNAME_PASSWORD',
-            usernameVariable: 'VASDVP_RELEASES_NEXUS_USERNAME',
-            passwordVariable: 'VASDVP_RELEASES_NEXUS_PASSWORD')
-        ]) {
+            credentialsId: 'LABUSER_USERNAME_PASSWORD',
+            usernameVariable: 'LABUSER_USERNAME',
+            passwordVariable: 'LABUSER_PASSWORD'),
+          usernamePassword(
+            credentialsId: 'STGLABMASTER_USERNAME_PASSWORD',
+            usernameVariable: 'STGLABMASTER_USERNAME',
+            passwordVariable: 'STGLABMASTER_PASSWORD'),
+          usernamePassword(
+            credentialsId: 'STGLABUSER_USERNAME_PASSWORD',
+            usernameVariable: 'STGLABUSER_USERNAME',
+            passwordVariable: 'STGLABUSER_PASSWORD'),
+         ]) {
           sh script: './build.sh'
         }
       }
