@@ -13,17 +13,19 @@ pipeline {
   }
   stages {
     stage('Build') {
-      withCredentials([
-        usernamePassword(
-          credentialsId: 'HEALTH_APIS_RELEASES_NEXUS_USERNAME_PASSWORD',
-          usernameVariable: 'HEALTH_APIS_RELEASES_NEXUS_USERNAME',
-          passwordVariable: 'HEALTH_APIS_RELEASES_NEXUS_PASSWORD'),
-        usernamePassword(
-          credentialsId: 'VASDVP_RELEASES_NEXUS_USERNAME_PASSWORD',
-          usernameVariable: 'VASDVP_RELEASES_NEXUS_USERNAME',
-          passwordVariable: 'VASDVP_RELEASES_NEXUS_PASSWORD')
-      ]) {
-        sh script: build.sh
+      steps {
+        withCredentials([
+          usernamePassword(
+            credentialsId: 'HEALTH_APIS_RELEASES_NEXUS_USERNAME_PASSWORD',
+            usernameVariable: 'HEALTH_APIS_RELEASES_NEXUS_USERNAME',
+            passwordVariable: 'HEALTH_APIS_RELEASES_NEXUS_PASSWORD'),
+          usernamePassword(
+            credentialsId: 'VASDVP_RELEASES_NEXUS_USERNAME_PASSWORD',
+            usernameVariable: 'VASDVP_RELEASES_NEXUS_USERNAME',
+            passwordVariable: 'VASDVP_RELEASES_NEXUS_PASSWORD')
+        ]) {
+          sh script: build.sh
+        }
       }
     }
   }
