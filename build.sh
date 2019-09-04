@@ -5,6 +5,11 @@ set -euo pipefail
 cd $(readlink -f $(dirname $0))
 
 #
+# To support jenkins, add flyway location to the path
+#
+if [ -d /flyway ]; then export PATH="/flyway:$PATH"; fi
+
+#
 # To support local testing, add a local install to the front of the path
 #
 LOCAL_INSTALL=$(find -maxdepth 1 -name "flyway-6*" | sort -V | head -1)
