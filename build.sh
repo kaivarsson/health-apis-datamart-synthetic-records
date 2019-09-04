@@ -16,9 +16,9 @@ if [ -n "$LOCAL_INSTALL" ]; then export PATH="$LOCAL_INSTALL:$PATH"; fi
 #
 echo "Loading configuration for ${ENVIRONMENT}"
 case "${ENVIRONMENT}" in
-  lab) . lab.conf;;
-  staging-lab) . staging-lab.conf;;
-  local) . local.conf;;
+  lab) . environments/lab.conf;;
+  staging-lab) . environments/staging-lab.conf;;
+  local) . environments/local.conf;;
   *) echo "Unknown environment: $ENVIRONMENT"; exit 1;;
 esac
 
