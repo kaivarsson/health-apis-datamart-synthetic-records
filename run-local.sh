@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+cd $(readlink -f $(dirname $0))
+
+export ENVIRONMENT=local
 if [ "$1" == "clean" ]
 then
-  mvn -P'!standard' -P '!gov.va.api.health' -Plocal clean
+  ./build.sh clean
   exit
 fi
-mvn -P'!standard' -P '!gov.va.api.health' -Prelease install
+./build.sh

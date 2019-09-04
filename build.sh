@@ -10,7 +10,6 @@ cd $(readlink -f $(dirname $0))
 LOCAL_INSTALL=$(find -maxdepth 1 -name "flyway-6*" | sort -V | head -1)
 if [ -n "$LOCAL_INSTALL" ]; then export PATH="$LOCAL_INSTALL:$PATH"; fi
 
-
 #
 # Load environment specific configuiration. See local.conf as an example
 # of variables that need to be set.
@@ -33,6 +32,11 @@ export FLYWAY_BASELINE_ON_MIGRATE=true
 export FLYWAY_BASELINE_VERSION=0.1
 export FLYWAY_PLACEHOLDERS_DB_NAME=dq
 
+announce() {
+  echo "============================================================"
+  echo "$1"
+  echo "============================================================"
+}
 
 #
 # To support local testing, if 'clean' supplied, then the existing
@@ -40,16 +44,20 @@ export FLYWAY_PLACEHOLDERS_DB_NAME=dq
 #
 if [ "${1:-}" == "clean" ]
 then
+  announce "Cleaning database"
+  FORCE_HACK="IF OBJECT_ID('[dbo].[flyway_schema_history_cleaner]','U') IS NOT NULL DELETE FROM [dbo].[flyway_schema_history_cleaner];"
   flyway migrate \
     -url="${FLYWAY_BASE_URL};databaseName=master" \
     -table=flyway_schema_history_cleaner \
-    -locations='filesystem:db/destroyer'
+    -locations='filesystem:db/destroyer' \
+    -initSql="$FORCE_HACK"
 fi
 
 
 #
 # Bootstrap the database
 #
+announce "Bootstrapping database"
 flyway migrate \
     -url="${FLYWAY_BASE_URL};databaseName=master" \
     -table=flyway_schema_history \
@@ -58,6 +66,7 @@ flyway migrate \
 #
 # Now apply migrations
 #
+announce "Migrating database"
 flyway migrate \
     -url="${FLYWAY_BASE_URL};databaseName=$FLYWAY_PLACEHOLDERS_DB_NAME" \
     -table=flyway_schema_history \
