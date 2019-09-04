@@ -6,8 +6,11 @@ cd $(readlink -f $(dirname $0))
 
 #
 # To support jenkins, add flyway location to the path
+# Also... the flyway script provided in the flyway docker image
+# isn't executable... so fix that.
 #
 if [ -d /flyway ]; then export PATH="/flyway:$PATH"; fi
+if [ -f /flyway/flyway ]; then chmod +x /flyway/flyway; fi
 
 #
 # To support local testing, add a local install to the front of the path
