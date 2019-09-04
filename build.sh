@@ -5,12 +5,12 @@ set -euo pipefail
 cd $(readlink -f $(dirname $0))
 
 #
-# To support jenkins, add flyway location to the path
-# Also... the flyway script provided in the flyway docker image
-# isn't executable... so fix that.
+# To support Jenkins use of the flyway container and because
+# the flyway script provided in the flyway docker image isn't executable,
+# we'll need to launch flyway via bash.
 #
-if [ -d /flyway ]; then export PATH="/flyway:$PATH"; fi
-if [ -f /flyway/flyway ]; then chmod +x /flyway/flyway; fi
+FLYWAY=flyway
+if [ -f /flyway/flyway ]; then FLYWAY="bash /flyway/flyway"; fi
 
 #
 # To support local testing, add a local install to the front of the path
@@ -54,7 +54,7 @@ if [ "${1:-}" == "clean" ]
 then
   announce "Cleaning database"
   FORCE_HACK="IF OBJECT_ID('[dbo].[flyway_schema_history_cleaner]','U') IS NOT NULL DELETE FROM [dbo].[flyway_schema_history_cleaner];"
-  flyway migrate \
+  $FLYWAY migrate \
     -url="${FLYWAY_BASE_URL};databaseName=master" \
     -table=flyway_schema_history_cleaner \
     -locations='filesystem:db/destroyer' \
@@ -66,7 +66,7 @@ fi
 # Bootstrap the database
 #
 announce "Bootstrapping database"
-flyway migrate \
+$FLYWAY migrate \
     -url="${FLYWAY_BASE_URL};databaseName=master" \
     -table=flyway_schema_history \
     -locations='filesystem:db/bootstrap'
@@ -75,7 +75,7 @@ flyway migrate \
 # Now apply migrations
 #
 announce "Migrating database"
-flyway migrate \
+$FLYWAY migrate \
     -url="${FLYWAY_BASE_URL};databaseName=$FLYWAY_PLACEHOLDERS_DB_NAME" \
     -table=flyway_schema_history \
     -locations='filesystem:db/migration' \
