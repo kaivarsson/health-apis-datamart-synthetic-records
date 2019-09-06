@@ -36,7 +36,7 @@ pipeline {
             usernameVariable: 'STGLABUSER_USERNAME',
             passwordVariable: 'STGLABUSER_PASSWORD'),
          ]) {
-          sh script: './build.sh'
+          sh script: './build.sh clean'
         }
       }
     }
