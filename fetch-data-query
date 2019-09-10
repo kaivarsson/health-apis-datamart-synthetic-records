@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 [[ -z "$NEXUS_USERNAME" || -z "$NEXUS_PASSWORD" ]] && echo "Missing Nexus credentials. Specify NEXUS_USERNAME and NEXUS_PASSWORD environment variables" && exit 1
 
-
+set -x
 DOWNLOAD=${1:-data-query.tar.gz}
 
-ARTIFACT=health-api-data-query
+ARTIFACT=data-query
 BASE_URL=https://tools.health.dev-developer.va.gov/nexus/repository/health-apis-releases/gov/va/api/health/${ARTIFACT}
 
 LATEST_VERSION=$(curl -s \
@@ -14,6 +14,7 @@ LATEST_VERSION=$(curl -s \
   | tail -1 \
   | sed 's/^.*<version>\([\.0-9]*\)<.*/\1/')
 
+[ -z "$LATEST_VERSION" ] && echo "Failed to determine latest version of Data Query" && exit 1
 echo "Downloading Data Query $LATEST_VERSION ..."
 
 URL=$BASE_URL/$LATEST_VERSION/$ARTIFACT-$LATEST_VERSION-tests-with-dependencies.tar.gz
