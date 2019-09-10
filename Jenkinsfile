@@ -20,6 +20,10 @@ pipeline {
       steps {
         withCredentials([
           usernamePassword(
+            credentialsId: 'HEALTH_APIS_RELEASES_NEXUS_USERNAME_PASSWORD',
+            usernameVariable: 'NEXUS_USERNAME',
+            passwordVariable: 'NEXUS_PASSWORD'),
+          usernamePassword(
             credentialsId: 'LABMASTER_USERNAME_PASSWORD',
             usernameVariable: 'LABMASTER_USERNAME',
             passwordVariable: 'LABMASTER_PASSWORD'),
