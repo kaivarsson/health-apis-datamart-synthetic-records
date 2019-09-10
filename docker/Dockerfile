@@ -1,3 +1,6 @@
+#
+# Adds Java 12 to flyway image so we can run our custom resource loader
+#
 FROM flyway/flyway:6.0.1
 
 ENTRYPOINT []
