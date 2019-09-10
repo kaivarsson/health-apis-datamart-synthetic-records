@@ -26,11 +26,13 @@ DQ_TESTS_TAR=${1}
 [ -z "$DQ_TESTS_TAR" ] && echo "Usage: $0 <data-query.tar.gz>" && exit 1
 [ ! -f "$DQ_TESTS_TAR" ] && echo "Missing $DQ_TESTS_TAR" && exit 1
 
+
 BASE_DIR=$(pwd)
 DATAMART_DIR=$BASE_DIR/datamart
 DQ_DIR=$(mktemp -p $BASE_DIR dq-XXXX -d)
 CONFIG_FILE=$DQ_DIR/sqlserver.properties
 
+export JAVA_HOME=(find $EXTRA_JRES -maxdepth 1 -type d -name "jdk-12.*" | head -1)
 #
 # Clean up our mess.
 #
@@ -76,7 +78,7 @@ do
   echo "Loading records in $USER_RECORDS_DIR"
   for RESOURCE_TYPE in $RESOURCE_TYPES
   do
-    java -cp "$DQ_DIR/*" \
+    $JAVA_HOME/bin/java -cp "$DQ_DIR/*" \
       -Dlogback.configurationFile=$BASE_DIR/logback.xml \
       $MAIN_CLASS $RESOURCE_TYPE $USER_RECORDS_DIR $CONFIG_FILE
   done
