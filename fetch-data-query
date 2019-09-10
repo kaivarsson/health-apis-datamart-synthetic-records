@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 [[ -z "$NEXUS_USERNAME" || -z "$NEXUS_PASSWORD" ]] && echo "Missing Nexus credentials. Specify NEXUS_USERNAME and NEXUS_PASSWORD environment variables" && exit 1
 
-set -x
 DOWNLOAD=${1:-data-query.tar.gz}
 
 ARTIFACT=data-query
