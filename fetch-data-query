@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+[[ -z "$GITHUB_USER" || -z "$GITHUB_TOKEN" ]] && echo "Missing Github credentials. Specify GITHUB_USER and GITHUB_TOKEN environment variables" && exit 1
+
+
+DOWNLOAD=${1:-data-query.tar.gz}
+
+ARTIFACT=health-api-data-query
+BASE_URL=https://tools.health.dev-developer.va.gov/nexus/repository/health-apis-releases/gov/va/api/health/${ARTIFACT}
+
+LATEST_VERSION=$(curl -s \
+  -u $GITHUB_USER:$GITHUB_TOKEN \
+  $BASE_URL/maven-metadata.xml \
+  | grep "<version>" \
+  | tail -1 \
+  | sed 's/^.*<version>\([\.0-9]*\)<.*/\1/')
+
+echo "Downloading Data Query $LATEST_VERSION ..."
+
+URL=$BASE_URL/$LATEST_VERSION/$ARTIFACT-$LATEST_VERSION-tests-with-dependencies.tar.gz
+STATUS=$(curl -sk \
+  -u $GITHUB_USER:$GITHUB_TOKEN \
+  -o $DOWNLOAD \
+  -w "%{http_code}" \
+  $URL)
+
+if [ "$STATUS" == 200 ]; then exit 0; fi
+echo "Failed to download Data Query"
+echo "URL: $URL"
+exit $STATUS
+
+
+

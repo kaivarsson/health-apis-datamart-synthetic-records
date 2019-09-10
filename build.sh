@@ -4,6 +4,8 @@ set -euo pipefail
 
 cd $(readlink -f $(dirname $0))
 
+BASE_DIR=$(pwd)
+
 #
 # To support Jenkins use of the flyway container and because
 # the flyway script provided in the flyway docker image isn't executable,
@@ -91,3 +93,9 @@ $FLYWAY migrate \
     -locations='filesystem:db/migration' \
     -schemas=app
 
+#
+# Populate database
+#
+DQ_TAR=$BASE_DIR/data-query.tar.gz
+fetch-data-query $DQ_TAR
+populate-db $DQ_TAR
