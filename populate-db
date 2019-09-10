@@ -62,6 +62,7 @@ eval $(grep "export FLYWAY_PLACEHOLDERS_DB_NAME" $BASE_DIR/build.sh)
 # Make db configuration properties which is processed by MMM
 #
 cat <<EOF > $CONFIG_FILE
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
 spring.datasource.url=$FLYWAY_BASE_URL;databaseName=$FLYWAY_PLACEHOLDERS_DB_NAME
 spring.datasource.username=$FLYWAY_USER
 spring.datasource.password=$FLYWAY_PASSWORD
