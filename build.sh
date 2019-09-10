@@ -5,6 +5,7 @@ set -euo pipefail
 cd $(readlink -f $(dirname $0))
 
 BASE_DIR=$(pwd)
+export PATH=$BASE_DIR:$PATH
 
 #
 # To support Jenkins use of the flyway container and because
