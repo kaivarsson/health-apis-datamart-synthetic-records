@@ -12,6 +12,7 @@ pipeline {
       registryCredentialsId 'DOCKER_USERNAME_PASSWORD'
       image 'vasdvp/health-apis-synthetic-records-builder:latest'
       alwaysPull true
+    }
   }
   environment {
     ENVIRONMENT = "${["staging_lab", "lab"].contains(env.BRANCH_NAME) ? env.BRANCH_NAME.replaceAll('_','-') : "staging-lab"}"
