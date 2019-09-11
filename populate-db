@@ -73,7 +73,6 @@ cat $CONFIG_FILE
 # Look for a Java 12 that is nearby. If we find one use it (like in the docker image for Jenkins)
 # Otherwise, just assume 'java' will magically exist.
 #
-set -x
 JAVA_EXE=java
 JAVA_12=$(find $EXTRA_JRES -maxdepth 1 -type d -name "jdk-12.*" | head -1)
 if [ -n "$JAVA_12" ]
