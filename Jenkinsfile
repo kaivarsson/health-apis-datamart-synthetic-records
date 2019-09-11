@@ -47,4 +47,16 @@ pipeline {
       }
     }
   }
+    post {
+    always {
+      script {
+         def buildName = sh returnStdout: true, script: '''[ -f .jenkins/build-name ] && cat .jenkins/build-name ; exit 0'''
+        currentBuild.displayName = "#${currentBuild.number} - ${buildName}"
+        def description = sh returnStdout: true, script: '''[ -f .jenkins/description ] && cat .jenkins/description ; exit 0'''
+        currentBuild.description = "${description}"
+      }
+      sendNotifications()
+    }
+  }
+
 }
