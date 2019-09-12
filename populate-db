@@ -17,7 +17,7 @@
 #
 # ENTER SUPPORTED RESOURCE TYPES HERE
 #
-RESOURCE_TYPES="AllergyIntolerance"
+RESOURCE_TYPES="AllergyIntolerance Condition DiagnosticReport Immunization"
 
 
 cd $(dirname $(readlink -f $0))
