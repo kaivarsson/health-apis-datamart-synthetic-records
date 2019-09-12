@@ -78,7 +78,7 @@ JAVA_12=$(find $EXTRA_JRES -maxdepth 1 -type d -name "jdk-12.*" | head -1)
 if [ -n "$JAVA_12" ]
 then
   export JAVA_HOME=$JAVA_12
-  JAVE_EXE=$JAVA_HOME/bin/java
+  JAVA_EXE=$JAVA_HOME/bin/java
 fi
 MAIN_CLASS=gov.va.api.health.dataquery.tools.minimart.MitreMinimartMaker
 #

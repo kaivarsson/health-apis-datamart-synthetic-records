@@ -8,6 +8,17 @@ BASE_DIR=$(pwd)
 export PATH=$BASE_DIR:$PATH
 
 #
+# Set up a mechanism to communicate job descriptions, etc. so that Jenkins provides more meaningful pages
+#
+JENKINS_DIR=$BASE_DIR/.jenkins
+JENKINS_DESCRIPTION=$JENKINS_DIR/description
+JENKINS_BUILD_NAME=$JENKINS_DIR/build-name
+[ -d "$JENKINS_DIR" ] && rm -rf "$JENKINS_DIR"
+mkdir "$JENKINS_DIR"
+
+
+
+#
 # To support Jenkins use of the flyway container and because
 # the flyway script provided in the flyway docker image isn't executable,
 # we'll need to launch flyway via bash.
@@ -32,6 +43,9 @@ case "${ENVIRONMENT}" in
   local) . environments/local.conf;;
   *) echo "Unknown environment: $ENVIRONMENT"; exit 1;;
 esac
+
+echo "$ENVIRONMENT synthentic database updated" >> $JENKINS_DESCRIPTION
+echo "$ENVIRONMENT" >> $JENKINS_BUILD_NAME
 
 #
 # These options are true through out the migration.
