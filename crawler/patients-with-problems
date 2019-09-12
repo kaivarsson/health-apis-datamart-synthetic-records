@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+cd $(dirname $(readlink -f $0))
+
+USER_LIST=./lab-users.txt
+
+ATTEMPTED=./.attempted
+for p in $(find -name patient-id -type f ); do d=$(dirname $p); echo "$(cat $d/failures) $(cat $d/patient-id) $(cat $d/icn)"; done | sort -n > $ATTEMPTED
+
+for USER in $(cat $USER_LIST | grep -v "DONE" |  cut -d ' ' -f 1)
+do
+  FAILURES=$(grep " $USER " $ATTEMPTED | cut -d ' ' -f 1)
+  [ "$FAILURES" != 0 ] && echo $USER
+done
+
