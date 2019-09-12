@@ -33,7 +33,8 @@ SECRETS=$CRAWLER_DIR/secrets.conf
 [ -z "$HEALTH_APIS_VERSION" ] && HEALTH_APIS_VERSION="latest"
 [ -z "$THREADS" ] && THREADS=10
 [ -z "$TIMELIMIT" ] && TIMELIMIT=PT8H0M0S
-
+[ -z "BASE_URL" ] && BASE_URL=https://dev-api.va.gov
+[ -z "API_PATH" ] && BASE_URL=/services/fhir/v0/dstu2
 
 SENTINEL_ENV="LAB"
 SENTINEL_CRAWLER="gov.va.api.health.dataquery.tests.crawler.UsingOAuthCrawlerTest"
@@ -62,17 +63,20 @@ docker run \
   -Dpatient-id=$PATIENT_ID \
   -Dcrawler.threads=$THREADS \
   -Dcrawler.timelimit=${TIMELIMIT:-} \
+  -Dcrawler.url.replace=https://dev-api.va.gov/services/fhir/v0/dstu2 \
+  -Dsentinel.argonaut.url=$BASE_URL \
+  -Dsentinel.argonaut.api-path=$API_PATH \
   -Dva-oauth-robot.user-password=$LAB_USER_PASSWORD \
   -Dva-oauth-robot.skip-two-factor-authentication=true \
   -Dva-oauth-robot.client-id=$LAB_CLIENT_ID \
   -Dva-oauth-robot.client-secret=$LAB_CLIENT_SECRET \
-  -Dva-oauth-robot.base-url=https://dev-api.va.gov/services/fhir/v0/dstu2 \
+  -Dva-oauth-robot.base-url=$BASE_URL$API_PATH \
   -Dva-oauth-robot.redirect-url=https://app/after-auth \
   -Dva-oauth-robot.state=unused \
   -Dva-oauth-robot.aud=alec \
   -Dva-oauth-robot.credentials-mode=HEADER \
   -Dva-oauth-robot.credentials-type=ID_ME \
-  $SENTINEL_CRAWLER
+  $SENTINEL_CRAWLER | tee crawl.log
 
 #
 # Lots of magic to extract the records as tars from running container and extract
@@ -87,6 +91,7 @@ docker rm $ID
 SUMMARY=./lab-crawl-$ICN/summary.csv
 tar xf $OUT $SUMMARY
 FAILURES=$(grep INVALID $SUMMARY | wc -l)
+mv crawl.log ./lab-crawl-$ICN
 echo "$FAILURES" > ./lab-crawl-$ICN/failures
 echo "$PATIENT_ID" > ./lab-crawl-$ICN/patient-id
 echo "$ICN" > ./lab-crawl-$ICN/icn
