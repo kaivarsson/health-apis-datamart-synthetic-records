@@ -51,7 +51,7 @@ Create table [App].[Procedure]
 	[CDWId] varchar(50) not null,
 	[PatientFullICN] varchar(50) not null,
 	[Date] bigint null,
-	[DateUTC] datetime not null,	
+	[DateUTC] datetime null,
 	[Procedure] varchar(max) null,
 	[ETLBatchId] int null,
 	[ETLChunkNum int null,
