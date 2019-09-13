@@ -17,7 +17,7 @@ echo "Fhir Resources: $FHIR_RESOURCES"
 cd "$FHIR_RESOURCES"
 
 PATIENT="$1"
-RESOURCES="AllergyIntolerance Condition DiagnosticReport Immunization"
+RESOURCES="AllergyIntolerance Condition DiagnosticReport Immunization MedicationStatement Procedure"
 # Medication MedicationOrder MedicationStatement Observation Patient Procedure"
 
 for resource in $RESOURCES
