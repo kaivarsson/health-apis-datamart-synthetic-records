@@ -18,7 +18,7 @@ do
   echo "================================================================================"
   echo "USER $USER ($COUNT of $TOTAL)"
   export PATIENT_ID=$USER
-  export THREADS=1
+  export THREADS=2
   crawl
 done
 
