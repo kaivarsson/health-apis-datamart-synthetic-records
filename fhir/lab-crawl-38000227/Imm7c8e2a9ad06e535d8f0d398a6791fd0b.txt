@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Immunization/7c8e2a9a-d06e-535d-8f0d-398a6791fd0b
-TIMESTAMP: 2019-08-29T03:22:50.494624Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Immunization/7c8e2a9a-d06e-535d-8f0d-398a6791fd0b
+TIMESTAMP: 2019-09-14T16:36:29.658862Z
 HTTP_STATUS: 200
 OUTCOME: OK

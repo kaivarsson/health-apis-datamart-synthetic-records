@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Observation/5f04f93c-8525-592d-8424-d5b060ac6297
-TIMESTAMP: 2019-08-28T21:26:45.377737Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Observation/5f04f93c-8525-592d-8424-d5b060ac6297
+TIMESTAMP: 2019-09-13T07:35:01.236182Z
 HTTP_STATUS: 200
 OUTCOME: OK

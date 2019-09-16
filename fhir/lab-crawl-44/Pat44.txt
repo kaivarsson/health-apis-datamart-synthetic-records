@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/44
-TIMESTAMP: 2019-08-28T23:31:00.171694Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Patient/44
+TIMESTAMP: 2019-09-14T06:35:21.401706Z
 HTTP_STATUS: 200
 OUTCOME: OK

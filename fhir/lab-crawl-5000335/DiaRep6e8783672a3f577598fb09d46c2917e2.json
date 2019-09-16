@@ -1,1 +1,16 @@
-{"id":"6e878367-2a3f-5775-98fb-09d46c2917e2","resourceType":"DiagnosticReport","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/ValueSet/diagnostic-service-sections","code":"LAB","display":"Laboratory"}]},"code":{"text":"panel"},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/5000335","display":"Mr. Mariano761 Ruelas156"},"effectiveDateTime":"2012-11-13T11:47:37Z","issued":"2012-11-13T11:47:37Z","_performer":{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/data-absent-reason","valueCode":"unsupported"}]}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

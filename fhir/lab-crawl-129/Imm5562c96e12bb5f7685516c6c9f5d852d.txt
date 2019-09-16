@@ -1,0 +1,4 @@
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Immunization/5562c96e-12bb-5f76-8551-6c6c9f5d852d
+TIMESTAMP: 2019-09-14T12:39:05.457265Z
+HTTP_STATUS: 500
+OUTCOME: INVALID_STATUS

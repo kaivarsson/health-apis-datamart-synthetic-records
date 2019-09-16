@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"9e2b598d-48b3-55e9-b3f6-64ba84f69d6d","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"5804-0","display":"Protein [Mass/volume] in Urine by Test strip"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/25000285","display":"Mr. Porfirio146 Schmeler639"},"effectiveDateTime":"2004-12-31T05:39:20Z","issued":"2004-12-31T05:39:20Z","performer":[],"valueQuantity":{"value":338.04066040071854,"unit":"mg/dL","system":"http://unitsofmeasure.org","code":"mg/dL"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

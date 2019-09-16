@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/DiagnosticReport/cca51828-baba-5c0e-86da-557ba1e8423a
-TIMESTAMP: 2019-08-28T17:54:53.905757Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/DiagnosticReport/cca51828-baba-5c0e-86da-557ba1e8423a
+TIMESTAMP: 2019-09-13T23:53:51.312526Z
 HTTP_STATUS: 200
 OUTCOME: OK

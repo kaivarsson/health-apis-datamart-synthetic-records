@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"19706e27-be46-585d-908b-ca4e4851dac0","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"10834-0","display":"Globulin [Mass/volume] in Serum by calculation"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43001199","display":"Mr. Gerardo48 Leal292"},"effectiveDateTime":"2011-05-15T13:47:31Z","issued":"2011-05-15T13:47:31Z","performer":[],"valueQuantity":{"value":2.7417327005902004,"unit":"g/L","system":"http://unitsofmeasure.org","code":"g/L"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

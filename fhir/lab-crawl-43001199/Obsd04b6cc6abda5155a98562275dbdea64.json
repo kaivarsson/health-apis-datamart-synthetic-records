@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"d04b6cc6-abda-5155-a985-62275dbdea64","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"6299-2","display":"Urea Nitrogen"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43001199","display":"Mr. Gerardo48 Leal292"},"effectiveDateTime":"2011-04-01T13:47:31Z","issued":"2011-04-01T13:47:31Z","performer":[],"valueQuantity":{"value":10.700685305254872,"unit":"mg/dL","system":"http://unitsofmeasure.org","code":"mg/dL"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

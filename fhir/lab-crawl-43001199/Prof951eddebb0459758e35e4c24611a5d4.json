@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"f951edde-bb04-5975-8e35-e4c24611a5d4","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43001199","display":"Mr. Gerardo48 Leal292"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Renal dialysis (procedure)"}]},"notPerformed":false,"performedDateTime":"2016-12-11T14:47:31Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

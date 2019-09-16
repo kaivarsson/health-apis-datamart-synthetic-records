@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Procedure/8b241786-38d0-5950-8de9-71fd6ce2f85c
-TIMESTAMP: 2019-08-29T00:55:45.548555Z
-HTTP_STATUS: 200
-OUTCOME: OK
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Procedure/8b241786-38d0-5950-8de9-71fd6ce2f85c
+TIMESTAMP: 2019-09-14T12:14:32.103775Z
+HTTP_STATUS: 401
+OUTCOME: INVALID_STATUS

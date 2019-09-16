@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"e1d1277b-2b9b-5b8c-a1d9-cfb25f8943cc","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"5797-6","display":"Ketones [Mass/volume] in Urine by Test strip"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/25000285","display":"Mr. Porfirio146 Schmeler639"},"effectiveDateTime":"2004-12-31T05:39:20Z","issued":"2004-12-31T05:39:20Z","performer":[],"valueQuantity":{"value":10.134707679932982,"unit":"mg/dL","system":"http://unitsofmeasure.org","code":"mg/dL"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"f69eae1b-b5f5-5315-be40-31a45a9b3d81","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"33914-3","display":"Glomerular filtration rate/1.73 sq M.predicted"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/25000285","display":"Mr. Porfirio146 Schmeler639"},"effectiveDateTime":"2004-12-31T05:39:20Z","issued":"2004-12-31T05:39:20Z","performer":[],"valueQuantity":{"value":13.026687488324745,"unit":"mL/min","system":"http://unitsofmeasure.org","code":"mL/min"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

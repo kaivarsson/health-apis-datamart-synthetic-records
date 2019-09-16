@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"1fa93bce-6381-5f31-a0bd-395ed64bfa57","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43001199","display":"Mr. Gerardo48 Leal292"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Electrical cardioversion"}]},"notPerformed":false,"performedDateTime":"2016-12-09T14:47:31Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

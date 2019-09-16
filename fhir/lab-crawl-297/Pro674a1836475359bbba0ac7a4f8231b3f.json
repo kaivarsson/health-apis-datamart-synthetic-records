@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"674a1836-4753-59bb-ba0a-c7a4f8231b3f","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/297","display":"Mr. Lavern240 Hickle134"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Renal dialysis (procedure)"}]},"notPerformed":false,"performedDateTime":"2016-11-13T06:33:11Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

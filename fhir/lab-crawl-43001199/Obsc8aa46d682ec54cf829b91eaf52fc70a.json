@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"c8aa46d6-82ec-54cf-829b-91eaf52fc70a","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"6298-4","display":"Potassium"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43001199","display":"Mr. Gerardo48 Leal292"},"effectiveDateTime":"2011-05-15T13:47:31Z","issued":"2011-05-15T13:47:31Z","performer":[],"valueQuantity":{"value":4.387808056105186,"unit":"mmol/L","system":"http://unitsofmeasure.org","code":"mmol/L"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

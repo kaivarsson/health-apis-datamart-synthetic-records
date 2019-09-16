@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"cc56fe02-8d7b-5b71-a3b3-97e516017c5a","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/17000098","display":"Mr. Freeman822 Prohaska837"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Renal dialysis (procedure)"}]},"notPerformed":false,"performedDateTime":"2015-05-13T09:19:58Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

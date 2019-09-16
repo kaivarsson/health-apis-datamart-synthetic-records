@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"0addb3a4-5b8d-5f72-ab02-f37f28843735","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"6768-6","display":"Alkaline phosphatase [Enzymatic activity/volume] i"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/25000285","display":"Mr. Porfirio146 Schmeler639"},"effectiveDateTime":"2005-03-01T05:39:20Z","issued":"2005-03-01T05:39:20Z","performer":[],"valueQuantity":{"value":115.88954178663624,"unit":"U/L","system":"http://unitsofmeasure.org","code":"U/L"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

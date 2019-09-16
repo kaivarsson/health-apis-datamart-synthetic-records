@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"9f795df3-f196-5aba-a3f8-218324dd4697","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"25428-4","display":"Glucose [Presence] in Urine by Test strip"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/25000285","display":"Mr. Porfirio146 Schmeler639"},"effectiveDateTime":"2005-03-01T05:39:20Z","issued":"2005-03-01T05:39:20Z","performer":[]}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

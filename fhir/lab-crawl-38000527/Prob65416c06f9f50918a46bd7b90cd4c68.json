@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"b65416c0-6f9f-5091-8a46-bd7b90cd4c68","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/38000527","display":"Mr. Nicholas495 Lueilwitz711"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Renal dialysis (procedure)"}]},"notPerformed":false,"performedDateTime":"1992-11-04T05:42:43Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

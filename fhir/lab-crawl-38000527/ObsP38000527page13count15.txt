@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Observation?patient=38000527&page=13&_count=15
-TIMESTAMP: 2019-08-29T03:34:12.869221Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Observation?patient=38000527&page=13&_count=15
+TIMESTAMP: 2019-09-14T17:23:19.865430Z
 HTTP_STATUS: 200
 OUTCOME: OK

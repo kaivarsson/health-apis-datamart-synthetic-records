@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"02a8f4b5-5ce3-50cb-a134-e1326ec0aa5a","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"20565-8","display":"Carbon Dioxide"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43001199","display":"Mr. Gerardo48 Leal292"},"effectiveDateTime":"2011-03-25T13:47:31Z","issued":"2011-03-25T13:47:31Z","performer":[],"valueQuantity":{"value":25.793423460242142,"unit":"mmol/L","system":"http://unitsofmeasure.org","code":"mmol/L"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

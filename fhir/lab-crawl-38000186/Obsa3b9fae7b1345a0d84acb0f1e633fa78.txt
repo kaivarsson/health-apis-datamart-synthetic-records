@@ -1,0 +1,4 @@
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Observation/a3b9fae7-b134-5a0d-84ac-b0f1e633fa78
+TIMESTAMP: 2019-09-14T16:32:18.505030Z
+HTTP_STATUS: 401
+OUTCOME: INVALID_STATUS

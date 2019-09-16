@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"c23e71b7-7a6f-597a-91c8-5094b463c339","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"5794-3","display":"Hemoglobin [Presence] in Urine by Test strip"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/9000777","display":"Mr. Alvaro283 Roberts511"},"effectiveDateTime":"2012-11-10T14:57:17Z","issued":"2012-11-10T14:57:17Z","performer":[]}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

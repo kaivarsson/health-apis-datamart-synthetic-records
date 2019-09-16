@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"4b88a6b9-f833-582e-98e2-b5e7c40943cc","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"5803-2","display":"pH of Urine by Test strip"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43001199","display":"Mr. Gerardo48 Leal292"},"effectiveDateTime":"2011-03-16T13:47:31Z","issued":"2011-03-16T13:47:31Z","performer":[],"valueQuantity":{"value":5.147954816971603,"unit":"pH","system":"http://unitsofmeasure.org","code":"pH"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

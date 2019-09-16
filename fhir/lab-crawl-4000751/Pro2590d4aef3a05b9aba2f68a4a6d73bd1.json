@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"2590d4ae-f3a0-5b9a-ba2f-68a4a6d73bd1","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/4000751","display":"Mr. Dante562 Hayes766"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Renal dialysis (procedure)"}]},"notPerformed":false,"performedDateTime":"2016-07-09T14:22:43Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

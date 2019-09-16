@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=9000598
-TIMESTAMP: 2019-08-29T02:22:57.623593Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/DiagnosticReport?patient=9000598
+TIMESTAMP: 2019-09-14T14:28:16.199539Z
 HTTP_STATUS: 200
 OUTCOME: OK

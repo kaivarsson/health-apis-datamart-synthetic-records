@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/AllergyIntolerance/cd237a42-d901-5f8d-95cf-a8bd67ec6d6b
-TIMESTAMP: 2019-08-29T19:54:25.369275Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/AllergyIntolerance/cd237a42-d901-5f8d-95cf-a8bd67ec6d6b
+TIMESTAMP: 2019-09-15T01:14:53.200622Z
 HTTP_STATUS: 200
 OUTCOME: OK

@@ -1,1 +1,1 @@
-{"id":"b5efb15a-40ee-44b6-8471-abb1ba0b3f88","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /AllergyIntolerance</div>"},"issue":[{"severity":"fatal","code":"not-found","diagnostics":"Error: NotFound Timestamp:2019-08-29T01:29:18.080513Z"}]}
+{"id":"95735641-dada-4ed0-9377-88a291cd5b04","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /AllergyIntolerance</div>"},"issue":[{"severity":"fatal","code":"not-found","diagnostics":"Error: NotFound Timestamp:2019-09-14T12:47:34.469462Z"}]}

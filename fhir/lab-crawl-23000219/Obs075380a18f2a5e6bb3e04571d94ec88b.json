@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"075380a1-8f2a-5e6b-b3e0-4571d94ec88b","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"20565-8","display":"Carbon Dioxide"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/23000219","display":"Mr. Taylor21 Mann644"},"effectiveDateTime":"2012-08-04T17:03:16Z","issued":"2012-08-04T17:03:16Z","performer":[],"valueQuantity":{"value":25.36606886372159,"unit":"mmol/L","system":"http://unitsofmeasure.org","code":"mmol/L"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

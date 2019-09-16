@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"912fffa0-c04e-5b08-9e51-467f890f9984","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"1742-6","display":"Alanine aminotransferase [Enzymatic activity/volum"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/9000777","display":"Mr. Alvaro283 Roberts511"},"effectiveDateTime":"2012-10-11T13:57:17Z","issued":"2012-10-11T13:57:17Z","performer":[],"valueQuantity":{"value":51.58805988290542,"unit":"U/L","system":"http://unitsofmeasure.org","code":"U/L"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

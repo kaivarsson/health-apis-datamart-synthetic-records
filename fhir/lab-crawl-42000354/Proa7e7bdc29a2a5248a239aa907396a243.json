@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"a7e7bdc2-9a2a-5248-a239-aa907396a243","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/42000354","display":"Mr. Gilberto712 Iglesias873"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Renal dialysis (procedure)"}]},"notPerformed":false,"performedDateTime":"2014-02-08T01:13:38Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

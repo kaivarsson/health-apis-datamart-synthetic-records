@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"ff8180f2-7615-57b3-8f34-2fd9938cbd5f","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"38483-4","display":"Creatinine"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/25000285","display":"Mr. Porfirio146 Schmeler639"},"effectiveDateTime":"2005-02-17T05:39:20Z","issued":"2005-02-17T05:39:20Z","performer":[],"valueQuantity":{"value":0.5182636727347871,"unit":"mg/dL","system":"http://unitsofmeasure.org","code":"mg/dL"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

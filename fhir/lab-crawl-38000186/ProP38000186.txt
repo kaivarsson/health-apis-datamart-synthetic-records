@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/argonaut/v0/Procedure?patient=38000186
-TIMESTAMP: 2019-08-29T02:52:28.129800Z
-HTTP_STATUS: 500
-OUTCOME: INVALID_STATUS
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Procedure?patient=38000186
+TIMESTAMP: 2019-09-14T15:32:26.644038Z
+HTTP_STATUS: 200
+OUTCOME: OK

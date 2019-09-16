@@ -1,0 +1,4 @@
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/DiagnosticReport/666c225d-4b93-5a19-a548-06e67a868821
+TIMESTAMP: 2019-09-14T10:46:27.211492Z
+HTTP_STATUS: 200
+OUTCOME: OK

@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/MedicationOrder/893d17a0-f750-5298-9872-a5876f56a117
-TIMESTAMP: 2019-08-29T02:19:41.858660Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/MedicationOrder/893d17a0-f750-5298-9872-a5876f56a117
+TIMESTAMP: 2019-09-14T14:12:04.136188Z
 HTTP_STATUS: 200
 OUTCOME: OK

@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"c5ae6a61-696d-5eae-a6cc-3c6aeeca794b","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"5803-2","display":"pH of Urine by Test strip"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/23000219","display":"Mr. Taylor21 Mann644"},"effectiveDateTime":"2012-07-05T17:03:16Z","issued":"2012-07-05T17:03:16Z","performer":[],"valueQuantity":{"value":6.348696384974673,"unit":"pH","system":"http://unitsofmeasure.org","code":"pH"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

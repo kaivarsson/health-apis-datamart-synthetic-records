@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"84e06daa-f8bb-52d3-b238-dd294f453328","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"2069-3","display":"Chloride"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/23000219","display":"Mr. Taylor21 Mann644"},"effectiveDateTime":"2012-08-10T17:03:16Z","issued":"2012-08-10T17:03:16Z","performer":[],"valueQuantity":{"value":108.10179892764192,"unit":"mmol/L","system":"http://unitsofmeasure.org","code":"mmol/L"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

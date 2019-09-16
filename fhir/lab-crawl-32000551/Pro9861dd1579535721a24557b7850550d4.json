@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"9861dd15-7953-5721-a245-57b7850550d4","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/32000551","display":"Mr. Moshe758 Windler79"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Combined chemotherapy and radiation therapy (proce"}]},"notPerformed":false,"performedDateTime":"1997-04-28T15:17:33Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

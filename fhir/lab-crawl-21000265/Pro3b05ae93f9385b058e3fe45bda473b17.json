@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"3b05ae93-f938-5b05-8e3f-e45bda473b17","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/21000265","display":"Mr. Alonso270 Jacobson885"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Renal dialysis (procedure)"}]},"notPerformed":false,"performedDateTime":"2017-01-11T05:28:36Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

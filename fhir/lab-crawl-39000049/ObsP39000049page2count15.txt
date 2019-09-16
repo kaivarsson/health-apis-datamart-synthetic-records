@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Observation?patient=39000049&page=2&_count=15
-TIMESTAMP: 2019-08-28T19:09:40.912036Z
-HTTP_STATUS: 500
-OUTCOME: INVALID_STATUS
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Observation?patient=39000049&page=2&_count=15
+TIMESTAMP: 2019-09-14T01:15:24.500908Z
+HTTP_STATUS: 200
+OUTCOME: OK

@@ -1,0 +1,4 @@
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Condition/a54a8100-603a-5b53-9ef9-a3f2abebc0df
+TIMESTAMP: 2019-09-14T19:08:37.609211Z
+HTTP_STATUS: 200
+OUTCOME: OK

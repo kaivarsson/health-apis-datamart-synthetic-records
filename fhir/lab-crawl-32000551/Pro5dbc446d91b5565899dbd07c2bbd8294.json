@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"5dbc446d-91b5-5658-99db-d07c2bbd8294","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/32000551","display":"Mr. Moshe758 Windler79"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Renal dialysis (procedure)"}]},"notPerformed":false,"performedDateTime":"1997-05-02T15:17:33Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

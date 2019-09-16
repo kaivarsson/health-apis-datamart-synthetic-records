@@ -1,1 +1,16 @@
-{"resourceType":"Procedure","id":"557e4e8e-fc4b-50fe-8043-88b08d5a5e94","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/10000271","display":"Mr. Cornelius968 Buckridge80"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Renal dialysis (procedure)"}]},"notPerformed":false,"performedDateTime":"2016-08-21T13:36:53Z"}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

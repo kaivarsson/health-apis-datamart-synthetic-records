@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/argonaut/v0/AllergyIntolerance?patient=2000167
-TIMESTAMP: 2019-08-28T19:39:27.744903Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/AllergyIntolerance?patient=2000167
+TIMESTAMP: 2019-09-13T04:20:18.296966Z
 HTTP_STATUS: 200
 OUTCOME: OK

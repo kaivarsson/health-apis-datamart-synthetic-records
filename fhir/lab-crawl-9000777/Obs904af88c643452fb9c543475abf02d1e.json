@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"904af88c-6434-52fb-9c54-3475abf02d1e","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"2093-3","display":"Total Cholesterol"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/9000777","display":"Mr. Alvaro283 Roberts511"},"effectiveDateTime":"2012-09-28T13:57:17Z","issued":"2012-09-28T13:57:17Z","performer":[],"valueQuantity":{"value":234.78248606654842,"unit":"mg/dL","system":"http://unitsofmeasure.org","code":"mg/dL"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

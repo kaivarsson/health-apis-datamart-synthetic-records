@@ -1,0 +1,4 @@
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/DiagnosticReport/2cec0a0f-1b48-572e-a580-11e92c995310
+TIMESTAMP: 2019-09-14T16:32:32.671855Z
+HTTP_STATUS: 401
+OUTCOME: INVALID_STATUS

@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"61daac42-ec78-5669-ba7e-9b171992868f","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"2885-2","display":"Protein [Mass/volume] in Serum or Plasma"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/23000219","display":"Mr. Taylor21 Mann644"},"effectiveDateTime":"2012-09-03T17:03:16Z","issued":"2012-09-03T17:03:16Z","performer":[],"valueQuantity":{"value":60.23704619640647,"unit":"g/dL","system":"http://unitsofmeasure.org","code":"g/dL"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/DiagnosticReport/e84ba6f6-b618-5256-a24d-f5d460463500
-TIMESTAMP: 2019-08-28T17:27:50.063507Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/DiagnosticReport/e84ba6f6-b618-5256-a24d-f5d460463500
+TIMESTAMP: 2019-09-13T22:44:55.273165Z
 HTTP_STATUS: 200
 OUTCOME: OK

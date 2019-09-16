@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"7b94b9bf-4efc-5e83-8709-f7dcf314d968","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"10834-0","display":"Globulin [Mass/volume] in Serum by calculation"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/25000285","display":"Mr. Porfirio146 Schmeler639"},"effectiveDateTime":"2004-12-31T05:39:20Z","issued":"2004-12-31T05:39:20Z","performer":[],"valueQuantity":{"value":2.4112748060693856,"unit":"g/L","system":"http://unitsofmeasure.org","code":"g/L"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

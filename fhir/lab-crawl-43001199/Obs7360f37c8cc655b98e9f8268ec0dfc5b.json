@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"7360f37c-8cc6-55b9-8e9f-8268ec0dfc5b","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"5811-5","display":"Specific gravity of Urine by Test strip"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43001199","display":"Mr. Gerardo48 Leal292"},"effectiveDateTime":"2011-05-15T13:47:31Z","issued":"2011-05-15T13:47:31Z","performer":[],"valueQuantity":{"value":1.0155729844646655,"unit":"{nominal}","system":"http://unitsofmeasure.org","code":"{nominal}"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

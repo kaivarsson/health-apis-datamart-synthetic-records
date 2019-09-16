@@ -1,1 +1,16 @@
-{"resourceType":"Observation","id":"59e48134-0c41-570a-9196-0fe9fedb4551","status":"final","category":{"coding":[{"system":"http://hl7.org/fhir/observation-category","code":"laboratory","display":"Laboratory"}]},"code":{"coding":[{"system":"http://loinc.org","code":"1920-8","display":"Aspartate aminotransferase [Enzymatic activity/vol"}]},"subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43001199","display":"Mr. Gerardo48 Leal292"},"effectiveDateTime":"2011-05-15T13:47:31Z","issued":"2011-05-15T13:47:31Z","performer":[],"valueQuantity":{"value":7.967128830796187,"unit":"U/L","system":"http://unitsofmeasure.org","code":"U/L"}}
+{ "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+      "status": "additional",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>invalid token.</p></div>"
+  },
+  "issue": [
+      {
+          "severity": "error",
+          "code": "exception",
+          "details": {
+              "text": "invalid token."
+          }
+      }
+  ]
+}

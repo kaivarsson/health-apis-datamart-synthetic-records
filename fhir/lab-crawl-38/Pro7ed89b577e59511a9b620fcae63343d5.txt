@@ -1,0 +1,4 @@
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Procedure/7ed89b57-7e59-511a-9b62-0fcae63343d5
+TIMESTAMP: 2019-09-14T10:44:16.686922Z
+HTTP_STATUS: 500
+OUTCOME: INVALID_STATUS

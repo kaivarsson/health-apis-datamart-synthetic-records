@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Medication/22e73e8f-92d9-56de-a384-589c730da208
-TIMESTAMP: 2019-08-29T20:08:41.261106Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Medication/22e73e8f-92d9-56de-a384-589c730da208
+TIMESTAMP: 2019-09-14T22:05:13.576464Z
 HTTP_STATUS: 500
 OUTCOME: INVALID_STATUS
