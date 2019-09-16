@@ -1,0 +1,1 @@
+{"objectType":"Condition","objectVersion":"1","cdwId":"43002168:P","patient":{"type":"Patient","reference":"9000682","display":"Ms. Carlita746 Kautzer186"},"dateRecorded":"2002-02-01","snomed":{"code":"232353008","display":"Perennial allergic rhinitis with seasonal variation"},"icd":null,"category":"problem","clinicalStatus":"active","onsetDateTime":"2002-02-02T01:43:31Z"}

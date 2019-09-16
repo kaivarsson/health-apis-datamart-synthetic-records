@@ -1,0 +1,1 @@
+{"objectType":"Condition","objectVersion":"1","cdwId":"32002490:P","patient":{"type":"Patient","reference":"32000225","display":"Mrs. Sheba703 Harris789"},"dateRecorded":"1985-12-25","snomed":{"code":"55822004","display":"Hyperlipidemia"},"icd":null,"category":"problem","clinicalStatus":"active","onsetDateTime":"1985-12-27T03:42:52Z"}

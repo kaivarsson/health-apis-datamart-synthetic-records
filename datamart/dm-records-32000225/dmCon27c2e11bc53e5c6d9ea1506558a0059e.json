@@ -1,0 +1,1 @@
+{"objectType":"Condition","objectVersion":"1","cdwId":"32002489:P","patient":{"type":"Patient","reference":"32000225","display":"Mrs. Sheba703 Harris789"},"dateRecorded":"1977-12-25","snomed":{"code":"239873007","display":"Osteoarthritis of knee"},"icd":null,"category":"problem","clinicalStatus":"active","onsetDateTime":"1977-12-26T03:42:52Z"}
