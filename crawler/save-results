@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+cd $(dirname $(readlink -f $0))
+
+FHIR_DIR=../fhir
+TRASH_CAN=saved
+[ ! -d $TRASH_CAN ] \
+  && mkdir $TRASH_CAN \
+  && echo "THESE RESULTS HAVE BEEN PROCESSED AND CAN BE DELETED" > $TRASH_CAN/README.md
+
+for resultsDir in $(find . -type d -name "lab-crawl-*")
+do
+  NAME=$(basename $resultsDir)
+  TAR=$resultsDir.tar.gz
+  [ ! -f $TAR ] && echo "Results archive missing: $TAR" && continue
+  [ -d $FHIR_DIR/$NAME ] && echo "Existing records in $FHIR_DIR/$NAME will be deleted"
+  cp -rf $resultsDir $FHIR_DIR
+  echo "Extracting results $TAR"
+  tar -C $FHIR_DIR -xf $TAR 
+  mv $resultsDir $TAR $TRASH_CAN
+  exit
+done
