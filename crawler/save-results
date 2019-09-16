@@ -15,6 +15,7 @@ do
   NAME=$(basename $resultsDir)
   TARGET=$FHIR_DIR/$NAME
   [ ! -d $TARGET ] && mkdir -p $TARGET
+  mv $resultsDir/patient-id $resultsDir/icn $TARGET
   for TXT in $(find $resultsDir -name "*txt" -exec grep -l "OUTCOME: " {} \;)
   do
    JSON=${TXT/.txt/.json}
