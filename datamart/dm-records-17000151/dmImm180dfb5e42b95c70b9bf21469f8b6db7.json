@@ -1,0 +1,1 @@
+{"objectType":"Immunization","objectVersion":"1","cdwId":"17001613","status":"completed","date":"1976-12-15T14:19:47Z","vaccineCode":{"text":"IPV","code":"10"},"patient":{"type":"Patient","reference":"17000151","display":"Jasper743 Gorczany269"},"wasNotGiven":false,"note":"Dose #1 of 4 of IPV vaccine administered.","reaction":{"display":"Anaphylaxis or collapse"}}
