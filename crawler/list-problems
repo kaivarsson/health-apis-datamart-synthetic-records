@@ -10,8 +10,8 @@ ALL_PROBLEMS=./.problems
 listProblems() {
  local p=$1
  PATIENT_DIR=$(dirname $p)
- PROBLEMS=$(find $PATIENT_DIR -name "*P*.txt" -exec grep -B 3 "OUTCOME: INVALID" {} \; \
-   | grep -E "QUERY.*patient=.*" \
+ PROBLEMS=$(find $PATIENT_DIR -regex ".*\(Med[a-z]\|.*P\).*.txt" -exec grep -B 3 "OUTCOME: INVALID" {} \; \
+   | grep -E "QUERY.*(patient=|/Medication/).*" \
    | sed 's|.*/dstu2/\([a-zA-Z]\+\).*|\1|' \
    | sort -u \
    | paste -sd ' ')
