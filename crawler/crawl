@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[ "$DEBUG" == true ] && set -x
+
 cd $(dirname $(readlink -f $0))
 
 CRAWLER_DIR=$(pwd)
@@ -33,8 +35,10 @@ SECRETS=$CRAWLER_DIR/secrets.conf
 [ -z "$HEALTH_APIS_VERSION" ] && HEALTH_APIS_VERSION="latest"
 [ -z "$THREADS" ] && THREADS=10
 [ -z "$TIMELIMIT" ] && TIMELIMIT=PT8H0M0S
-[ -z "BASE_URL" ] && BASE_URL=https://dev-api.va.gov
-[ -z "API_PATH" ] && BASE_URL=/services/fhir/v0/dstu2
+[ -z "$BASE_URL" ] && BASE_URL=https://dev-api.va.gov
+[ -z "$API_PATH" ] && API_PATH=/services/fhir/v0/dstu2
+# Only Searches
+[ -z "$ALLOW_URLS" ] && ALLOW_URLS=".*patient=.*"
 
 SENTINEL_ENV="LAB"
 SENTINEL_CRAWLER="gov.va.api.health.dataquery.tests.crawler.UsingOAuthCrawlerTest"
@@ -64,6 +68,7 @@ docker run \
   -Dcrawler.threads=$THREADS \
   -Dcrawler.timelimit=${TIMELIMIT:-} \
   -Dcrawler.url.replace=https://dev-api.va.gov/services/fhir/v0/dstu2 \
+  -Dcrawler.allow-query-url-pattern="$ALLOW_URLS" \
   -Dsentinel.argonaut.url=$BASE_URL \
   -Dsentinel.argonaut.api-path=$API_PATH \
   -Dva-oauth-robot.user-password=$LAB_USER_PASSWORD \

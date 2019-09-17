@@ -2,14 +2,21 @@
 
 cd $(dirname $(readlink -f $0))
 
+export FHIR_DIR=$(readlink -f ../fhir)
 USER_LIST=./lab-users.txt
-
 ATTEMPTED=./.attempted
-for p in $(find -name patient-id -type f ); do d=$(dirname $p); echo "$(cat $d/failures) $(cat $d/patient-id) $(cat $d/icn)"; done | sort -n > $ATTEMPTED
 
-for USER in $(cat $USER_LIST | grep -v "DONE" |  cut -d ' ' -f 1)
-do
-  FAILURES=$(grep " $USER " $ATTEMPTED | cut -d ' ' -f 1)
-  [ "$FAILURES" != 0 ] && echo $USER
-done
+
+findProblems() {
+ local p=$1
+ PATIENT_DIR=$(dirname $p)
+ FAILURES=$(find $PATIENT_DIR -name "*.txt" -exec grep -l "OUTCOME: INVALID" {} \; | wc -l)
+ echo "$FAILURES $(cat $PATIENT_DIR/patient-id) $(cat $PATIENT_DIR/icn)"
+}
+export -f findProblems
+
+find $FHIR_DIR -name patient-id -type f | sort | xargs -P 8 -I {} bash -c "findProblems {}" > $ATTEMPTED
+
+grep "^[1-9]" $ATTEMPTED | sort -n
+
 
