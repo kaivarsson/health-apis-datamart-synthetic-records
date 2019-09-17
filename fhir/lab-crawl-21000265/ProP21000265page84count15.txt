@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Procedure?patient=21000265&page=84&_count=15
-TIMESTAMP: 2019-08-29T05:29:14.842801Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Procedure?patient=21000265&page=84&_count=15
+TIMESTAMP: 2019-09-17T17:37:53.179161Z
 HTTP_STATUS: 200
 OUTCOME: OK
