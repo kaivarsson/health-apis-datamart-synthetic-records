@@ -3,4 +3,5 @@ lab-crawl-*
 secrets.conf
 .attempted
 *~
-saved/
+saved*/
+.problems

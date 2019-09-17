@@ -6,6 +6,7 @@ export FHIR_DIR=$(readlink -f ../fhir)
 USER_LIST=./lab-users.txt
 ATTEMPTED=./.attempted
 
+
 findProblems() {
  local p=$1
  PATIENT_DIR=$(dirname $p)

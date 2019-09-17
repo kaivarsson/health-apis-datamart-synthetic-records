@@ -22,4 +22,5 @@ do
    mv -v $TXT $JSON $TARGET
   done
   rm $TARGET/summary.csv $TARGET/crawler.log 2> /dev/null
+  mv $resultsDir $TRASH_CAN
 done
