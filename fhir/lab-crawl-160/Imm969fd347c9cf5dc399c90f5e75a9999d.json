@@ -1,1 +1,0 @@
-{"id":"cde23148-5ba0-43dd-a8da-810caa0a1d9f","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /Immunization/969fd347-c9cf-5dc3-99c9-0f5e75a9999d</div>"},"issue":[{"severity":"fatal","code":"exception","diagnostics":"Error: SearchFailed Timestamp:2019-09-14T09:43:20.311452Z"}]}

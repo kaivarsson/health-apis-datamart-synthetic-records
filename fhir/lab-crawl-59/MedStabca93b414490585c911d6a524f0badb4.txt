@@ -1,4 +1,0 @@
-QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/MedicationStatement/bca93b41-4490-585c-911d-6a524f0badb4
-TIMESTAMP: 2019-09-14T10:28:43.986003Z
-HTTP_STATUS: 500
-OUTCOME: INVALID_STATUS

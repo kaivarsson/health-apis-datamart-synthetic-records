@@ -1,1 +1,0 @@
-{"resourceType":"Procedure","id":"b60f7a32-df4b-5d05-b736-0c47980d1f3a","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/43000498","display":"Mrs. Alex454 Kris249"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Colonoscopy"}]},"notPerformed":false,"performedDateTime":"2017-01-29T17:24:28Z"}
