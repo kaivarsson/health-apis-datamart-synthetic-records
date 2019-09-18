@@ -5,7 +5,7 @@ cd $(dirname $(readlink -f $0))
 ./expand-result-archives
 
 FHIR_DIR=../fhir
-TRASH_CAN=saved
+TRASH_CAN=saved-$(date +%s)
 [ ! -d $TRASH_CAN ] && mkdir $TRASH_CAN
 
 
