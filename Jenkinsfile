@@ -6,6 +6,9 @@ pipeline {
     timeout(time: 30, unit: 'MINUTES')
     timestamps()
   }
+  parameters {
+    booleanParam(name: 'CLEAN', defaultValue: false, description: "Remove existing database and start from scratch.")
+  }
   agent {
     docker {
       registryUrl 'https://index.docker.io/v1/'

@@ -16,8 +16,6 @@ JENKINS_BUILD_NAME=$JENKINS_DIR/build-name
 [ -d "$JENKINS_DIR" ] && rm -rf "$JENKINS_DIR"
 mkdir "$JENKINS_DIR"
 
-
-
 #
 # To support Jenkins use of the flyway container and because
 # the flyway script provided in the flyway docker image isn't executable,
@@ -77,7 +75,8 @@ $FLYWAY info -q -url="${FLYWAY_BASE_URL}" -initSql="$BOOTSTRAP_DB_HACK"
 # To support local testing, if 'clean' supplied, then the existing
 # database will be reset.
 #
-if [ "${1:-}" == "clean" ]
+[ "${1:-}" == "clean" ] && CLEAN='true'
+if [ "${CLEAN:-false}" == 'true' ]
 then
   announce "Cleaning database"
   FORCE_HACK="IF OBJECT_ID('[dbo].[flyway_schema_history_cleaner]','U') IS NOT NULL DELETE FROM [dbo].[flyway_schema_history_cleaner];"
