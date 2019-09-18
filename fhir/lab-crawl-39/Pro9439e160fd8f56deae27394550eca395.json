@@ -1,1 +1,0 @@
-{"id":"cbab59a2-24df-4522-afdb-e03c959a75d7","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /Procedure/9439e160-fd8f-56de-ae27-394550eca395</div>"},"issue":[{"severity":"fatal","code":"exception","diagnostics":"Error: SearchFailed Timestamp:2019-09-14T10:17:53.818529Z"}]}

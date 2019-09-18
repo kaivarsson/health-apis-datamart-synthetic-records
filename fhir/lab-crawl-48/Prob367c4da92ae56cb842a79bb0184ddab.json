@@ -1,1 +1,0 @@
-{"resourceType":"Procedure","id":"b367c4da-92ae-56cb-842a-79bb0184ddab","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/48","display":"Mr. Damian46 McKenzie376"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Colonoscopy"}]},"notPerformed":false,"performedDateTime":"2018-04-28T14:22:12Z"}

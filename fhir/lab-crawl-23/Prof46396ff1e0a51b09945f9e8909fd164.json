@@ -1,1 +1,0 @@
-{"resourceType":"Procedure","id":"f46396ff-1e0a-51b0-9945-f9e8909fd164","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/23","display":"Mr. Renaldo199 Runte676"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Knee X-ray"}]},"notPerformed":false,"performedDateTime":"2010-07-30T18:08:56Z"}

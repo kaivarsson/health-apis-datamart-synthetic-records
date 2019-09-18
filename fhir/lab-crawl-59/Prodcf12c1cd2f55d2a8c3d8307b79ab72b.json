@@ -1,1 +1,0 @@
-{"resourceType":"Procedure","id":"dcf12c1c-d2f5-5d2a-8c3d-8307b79ab72b","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/59","display":"Mrs. Rebecca981 Barrows492"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Colonoscopy"}]},"notPerformed":false,"performedDateTime":"2017-11-07T20:04:36Z"}

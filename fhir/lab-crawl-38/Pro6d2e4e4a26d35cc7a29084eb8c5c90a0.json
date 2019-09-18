@@ -1,1 +1,0 @@
-{"resourceType":"Procedure","id":"6d2e4e4a-26d3-5cc7-a290-84eb8c5c90a0","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/38","display":"Mr. Darryl392 Hartmann983"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Colonoscopy"}]},"notPerformed":false,"performedDateTime":"2010-04-15T18:16:07Z"}
