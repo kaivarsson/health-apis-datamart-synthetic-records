@@ -1,4 +1,4 @@
-QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Procedure?patient=32000225
-TIMESTAMP: 2019-09-12T19:38:32.907566Z
+QUERY: http://localhost:8090/Procedure?patient=32000225
+TIMESTAMP: 2019-09-18T14:11:31.096535Z
 HTTP_STATUS: 200
 OUTCOME: OK

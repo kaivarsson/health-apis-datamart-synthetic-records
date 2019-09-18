@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/DiagnosticReport?patient=32000225&page=12&_count=15
-TIMESTAMP: 2019-08-28T17:06:07.123068Z
+QUERY: http://localhost:8090/api/DiagnosticReport?patient=32000225&page=12&_count=15
+TIMESTAMP: 2019-09-18T14:19:24.764848Z
 HTTP_STATUS: 200
 OUTCOME: OK

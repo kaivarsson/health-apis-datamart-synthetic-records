@@ -1,1 +1,0 @@
-{"objectType":"Condition","objectVersion":"1","cdwId":"32002584:P","patient":{"type":"Patient","reference":"32000225","display":"Mrs. Sheba703 Harris789"},"dateRecorded":"2001-05-07","snomed":{"code":"254637007","display":"Non-small cell lung cancer (disorder)"},"icd":null,"category":"problem","clinicalStatus":"active","onsetDateTime":"2001-05-08T02:42:52Z"}

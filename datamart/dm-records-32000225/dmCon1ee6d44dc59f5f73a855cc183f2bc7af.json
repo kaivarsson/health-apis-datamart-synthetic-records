@@ -1,1 +1,0 @@
-{"objectType":"Condition","objectVersion":"1","cdwId":"32002627:D","patient":{"type":"Patient","reference":"32000225","display":"Mrs. Sheba703 Harris789"},"dateRecorded":"2004-11-04","snomed":{"code":"53741008","display":"Coronary Heart Disease"},"icd":null,"category":"diagnosis","clinicalStatus":"active","onsetDateTime":"2004-11-05T03:42:52Z"}

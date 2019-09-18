@@ -1,4 +1,4 @@
-QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Immunization?patient=1017283132V631076
-TIMESTAMP: 2019-09-15T01:54:08.574559Z
+QUERY: http://localhost:8090/Immunization?patient=1017283132V631076
+TIMESTAMP: 2019-09-18T15:36:34.733488Z
 HTTP_STATUS: 200
 OUTCOME: OK

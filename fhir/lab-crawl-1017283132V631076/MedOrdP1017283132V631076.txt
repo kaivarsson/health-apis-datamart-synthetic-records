@@ -1,4 +1,4 @@
-QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/MedicationOrder?patient=1017283132V631076
-TIMESTAMP: 2019-09-15T01:54:13.882753Z
+QUERY: http://localhost:8090/MedicationOrder?patient=1017283132V631076
+TIMESTAMP: 2019-09-18T15:36:34.737821Z
 HTTP_STATUS: 200
 OUTCOME: OK
