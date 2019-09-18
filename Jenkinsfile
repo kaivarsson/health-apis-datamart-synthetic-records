@@ -51,7 +51,7 @@ pipeline {
     stage('Clean') {
       when {
         beforeInput true
-        expression { return env.CLEAN='true'}
+        expression { return env.CLEAN == 'true'}
       }
       input {
         message "Rub-a-dub-dub..."
