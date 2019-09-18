@@ -75,8 +75,7 @@ $FLYWAY info -q -url="${FLYWAY_BASE_URL}" -initSql="$BOOTSTRAP_DB_HACK"
 # To support local testing, if 'clean' supplied, then the existing
 # database will be reset.
 #
-[ "${1:-}" == "clean" ] && CLEAN='true'
-if [ "${CLEAN:-false}" == 'true' ]
+if [ "${1:-}" == "clean" ]
 then
   announce "Cleaning database"
   FORCE_HACK="IF OBJECT_ID('[dbo].[flyway_schema_history_cleaner]','U') IS NOT NULL DELETE FROM [dbo].[flyway_schema_history_cleaner];"
