@@ -1,4 +1,4 @@
-QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/DiagnosticReport?patient=1000005
-TIMESTAMP: 2019-09-18T18:24:00.738459Z
-HTTP_STATUS: 404
-OUTCOME: INVALID_STATUS
+QUERY: http://localhost:8090/DiagnosticReport?patient=1000005
+TIMESTAMP: 2019-09-20T20:33:18.379019Z
+HTTP_STATUS: 200
+OUTCOME: OK
