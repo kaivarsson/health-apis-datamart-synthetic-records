@@ -36,11 +36,12 @@ do
 
   while read dm
   do
-    local dmChangedTime="$(echo $dm | cut -d ' ' -f1)"
     local dmPatientId="$(echo $dm | cut -d ' ' -f2)"
 
     # Keep Going Until the Patient IDs match
     [ "$fhirPatientId" == "$dmPatientId" ] || continue
+
+    local dmChangedTime="$(echo $dm | cut -d ' ' -f1)"
 
     # Uses time since epoch so we can just do a quick value compare
     if [ $dmChangedTime -lt $fhirChangedTime ]
@@ -147,7 +148,7 @@ COMMAND="$1"
 
 case $COMMAND in
   transformAllPatients) transformDatamartAllPatients;;
-  datamartTransformByPatient) transformDatamartForPatient "$2";;
+  transformByPatient) transformDatamartForPatient "$2";;
   listChangedPatients) determineChangedPatients "$2";;
   createInvalidPatientsCsv) createInvalidPatientsCsv;;
   *) usage "Invalid Command: $COMMAND";;
