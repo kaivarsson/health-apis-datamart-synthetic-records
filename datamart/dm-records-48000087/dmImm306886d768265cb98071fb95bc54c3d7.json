@@ -1,1 +1,0 @@
-{"objectType":"Immunization","objectVersion":"1","cdwId":"48000919","status":"completed","date":"1996-03-03T00:54:45Z","vaccineCode":{"text":"IPV","code":"10"},"patient":{"type":"Patient","reference":"48000087","display":"Melvin857 Bartoletti50"},"wasNotGiven":false,"note":"Dose #3 of 4 of IPV vaccine administered.","reaction":{"display":"Irritability"}}

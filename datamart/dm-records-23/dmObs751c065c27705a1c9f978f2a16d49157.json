@@ -1,1 +1,0 @@
-{"objectType":"Observation","objectVersion":1,"cdwId":"2924:L","status":"final","category":"laboratory","code":{"coding":{"system":"http://loinc.org","code":"5767-9","display":"Appearance of Urine"}},"subject":{"type":"Patient","reference":"23","display":"Mr. Renaldo199 Runte676"},"effectiveDateTime":"2009-08-10T18:08:56Z","issued":"2009-08-10T18:08:56Z"}
