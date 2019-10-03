@@ -96,7 +96,8 @@ WHERE d.name LIKE 'PK__Obs%'
 EXECUTE sp_executesql @sql
 
 ALTER TABLE [App].[Observation] ALTER COLUMN [CDWId] varchar(26) NOT NULL
- ALTER TABLE  [App].[Observation] ADD CONSTRAINT PK_Observation primary key clustered (CDWId)
+ALTER TABLE  [App].[Observation] ADD CONSTRAINT PK_Observation primary key clustered (CDWId)
+GO
 
 -- Patient Report
 ALTER TABLE [app].[PatientReport] DROP CONSTRAINT [PK_PatientReport]
