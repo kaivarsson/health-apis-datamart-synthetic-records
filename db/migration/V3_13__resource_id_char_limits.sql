@@ -85,17 +85,18 @@ GO
 
 /* The Observation table was created a little differently, the primary key constraint was created
    on table creation and therefore, we don't know the name of the constraint to drop it.
-   The solution is to make a column copied from the already existing CDWId column (prevents loss of
-   data) and drop the old column before renaming the temp column. */
-ALTER TABLE [App].[Observation] ADD [tmpId] varchar(26)
-GO
+   The solution is to do a select on the system table to find the constraint, then drop it.
+   After altering the CDWId column to be varchar(26) well add the primary key back using a name
+   that can be easily used in future sql scripts. */
 
-UPDATE [App].[Observation] SET [tmpId] = [CDWId]
-ALTER TABLE [App].[Observation] ALTER COLUMN [tmpId] varchar(26) NOT NULL
-ALTER TABLE [App].[Observation] DROP [CDWId]
-sp_rename [App].[Observation].[tmpId], [CDWId], 'COLUMN'
-ALTER TABLE  [App].[Observation] ADD CONSTRAINT PK_Observation primary key clustered (CDWId)
-GO
+DECLARE @sql nvarchar(255)
+SELECT @sql = 'ALTER TABLE app.Observation DROP CONSTRAINT ' + D.name
+FROM sys.key_constraints AS D
+WHERE d.name LIKE 'PK__Obs%'
+EXECUTE sp_executesql @sql
+
+ALTER TABLE [App].[Observation] ALTER COLUMN [CDWId] varchar(26) NOT NULL
+ ALTER TABLE  [App].[Observation] ADD CONSTRAINT PK_Observation primary key clustered (CDWId)
 
 -- Patient Report
 ALTER TABLE [app].[PatientReport] DROP CONSTRAINT [PK_PatientReport]
