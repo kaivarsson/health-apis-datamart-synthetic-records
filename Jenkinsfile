@@ -64,7 +64,7 @@ pipeline {
     }
     stage('Build') {
       when {
-        expression { return ENVIRONMENT != 'i-cant-even-w-this' }
+        expression { return env.ENVIRONMENT != 'i-cant-even-w-this' }
       }
       steps {
         saunter('./build.sh')
@@ -78,9 +78,9 @@ pipeline {
         currentBuild.displayName = "#${currentBuild.number} - ${buildName}"
         def description = sh returnStdout: true, script: '''[ -f .jenkins/description ] && cat .jenkins/description ; exit 0'''
         currentBuild.description = "${description}"
-      }
-      if(ENVIRONMENT != 'i-cant-even-w-this') {
-        sendNotifications()
+        if (env.ENVIRONMENT != 'i-cant-even-w-this') {
+          sendNotifications()
+        }
       }
     }
   }
