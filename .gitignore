@@ -1,1 +1,3 @@
 flyway-*
+.jenkins/*
+data-query.tar.gz
