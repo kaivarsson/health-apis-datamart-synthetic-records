@@ -1,1 +1,0 @@
-{"id":"e682d4be-7b0f-41dc-b7ba-bce9780b9141","resourceType":"OperationOutcome","text":{"status":"additional","div":"<div>Failure: /Procedure/6bb6fe1b-5499-5969-9689-edbc222db0a9</div>"},"issue":[{"severity":"fatal","code":"exception","diagnostics":"Error: SearchFailed Timestamp:2019-08-28T23:56:22.030151Z"}]}

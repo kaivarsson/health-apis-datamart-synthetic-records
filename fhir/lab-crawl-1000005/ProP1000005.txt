@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/argonaut/v0/Procedure?patient=1000005
-TIMESTAMP: 2019-08-29T01:29:15.892497Z
-HTTP_STATUS: 404
-OUTCOME: INVALID_STATUS
+QUERY: http://localhost:8090/Procedure?patient=1000005
+TIMESTAMP: 2019-09-23T18:50:55.170582Z
+HTTP_STATUS: 200
+OUTCOME: OK

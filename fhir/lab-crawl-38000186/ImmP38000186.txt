@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/argonaut/v0/Immunization?patient=38000186
-TIMESTAMP: 2019-08-29T02:52:28.128573Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Immunization?patient=38000186
+TIMESTAMP: 2019-09-14T15:31:55.039554Z
 HTTP_STATUS: 200
 OUTCOME: OK

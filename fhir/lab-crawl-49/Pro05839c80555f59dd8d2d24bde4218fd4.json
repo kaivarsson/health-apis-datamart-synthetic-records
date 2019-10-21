@@ -1,1 +1,0 @@
-{"resourceType":"Procedure","id":"05839c80-555f-59dd-8d2d-24bde4218fd4","subject":{"reference":"https://dev-api.va.gov/services/fhir/v0/dstu2/Patient/49","display":"Mr. Hai304 Walter473"},"status":"completed","code":{"coding":[{"system":"http://www.ama-assn.org/go/cpt","code":"XXXXX","display":"Colonoscopy"}]},"notPerformed":false,"performedDateTime":"2015-11-23T19:39:14Z"}

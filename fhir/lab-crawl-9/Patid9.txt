@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/argonaut/v0/Patient?_id=9
-TIMESTAMP: 2019-08-28T23:20:15.485280Z
-HTTP_STATUS: 500
-OUTCOME: INVALID_STATUS
+QUERY: http://localhost:8090/Patient?_id=9
+TIMESTAMP: 2019-09-24T13:43:39.370554Z
+HTTP_STATUS: 200
+OUTCOME: OK

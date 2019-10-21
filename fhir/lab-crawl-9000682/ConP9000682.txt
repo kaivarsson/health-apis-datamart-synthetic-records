@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/argonaut/v0/Condition?patient=9000682
-TIMESTAMP: 2019-08-29T01:31:52.799313Z
-HTTP_STATUS: 404
-OUTCOME: INVALID_STATUS
+QUERY: http://localhost:8090/Condition?patient=9000682
+TIMESTAMP: 2019-09-23T19:47:24.170450Z
+HTTP_STATUS: 200
+OUTCOME: OK

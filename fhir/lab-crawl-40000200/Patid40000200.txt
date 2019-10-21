@@ -1,4 +1,4 @@
-QUERY: https://dev-api.va.gov/services/argonaut/v0/Patient?_id=40000200
-TIMESTAMP: 2019-08-28T19:10:17.670099Z
+QUERY: https://blue.lab.lighthouse.va.gov/fhir/v0/dstu2/Patient?_id=40000200
+TIMESTAMP: 2019-09-13T02:34:27.617628Z
 HTTP_STATUS: 200
 OUTCOME: OK

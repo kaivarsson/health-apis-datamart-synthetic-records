@@ -1,4 +1,0 @@
-QUERY: https://dev-api.va.gov/services/fhir/v0/dstu2/Observation?patient=1012704686V159887&page=3&_count=15
-TIMESTAMP: 2019-08-28T16:57:26.506129Z
-HTTP_STATUS: 200
-OUTCOME: OK

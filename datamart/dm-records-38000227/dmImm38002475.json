@@ -1,0 +1,1 @@
+{"objectType":"Immunization","objectVersion":"1","cdwId":"38002475","status":"completed","date":"2008-09-06T02:47:54Z","vaccineCode":{"text":"Tdap","code":"115"},"patient":{"type":"Patient","reference":"38000227","display":"Raymundo71 Barrows492"},"wasNotGiven":false,"note":"Dose #1 of 1 of Tdap vaccine administered.","reaction":{"display":"Lethargy"}}
