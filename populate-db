@@ -17,7 +17,7 @@
 #
 # ENTER SUPPORTED RESOURCE TYPES HERE
 #
-RESOURCE_TYPES="AllergyIntolerance Condition DiagnosticReport Immunization Medication MedicationOrder MedicationStatement Observation Patient Procedure"
+RESOURCE_TYPES="AllergyIntolerance Condition DiagnosticReport Immunization Medication MedicationOrder MedicationStatement Observation Patient Practitioner Procedure"
 THE_CHOSEN_PATIENT="$2"
 
 cd $(dirname $(readlink -f $0))
