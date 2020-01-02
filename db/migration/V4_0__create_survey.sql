@@ -7,11 +7,11 @@ Description:
 Data Definition:
 Column Name      | Description
 -----------------|-----------------------------------------------------
-PatientFullICN   | Primary Key. The patient's VA internal control number.
+PatientFullICN   | The patient's VA internal control number.
 -----------------|-----------------------------------------------------
 SurveyName       | The type of survey that was performed (i.e. Morse Fall Scale). 
 -----------------|-----------------------------------------------------
-CDWId            | The CDW identifier for the survey.
+CDWId            | Primary Key. The CDW identifier for the survey.
 -----------------|-----------------------------------------------------
 Sta3n            | The station identifier of where the survey was performed.
 -----------------|-----------------------------------------------------
