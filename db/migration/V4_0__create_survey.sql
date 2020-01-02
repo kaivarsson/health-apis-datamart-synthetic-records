@@ -17,7 +17,7 @@ Sta3n            | The station identifier of where the survey was performed.
 -----------------|-----------------------------------------------------
 Survey           | The json formatted survey datamart resource payload.
 -----------------|-----------------------------------------------------
-ETLBacthId       | ETL process BatchId
+ETLBatchId       | ETL process BatchId
 -----------------|-----------------------------------------------------
 ETLChunkNum      | ETL process chunk number  Used for managing initial 
                  | loading and updates of records
