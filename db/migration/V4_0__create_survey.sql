@@ -42,7 +42,7 @@ Create table [app].[Survey]
         [DateUTC] datetime null,
         [SurveyName] varchar(50) not null,
         [Sta3n] varchar(50) not null,
-        [SurveyRecordedDate] datetime not null,
+        [SurveyRecordedDate] bigint not null,
         [Survey] varchar(max) null,
         [ETLBatchId] int null,
         [ETLChunkNum] int null,

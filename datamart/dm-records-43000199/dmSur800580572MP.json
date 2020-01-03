@@ -2,78 +2,78 @@
   "objectType": "Survey",
   "objectVersion": "1",
   "cdwId": "800580572:MP",
-  "SurveyName": "MORSE FALL SCALE",
-  "Sta3n": 640,
-  "LocationSID": -1,
-  "SurveyResultSID": 800580572,
-  "PatientFullICN": "43000199",
-  "PatientSID": 16676404,
-  "TestPatientFlag": "Y",
-  "SurveyGivenDateTime": "2012-02-14T08:18:00",
-  "SurveySavedDateTime": "2012-02-14T08:18:00",
-  "IsCompleteFlag": "Y",
-  "TransmissionTime": "2008-02-06T08:18:00",
-  "TransmissionStatus": "T",
-  "RawScore": 125,
-  "SurveyScale": "Morse Score",
-  "SurveyQuestion": [
+  "surveyName": "MORSE FALL SCALE",
+  "sta3n": 640,
+  "locationSid": -1,
+  "surveyResultSid": 800580572,
+  "patientFullIcn": "43000199",
+  "patientSid": 16676404,
+  "testPatientFlag": true,
+  "surveyGivenDateTime": "2012-02-14T08:18:00Z",
+  "surveySavedDateTime": "2012-02-14T08:18:00Z",
+  "isCompleteFlag": true,
+  "transmissionTime": "2008-02-06T08:18:00Z",
+  "transmissionStatus": "T",
+  "rawScore": 125,
+  "surveyScale": "Morse Score",
+  "surveyQuestion": [
     {
-      "QuestionSequence": 20,
-      "SurveyQuestionText": "History of falling in past 3 months?",
-      "SurveyChoiceText": "Yes",
-      "LegacyValue": "Y",
-      "SurveyAnswerText": ""
+      "questionSequence": 20,
+      "surveyQuestionText": "History of falling in past 3 months?",
+      "surveyChoiceText": "Yes",
+      "legacyValue": "Y",
+      "surveyAnswerText": ""
     },
     {
-      "QuestionSequence": 30,
-      "SurveyQuestionText": "Secondary diagnosis:",
-      "SurveyChoiceText": "Yes",
-      "LegacyValue": "Y",
-      "SurveyAnswerText": ""
+      "questionSequence": 30,
+      "surveyQuestionText": "Secondary diagnosis:",
+      "surveyChoiceText": "Yes",
+      "legacyValue": "Y",
+      "surveyAnswerText": ""
     },
     {
-      "QuestionSequence": 40,
-      "SurveyQuestionText": "Ambulatory aid:",
-      "SurveyChoiceText": "Furniture",
-      "LegacyValue": "3",
-      "SurveyAnswerText": ""
+      "questionSequence": 40,
+      "surveyQuestionText": "Ambulatory aid:",
+      "surveyChoiceText": "Furniture",
+      "legacyValue": "3",
+      "surveyAnswerText": ""
     },
     {
-      "QuestionSequence": 50,
-      "SurveyQuestionText": "Intravenous therapy/Heparin lock:",
-      "SurveyChoiceText": "Yes",
-      "LegacyValue": "Y",
-      "SurveyAnswerText": ""
+      "questionSequence": 50,
+      "surveyQuestionText": "Intravenous therapy/Heparin lock:",
+      "surveyChoiceText": "Yes",
+      "legacyValue": "Y",
+      "surveyAnswerText": ""
     },
     {
-      "QuestionSequence": 60,
-      "SurveyQuestionText": "Gait/Transferring:",
-      "SurveyChoiceText": "Impaired",
-      "LegacyValue": "3",
-      "SurveyAnswerText": ""
+      "questionSequence": 60,
+      "surveyQuestionText": "Gait/Transferring:",
+      "surveyChoiceText": "Impaired",
+      "legacyValue": "3",
+      "surveyAnswerText": ""
     },
     {
-      "QuestionSequence": 70,
-      "SurveyQuestionText": "Mental Status:",
-      "SurveyChoiceText": "Overestimates/forgets limitations",
-      "LegacyValue": "2",
-      "SurveyAnswerText": ""
+      "questionSequence": 70,
+      "surveyQuestionText": "Mental Status:",
+      "surveyChoiceText": "Overestimates/forgets limitations",
+      "legacyValue": "2",
+      "surveyAnswerText": ""
     }
   ],
-  "OrderedBy": {
-    "StaffSID": 1932127842,
-    "NetworkUsername": "vhaxxxxxxx",
-    "Name": "LASTNAME, FIRSTNAME A.",
-    "LastName": "LASTNAME",
-    "FirstName": "FIRSTNAME A.",
-    "EmailAddress": "faLastname.provider@va.gov"
+  "orderedBy": {
+    "staffSid": 1932127842,
+    "networkUsername": "vhaxxxxxxx",
+    "name": "LASTNAME, FIRSTNAME A.",
+    "lastName": "LASTNAME",
+    "firstName": "FIRSTNAME A.",
+    "emailAddress": "faLastname.provider@va.gov"
   },
-  "AdministeredBy": {
-    "StaffSID": 1932127842,
-    "NetworkUsername": "vhaxxxxxxx",
-    "Name": "LASTNAME, FIRSTNAME A.",
-    "LastName": "LASTNAME",
-    "FirstName": "FIRSTNAME A.",
-    "EmailAddress": "faLastname.provider@va.gov"
+  "administeredBy": {
+    "staffSid": 1932127842,
+    "networkUsername": "vhaxxxxxxx",
+    "name": "LASTNAME, FIRSTNAME A.",
+    "lastName": "LASTNAME",
+    "firstName": "FIRSTNAME A.",
+    "emailAddress": "faLastname.provider@va.gov"
   }
 }
