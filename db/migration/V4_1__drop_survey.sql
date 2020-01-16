@@ -3,4 +3,4 @@
   The datasources team has instead created a table app.FallRisk
 */
 
-drop table [app].[Survey] if exists
+drop table if exists [app].[Survey]

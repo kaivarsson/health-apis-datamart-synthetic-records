@@ -43,11 +43,11 @@ Create table [app].[FallRisk]
 (
         [CDWId] varchar(50) not null,
         [PatientFullICN] varchar(50) not null,
-        [DateUTC] datetime null,
+        [DateUTC] datetime not null,
         [Sta3n] varchar(50) not null,
 	[MorseScore] int not null,
         [MorseCategory] varchar(50) not null,
-        [FallRisk] varchar(max) null,
+        [FallRisk] varchar(max) not null,
         [ETLBatchId] int null,
         [ETLChunkNum] int null,
         [ETLCreateDate] datetime null,

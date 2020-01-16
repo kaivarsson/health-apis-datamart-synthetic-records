@@ -17,8 +17,10 @@
 #
 # ENTER SUPPORTED RESOURCE TYPES HERE
 #
-RESOURCE_TYPES=("AllergyIntolerance" "Condition" "DiagnosticReport" "Immunization" "Location" "Medication" "MedicationOrder" "MedicationStatement" \
-  "Observation" "Organization" "Patient" "Practitioner" "Procedure" "Survey")
+RESOURCE_TYPES=("AllergyIntolerance" "Condition" "DiagnosticReport" \
+  "FallRisk" "Immunization" "Location" "Medication" "MedicationOrder" \
+  "MedicationStatement" "Observation" "Organization" "Patient" "Practitioner" \
+  "Procedure")
 THE_CHOSEN_PATIENT="$2"
 
 cd $(dirname $(readlink -f $0))

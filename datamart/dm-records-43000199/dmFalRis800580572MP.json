@@ -1,5 +1,5 @@
 {
-    "objectType" : "Survey",
+    "objectType" : "FallRisk",
     "objectVersion" : "1",
     "cdwId" : "800580572:MP",
     "patientFullICN" : "43000199",
@@ -16,7 +16,7 @@
     "divisionName" : "OW",
     "specialty" : "FALL",
     "wardLocationName" : "LAB",
-    "administeredBy" : {
+    "administeredBy" : [{
         "emailAddress" : "faLastname.provider@va.gov",
         "firstName" : "FIRSTNAME A.",
         "lastName" : "LASTNAME",
@@ -24,8 +24,8 @@
         "npi" : "1932127842",
         "officePhone" : "123",
         "serviceSection" : "GENETICS"
-    },
-    "orderedBy" : {
+    }],
+    "orderedBy" : [{
         "emailAddress" : "faLastname.provider@va.gov",                                                   
         "firstName" : "FIRSTNAME A.",                                                                    
         "lastName" : "LASTNAME",                                                                         
@@ -33,5 +33,5 @@
         "npi" : "1932127842",                                                                            
         "officePhone" : "123",                                                                           
         "serviceSection" : "GENETICS"
-    }
+    }]
 }
