@@ -96,7 +96,7 @@
                 </goals>
                 <phase>generate-resources</phase>
                 <configuration>
-                  <mainClass>gov.va.api.health.dataquery.tools.DatamartExporter</mainClass>
+                  <mainClass>gov.va.api.health.datamartexporter.DatamartExporter</mainClass>
                   <classpathScope>test</classpathScope>
                   <arguments>
                     <argument>${configFile}</argument>
