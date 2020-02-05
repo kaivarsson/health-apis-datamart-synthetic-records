@@ -36,5 +36,6 @@ transformFailures.txt
 
 target/
 
+config/
 secrets.conf
 *.pem

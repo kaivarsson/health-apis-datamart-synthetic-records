@@ -56,7 +56,8 @@ public class PopulateDb {
           resource,
           importDirectoryPath,
           configFilePath);
-      // MitreMinimartMaker.main(new String[] {resource, importDirectoryPath, configFilePath});
+      gov.va.api.health.datamartexporter.minimart.MitreMinimartMaker.main(
+          new String[] {resource, importDirectoryPath, configFilePath});
     }
   }
 
