@@ -1,11 +1,9 @@
-package gov.va.api.health.datamartexporter.minimart;
+package gov.va.api.health.minimartmanager.minimart;
 
 import static org.apache.commons.lang3.StringUtils.trimToEmpty;
 import static org.apache.commons.lang3.StringUtils.trimToNull;
 
 import gov.va.api.health.autoconfig.configuration.JacksonConfig;
-import gov.va.api.health.datamartexporter.ExternalDb;
-import gov.va.api.health.datamartexporter.LocalH2;
 import gov.va.api.health.dataquery.service.controller.allergyintolerance.AllergyIntoleranceEntity;
 import gov.va.api.health.dataquery.service.controller.allergyintolerance.DatamartAllergyIntolerance;
 import gov.va.api.health.dataquery.service.controller.condition.ConditionEntity;
@@ -38,6 +36,8 @@ import gov.va.api.health.dataquery.service.controller.procedure.DatamartProcedur
 import gov.va.api.health.dataquery.service.controller.procedure.ProcedureEntity;
 import gov.va.api.health.fallrisk.service.controller.DatamartFallRisk;
 import gov.va.api.health.fallrisk.service.controller.FallRiskEntity;
+import gov.va.api.health.minimartmanager.ExternalDb;
+import gov.va.api.health.minimartmanager.LocalH2;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

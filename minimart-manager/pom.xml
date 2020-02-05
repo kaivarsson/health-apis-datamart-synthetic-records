@@ -96,7 +96,7 @@
                 </goals>
                 <phase>generate-resources</phase>
                 <configuration>
-                  <mainClass>gov.va.api.health.datamartexporter.DatamartExporter</mainClass>
+                  <mainClass>gov.va.api.health.minimartmanager.DatamartExporter</mainClass>
                   <classpathScope>test</classpathScope>
                   <arguments>
                     <argument>${configFile}</argument>
@@ -127,7 +127,7 @@
                 </goals>
                 <phase>generate-resources</phase>
                 <configuration>
-                  <mainClass>gov.va.api.health.datamartexporter.minimart.FhirToDatamart</mainClass>
+                  <mainClass>gov.va.api.health.minimartmanager.minimart.FhirToDatamart</mainClass>
                   <classpathScope>test</classpathScope>
                   <arguments>
                     <argument>${resourceType}</argument>
@@ -143,7 +143,7 @@
                 </goals>
                 <phase>generate-resources</phase>
                 <configuration>
-                  <mainClass>gov.va.api.health.datamartexporter.tools.minimart.MitreMinimartMaker</mainClass>
+                  <mainClass>gov.va.api.health.minimartmanager.tools.minimart.MitreMinimartMaker</mainClass>
                   <classpathScope>test</classpathScope>
                   <arguments>
                     <argument>${resourceType}</argument>

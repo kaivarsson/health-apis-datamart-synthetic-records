@@ -1,4 +1,4 @@
-package gov.va.api.health.datamartexporter;
+package gov.va.api.health.minimartmanager;
 
 import java.net.URL;
 import java.util.Collections;

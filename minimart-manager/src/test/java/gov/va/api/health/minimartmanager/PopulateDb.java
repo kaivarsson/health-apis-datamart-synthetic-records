@@ -1,6 +1,6 @@
-package gov.va.api.health.datamartexporter;
+package gov.va.api.health.minimartmanager;
 
-import gov.va.api.health.datamartexporter.minimart.MitreMinimartMaker;
+import gov.va.api.health.minimartmanager.minimart.MitreMinimartMaker;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -67,20 +67,20 @@ public class PopulateDb {
   @BeforeEach
   public void setup() {
     // Load the import data directory. If not provided, fail.
-    importDirectoryPath = System.getProperty("DIRECTORY_TO_IMPORT");
+    importDirectoryPath = System.getProperty("import.directory");
     if (StringUtils.isBlank(importDirectoryPath)) {
-      throw new IllegalArgumentException("DIRECTORY_TO_IMPORT not specified");
+      throw new IllegalArgumentException("import.directory not specified");
     }
     // If targeting a patient, use their import data sub-directory.
     // Otherwise, default to all patients.
-    String chosenPatient = System.getProperty("PATIENT");
+    String chosenPatient = System.getProperty("patient");
     if (StringUtils.isNotBlank(chosenPatient)) {
       importDirectoryPath = importDirectoryPath + "/dm-records-" + chosenPatient;
     } else {
-      log.info("No PATIENT specifed, defaulting to all patients.");
+      log.info("No patient specifed, defaulting to all patients.");
     }
     // Load the config file path. If not provided, fail.
-    configFilePath = System.getProperty("CONFIG_FILE");
+    configFilePath = System.getProperty("config.file");
     if (StringUtils.isBlank(configFilePath)) {
       throw new IllegalArgumentException("CONFIG_FILE not specified.");
     }

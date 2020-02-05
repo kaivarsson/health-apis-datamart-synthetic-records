@@ -1,8 +1,7 @@
-package gov.va.api.health.datamartexporter.minimart.transformers;
+package gov.va.api.health.minimartmanager.minimart.transformers;
 
 import gov.va.api.health.argonaut.api.resources.Condition;
 import gov.va.api.health.argonaut.api.resources.Condition.ClinicalStatusCode;
-import gov.va.api.health.datamartexporter.minimart.*;
 import gov.va.api.health.dataquery.service.controller.EnumSearcher;
 import gov.va.api.health.dataquery.service.controller.condition.DatamartCondition;
 import gov.va.api.health.dataquery.service.controller.condition.DatamartCondition.Category;
@@ -11,6 +10,7 @@ import gov.va.api.health.dataquery.service.controller.condition.DatamartConditio
 import gov.va.api.health.dataquery.service.controller.condition.DatamartCondition.SnomedCode;
 import gov.va.api.health.dstu2.api.datatypes.CodeableConcept;
 import gov.va.api.health.dstu2.api.datatypes.Coding;
+import gov.va.api.health.minimartmanager.minimart.*;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Optional;

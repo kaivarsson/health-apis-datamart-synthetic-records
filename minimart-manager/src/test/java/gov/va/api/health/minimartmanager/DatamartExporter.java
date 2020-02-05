@@ -1,4 +1,4 @@
-package gov.va.api.health.datamartexporter;
+package gov.va.api.health.minimartmanager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

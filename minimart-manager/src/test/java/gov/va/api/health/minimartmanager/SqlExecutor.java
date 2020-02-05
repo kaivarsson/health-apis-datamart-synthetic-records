@@ -1,4 +1,4 @@
-package gov.va.api.health.datamartexporter;
+package gov.va.api.health.minimartmanager;
 
 import static java.lang.System.currentTimeMillis;
 import static java.lang.System.out;

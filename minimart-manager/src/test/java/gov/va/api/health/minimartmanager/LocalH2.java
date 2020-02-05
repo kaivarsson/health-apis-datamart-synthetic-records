@@ -1,4 +1,4 @@
-package gov.va.api.health.datamartexporter;
+package gov.va.api.health.minimartmanager;
 
 import com.google.common.collect.ImmutableMap;
 import java.util.List;

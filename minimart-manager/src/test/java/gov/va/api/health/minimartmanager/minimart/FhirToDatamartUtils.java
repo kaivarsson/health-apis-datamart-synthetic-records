@@ -1,4 +1,4 @@
-package gov.va.api.health.datamartexporter.minimart;
+package gov.va.api.health.minimartmanager.minimart;
 
 import gov.va.api.health.dataquery.service.controller.datamart.DatamartReference;
 import gov.va.api.health.dstu2.api.elements.Reference;

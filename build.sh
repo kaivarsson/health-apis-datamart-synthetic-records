@@ -109,7 +109,7 @@ $FLYWAY migrate \
 #
 # Populate Database
 #
-cd datamart-exporter
+cd minimart-manager
 
 #
 # Look for a Java 12 that is nearby. If we find one use it (like in the docker image for Jenkins)
@@ -140,4 +140,4 @@ cat $CONFIG_FILE
 #
 # Run test PopulateDb "test", which will launch the MMM
 #
-mvn -DDIRECTORY_TO_IMPORT=$DATAMART_DIR -DCONFIG_FILE=$CONFIG_FILE -Dtest=PopulateDb test
+mvn -Dimport.directory=$DATAMART_DIR -Dconfig.file=$CONFIG_FILE -Dtest=PopulateDb test
