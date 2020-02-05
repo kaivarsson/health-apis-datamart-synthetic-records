@@ -116,14 +116,13 @@ cd datamart-exporter
 # Otherwise, just assume 'java' will magically exist.
 #
 JAVA_EXE=java
-JAVA_12=$(find $EXTRA_JRES -maxdepth 1 -type d -name "jdk-12.*" | head -1)
+JAVA_12=$(find ${EXTRA_JRES:-} -maxdepth 1 -type d -name "jdk-12.*" | head -1)
 if [ -n "$JAVA_12" ]
 then
   export JAVA_HOME=$JAVA_12s
   JAVA_EXE=$JAVA_HOME/bin/java
 fi
 
-BASE_DIR=$(pwd)
 DATAMART_DIR=$BASE_DIR/datamart
 
 #
@@ -141,4 +140,4 @@ cat $CONFIG_FILE
 #
 # Run test PopulateDb "test", which will launch the MMM
 #
-mvn -DDIRECTORY_TO_IMPORT=$DATAMART_DIR -DCONFIG_FILE=$CONFIG_FILE -Dtest=PopulateDb
+mvn -DDIRECTORY_TO_IMPORT=$DATAMART_DIR -DCONFIG_FILE=$CONFIG_FILE -Dtest=PopulateDb test
