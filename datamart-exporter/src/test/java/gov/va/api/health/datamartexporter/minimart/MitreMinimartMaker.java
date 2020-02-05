@@ -62,7 +62,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MitreMinimartMaker {
 
-  private static final ThreadLocal<EntityManager> LOCAL_ENTITY_MANAGER = new ThreadLocal<>();
+  private final ThreadLocal<EntityManager> LOCAL_ENTITY_MANAGER = new ThreadLocal<>();
 
   private final List<Class<?>> MANAGED_CLASSES =
       Arrays.asList(
@@ -95,11 +95,11 @@ public class MitreMinimartMaker {
     this.resourceToSync = resourceToSync;
     if (configFile == null || configFile.isBlank()) {
       log.info("No config file was specified... Defaulting to local h2 database...");
-      this.entityManagerFactory = new LocalH2("./target/minimart", MANAGED_CLASSES).get();
+      entityManagerFactory = new LocalH2("./target/minimart", MANAGED_CLASSES).get();
     } else {
-      this.entityManagerFactory = new ExternalDb(configFile, MANAGED_CLASSES).get();
+      entityManagerFactory = new ExternalDb(configFile, MANAGED_CLASSES).get();
     }
-    this.entityManagers = Collections.synchronizedList(new ArrayList<>());
+    entityManagers = Collections.synchronizedList(new ArrayList<>());
   }
 
   /** Main. */
@@ -109,11 +109,17 @@ public class MitreMinimartMaker {
           "Missing command line arguments. Expected <resource-type> <input-directory> <external-db-config>");
     }
     String directory = args[1];
-    MitreMinimartMaker mmm = new MitreMinimartMaker(args[0], args[2]);
+    String resourceToSync = args[0];
+    String configFile = args[2];
+    sync(directory, resourceToSync, configFile);
+    System.exit(0);
+  }
+
+  public static void sync(String directory, String resourceToSync, String configFile) {
+    MitreMinimartMaker mmm = new MitreMinimartMaker(resourceToSync, configFile);
     log.info("Syncing {} files in {} to db", mmm.resourceToSync, directory);
     mmm.pushToDatabaseByResourceType(directory);
     log.info("{} sync complete", mmm.resourceToSync);
-    System.exit(0);
   }
 
   @SneakyThrows
@@ -488,7 +494,10 @@ public class MitreMinimartMaker {
     for (EntityManager entityManager : entityManagers) {
       entityManager.getTransaction().commit();
       entityManager.close();
+      // HACK
+      LOCAL_ENTITY_MANAGER.remove();
     }
+    entityManagers.clear();
     log.info("Added {} {} entities", addedCount.get(), resourceToSync);
   }
 

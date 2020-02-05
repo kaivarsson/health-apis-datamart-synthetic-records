@@ -1,5 +1,6 @@
 package gov.va.api.health.datamartexporter;
 
+import gov.va.api.health.datamartexporter.minimart.MitreMinimartMaker;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -56,9 +57,10 @@ public class PopulateDb {
           resource,
           importDirectoryPath,
           configFilePath);
-      gov.va.api.health.datamartexporter.minimart.MitreMinimartMaker.main(
-          new String[] {resource, importDirectoryPath, configFilePath});
+      MitreMinimartMaker.sync(importDirectoryPath, resource, configFilePath);
+      // break;
     }
+    log.info("DONE");
   }
 
   /** Lets do some input validation before attempting a push to the db. */
