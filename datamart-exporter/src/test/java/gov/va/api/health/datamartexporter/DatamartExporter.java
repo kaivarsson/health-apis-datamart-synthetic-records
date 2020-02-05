@@ -76,7 +76,6 @@ public class DatamartExporter {
     String outputFile = args[1];
     new DatamartExporter(configFile, outputFile).export();
     log.info("All done");
-    System.exit(0);
   }
 
   private static List<Class<?>> managedClasses() {

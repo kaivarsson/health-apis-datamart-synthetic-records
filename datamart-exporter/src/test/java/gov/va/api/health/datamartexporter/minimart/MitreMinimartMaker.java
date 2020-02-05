@@ -102,19 +102,6 @@ public class MitreMinimartMaker {
     entityManagers = Collections.synchronizedList(new ArrayList<>());
   }
 
-  /** Main. */
-  public static void main(String[] args) {
-    if (args.length > 3 || args.length < 2) {
-      throw new RuntimeException(
-          "Missing command line arguments. Expected <resource-type> <input-directory> <external-db-config>");
-    }
-    String directory = args[1];
-    String resourceToSync = args[0];
-    String configFile = args[2];
-    sync(directory, resourceToSync, configFile);
-    System.exit(0);
-  }
-
   public static void sync(String directory, String resourceToSync, String configFile) {
     MitreMinimartMaker mmm = new MitreMinimartMaker(resourceToSync, configFile);
     log.info("Syncing {} files in {} to db", mmm.resourceToSync, directory);

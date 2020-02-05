@@ -57,7 +57,6 @@ public class FhirToDatamart {
     String inputDirectory = args[1];
     String configFile = args[2];
     new FhirToDatamart(inputDirectory, resourceType, configFile).fhirToDatamart();
-    System.exit(0);
   }
 
   @SneakyThrows
