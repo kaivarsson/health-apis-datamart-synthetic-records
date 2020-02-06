@@ -24,9 +24,9 @@ RUN echo 'java.nio.file.Files.copy(new java.net.URL("http://aia.pki.va.gov/PKI/A
 USER flyway
 
 ENTRYPOINT []
-RUN curl -sL http://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.2%2B10/OpenJDK12U-jre_x64_linux_hotspot_12.0.2_10.tar.gz -o /tmp/OpenJDK12U-jre_x64_linux_hotspot_12.tar.gz
+RUN curl -sL http://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.2%2B10/OpenJDK12U-jdk_x64_linux_hotspot_12.0.2_10.tar.gz -o /tmp/OpenJDK12U-jdk_x64_linux_hotspot_12.tar.gz
 ENV EXTRA_JRES=/flyway/jre/
-RUN mkdir -p $EXTRA_JRES && tar -x -C $EXTRA_JRES -f /tmp/OpenJDK12U-jre_x64_linux_hotspot_12.tar.gz
+RUN mkdir -p $EXTRA_JRES && tar -x -C $EXTRA_JRES -f /tmp/OpenJDK12U-jdk_x64_linux_hotspot_12.tar.gz
 
 RUN curl -sL http://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -o /tmp/apache-maven-3.6.3-bin.tar.gz \
   && tar -x -C /flyway/ -f /tmp/apache-maven-3.6.3-bin.tar.gz
