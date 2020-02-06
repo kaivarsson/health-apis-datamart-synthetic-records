@@ -106,10 +106,6 @@ $FLYWAY migrate \
     -locations='filesystem:db/migration' \
     -schemas=app
 
-#
-# Populate Database
-#
-cd minimart-manager
 
 #
 # Look for a Java 12 that is nearby. If we find one use it (like in the docker image for Jenkins)
@@ -124,6 +120,23 @@ then
 fi
 
 DATAMART_DIR=$BASE_DIR/datamart
+
+
+#
+# Look for a Maven near by
+#
+MVN_EXE=mvn
+LOCAL_MAVEN_HOME=$(find -maxdepth 1 -type d -name "*maven-3.6*" | head -1)
+if [ -n "$LOCAL_MAVEN_HOME" ]
+then
+  export MAVEN_HOME=$LOCAL_MAVEN_HOME
+  MVN_EXE=$LOCAL_MAVEN_HOME/bin/mvn
+fi
+
+#
+# Populate Database
+#
+cd minimart-manager
 
 #
 # Build the sqlserver.properties file for MMM
@@ -140,4 +153,4 @@ cat $CONFIG_FILE
 #
 # Run test PopulateDb "test", which will launch the MMM
 #
-mvn -Dimport.directory=$DATAMART_DIR -Dconfig.file=$CONFIG_FILE -Dtest=PopulateDb test
+$MVN_EXE -Dimport.directory=$DATAMART_DIR -Dconfig.file=$CONFIG_FILE -Dtest=PopulateDb test
