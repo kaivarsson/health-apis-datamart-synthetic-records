@@ -127,7 +127,7 @@ DATAMART_DIR=$BASE_DIR/datamart
 #
 ls
 MVN_EXE=mvn
-LOCAL_MAVEN_HOME=$(find ~ -maxdepth 1 -type d -name "*maven-3.6*" | head -1)
+LOCAL_MAVEN_HOME=$(find ${EXTRA_MVNS:-} -maxdepth 1 -type d -name "*maven-3.6*" | head -1)
 if [ -n "${LOCAL_MAVEN_HOME:-}" ]
 then
   export MAVEN_HOME=$LOCAL_MAVEN_HOME
