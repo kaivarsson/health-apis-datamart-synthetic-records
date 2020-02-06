@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -xeuo pipefail
 
 cd $(readlink -f $(dirname $0))
 
@@ -113,7 +113,7 @@ $FLYWAY migrate \
 #
 JAVA_EXE=java
 JAVA_12=$(find ${EXTRA_JRES:-} -maxdepth 1 -type d -name "jdk-12.*" | head -1)
-if [ -n "$JAVA_12" ]
+if [ -n "${JAVA_12:-}" ]
 then
   export JAVA_HOME=$JAVA_12s
   JAVA_EXE=$JAVA_HOME/bin/java
@@ -127,7 +127,7 @@ DATAMART_DIR=$BASE_DIR/datamart
 #
 MVN_EXE=mvn
 LOCAL_MAVEN_HOME=$(find -maxdepth 1 -type d -name "*maven-3.6*" | head -1)
-if [ -n "$LOCAL_MAVEN_HOME" ]
+if [ -n "${LOCAL_MAVEN_HOME:-}" ]
 then
   export MAVEN_HOME=$LOCAL_MAVEN_HOME
   MVN_EXE=$LOCAL_MAVEN_HOME/bin/mvn
