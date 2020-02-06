@@ -263,6 +263,7 @@ public class MitreMinimartMaker {
             .roomBed(dm.roomBed())
             .station(dm.station())
             .stationName(dm.stationName().get())
+            .payload(payload)
             .build();
     save(entity, cdwId);
   }
