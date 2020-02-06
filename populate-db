@@ -80,10 +80,10 @@ JAVA_EXE=java
 JAVA_12=$(find $EXTRA_JRES -maxdepth 1 -type d -name "jdk-12.*" | head -1)
 if [ -n "$JAVA_12" ]
 then
-  export JAVA_HOME=$JAVA_12
+  export JAVA_HOME=$JAVA_12s
   JAVA_EXE=$JAVA_HOME/bin/java
 fi
-MAIN_CLASS=gov.va.api.health.dataquery.tools.minimart.MitreMinimartMaker
+MAIN_CLASS=gov.va.api.health.datamartexporter.minimart.MitreMinimartMaker
 
 #
 # If a specific user was given, use that users directory, otherwise just use the base parent
@@ -95,7 +95,7 @@ then
   DIRECTORY_TO_IMPORT=$DATAMART_DIR/dm-records-$THE_CHOSEN_PATIENT
 fi
 
-#                                                                                                                   # Execute the MMM for each set of user records, loading each type of supported resource.                            #
+## Execute the MMM for each set of user records, loading each type of supported resource.
 echo "Loading records in $DIRECTORY_TO_IMPORT"
 for RESOURCE_TYPE in ${RESOURCE_TYPES[@]}
 do

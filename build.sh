@@ -106,9 +106,51 @@ $FLYWAY migrate \
     -locations='filesystem:db/migration' \
     -schemas=app
 
+
 #
-# Populate database
+# Look for a Java 12 that is nearby. If we find one use it (like in the docker image for Jenkins)
+# Otherwise, just assume 'java' will magically exist.
 #
-DQ_TAR=$BASE_DIR/data-query.tar.gz
-fetch-data-query $DQ_TAR
-populate-db $DQ_TAR
+JAVA_EXE=java
+JAVA_12=$(find ${EXTRA_JRES:-} -maxdepth 1 -type d -name "jdk-12.*" | head -1)
+if [ -n "$JAVA_12" ]
+then
+  export JAVA_HOME=$JAVA_12s
+  JAVA_EXE=$JAVA_HOME/bin/java
+fi
+
+DATAMART_DIR=$BASE_DIR/datamart
+
+
+#
+# Look for a Maven near by
+#
+MVN_EXE=mvn
+LOCAL_MAVEN_HOME=$(find -maxdepth 1 -type d -name "*maven-3.6*" | head -1)
+if [ -n "$LOCAL_MAVEN_HOME" ]
+then
+  export MAVEN_HOME=$LOCAL_MAVEN_HOME
+  MVN_EXE=$LOCAL_MAVEN_HOME/bin/mvn
+fi
+
+#
+# Populate Database
+#
+cd minimart-manager
+
+#
+# Build the sqlserver.properties file for MMM
+#
+CONFIG_FILE=sqlserver.properties
+cat <<EOF > $CONFIG_FILE
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.datasource.url=$FLYWAY_BASE_URL;databaseName=$FLYWAY_PLACEHOLDERS_DB_NAME
+spring.datasource.username=$FLYWAY_USER
+spring.datasource.password=$FLYWAY_PASSWORD
+EOF
+cat $CONFIG_FILE
+
+#
+# Run test PopulateDb "test", which will launch the MMM
+#
+$MVN_EXE -Dimport.directory=$DATAMART_DIR -Dconfig.file=$CONFIG_FILE -Dtest=PopulateDb test
