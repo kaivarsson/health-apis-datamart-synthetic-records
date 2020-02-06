@@ -125,6 +125,7 @@ DATAMART_DIR=$BASE_DIR/datamart
 #
 # Look for a Maven near by
 #
+ls
 MVN_EXE=mvn
 LOCAL_MAVEN_HOME=$(find -maxdepth 1 -type d -name "*maven-3.6*" | head -1)
 if [ -n "${LOCAL_MAVEN_HOME:-}" ]
