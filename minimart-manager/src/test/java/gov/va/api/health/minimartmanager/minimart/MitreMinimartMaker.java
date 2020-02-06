@@ -246,15 +246,23 @@ public class MitreMinimartMaker {
     DatamartFallRisk dm = JacksonConfig.createMapper().readValue(payload, DatamartFallRisk.class);
     String cdwId = dm.cdwId();
     // TODO - ENTITY NEEDS TO BE UPDATED WITH NEW COLUMNS
+
     FallRiskEntity entity =
         FallRiskEntity.builder()
-            .cdwId(cdwId)
-            .patientFullIcn(dm.patientFullIcn())
-            .surveyGivenDateTime(dm.surveyGivenDateTimeUtc())
-            .station(dm.station())
-            .morseScore(dm.morseScore())
+            .admitDateTime(dm.admitDateTime())
+            .currentSpecialty(dm.admitSpecialty())
+            .attendingProvider(dm.attendingProvider())
+            .cdwId(dm.cdwId())
+            .currentWard(dm.currentWard())
+            .lastFour(dm.lastFour())
+            .morseAdmitDateTime(dm.morseAdmitDateTime())
+            .morseAdmitScore(dm.morseAdmitScore())
             .morseCategory(dm.morseCategory())
-            .payload(payload)
+            .patientFullIcn(dm.patientFullIcn())
+            .patientName(dm.patientName())
+            .roomBed(dm.roomBed())
+            .station(dm.station())
+            .stationName(dm.stationName().get())
             .build();
     save(entity, cdwId);
   }
