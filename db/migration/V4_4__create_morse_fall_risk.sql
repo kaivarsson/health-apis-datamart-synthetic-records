@@ -1,3 +1,49 @@
+/* ==========================================================================
+
+Create date:    02/07/2020
+Table:          FallRisk
+Author:         ilaflamme-va
+Description:
+
+Data Definition:
+Column Name        | Description
+-------------------|-----------------------------------------------------
+CDWId              | Primary Key. The CDW identifier for the record.
+-------------------|-----------------------------------------------------
+Sta3n              | The station identifier of where the survey was
+                   | performed.
+-------------------|-----------------------------------------------------
+StationName        | The name of the station where the survey was
+                   | performed.
+-------------------|-----------------------------------------------------
+PatientName        | Name of the patient receiving the survey.
+-------------------|-----------------------------------------------------
+PatientFullICN     | The patients unique ICN
+-------------------|-----------------------------------------------------
+LastFour           | Last four digits of the patient's government-issued
+                   | Social Security Number.
+-------------------|-----------------------------------------------------
+CurrentWard        | The hospital ward currently housing the patient.
+-------------------|-----------------------------------------------------
+RoomBed            | Room and bed assigned to the patient. (Rm 123 Bd 456)
+-------------------|-----------------------------------------------------
+AdmitDateTime      | Datetime the patient was admitted.
+-------------------|-----------------------------------------------------
+AttendingProvider  | Name of provider assisting the patient.
+-------------------|-----------------------------------------------------
+CurrentlySpecialty | Skill specialty of the AttendingProvider
+-------------------|-----------------------------------------------------
+MorseAdmitScore    | Morse score calculated for the patient.
+-------------------|-----------------------------------------------------
+MorseCategory      | Severity rating of the score. (High/Medium/Low)
+-------------------|-----------------------------------------------------
+MorseAdmitDateTime | Datetime that the morse score was generated and
+                   | assigned to the patient.
+-------------------|-----------------------------------------------------
+Payload            | Json payload containing the fall-risk record.
+-------------------|-----------------------------------------------------
+
+========================================================================== */
 
 CREATE TABLE [app].[MorseFallRisk]
 (
