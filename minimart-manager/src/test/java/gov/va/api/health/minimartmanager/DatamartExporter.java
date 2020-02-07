@@ -20,10 +20,13 @@ import gov.va.api.health.dataquery.service.controller.procedure.ProcedureEntity;
 import gov.va.api.health.fallrisk.service.controller.FallRiskEntity;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.persistence.EntityManager;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NonNull;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 
@@ -62,9 +65,15 @@ public class DatamartExporter {
 
   EntityManager mitre;
 
-  public DatamartExporter(String configFile, String outputFile) {
+  /** Simple class names with or without 'Entity' suffix for types that will be processed. */
+  Set<String> includedTypeNames;
+
+  @Builder
+  public DatamartExporter(
+      String configFile, String outputFile, @NonNull Set<String> includedTypeNames) {
     mitre = new ExternalDb(configFile, managedClasses()).get().createEntityManager();
     h2 = new LocalH2(outputFile, managedClasses()).get().createEntityManager();
+    this.includedTypeNames = includedTypeNames;
   }
 
   public static void main(String[] args) {
@@ -74,7 +83,16 @@ public class DatamartExporter {
     }
     String configFile = args[0];
     String outputFile = args[1];
-    new DatamartExporter(configFile, outputFile).export();
+    var includedTypeNames =
+        Set.of(System.getProperty("exporter.included-types", "*").split("\\s*,\\s*"));
+    log.info("Included types: {}", includedTypeNames);
+
+    DatamartExporter.builder()
+        .configFile(configFile)
+        .outputFile(outputFile)
+        .includedTypeNames(includedTypeNames)
+        .build()
+        .export();
     log.info("All done");
   }
 
@@ -83,9 +101,15 @@ public class DatamartExporter {
   }
 
   public void export() {
-    EXPORT_CRITERIA.stream().forEach(this::steal);
+    EXPORT_CRITERIA.stream().filter(this::isEnabled).forEach(this::steal);
     mitre.close();
     h2.close();
+  }
+
+  private boolean isEnabled(ExportCriteria criteria) {
+    var exportedTypeName = criteria.type().getSimpleName();
+    return includedTypeNames.contains(exportedTypeName)
+        || includedTypeNames.contains(exportedTypeName.replace("Entity", ""));
   }
 
   private void steal(ExportCriteria criteria) {

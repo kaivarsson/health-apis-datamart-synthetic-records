@@ -7,11 +7,12 @@
     <version>5.0.3</version>
     <relativePath/>
   </parent>
-  <artifactId>datamart-exporter</artifactId>
+  <artifactId>minimart-manager</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <properties>
     <data-query.version>2.0.233</data-query.version>
+    <git.allowedBranchNames><![CDATA[^(dependabot/.*|staging_lab|lab|PR-[0-9]+|(.*/)?[A-Z]{2,10}-[0-9]+-.*)$]]></git.allowedBranchNames>
   </properties>
   <dependencies>
     <dependency>
@@ -23,7 +24,7 @@
     <dependency>
       <groupId>gov.va.api.health</groupId>
       <artifactId>fall-risk</artifactId>
-      <version>1.0.23</version>
+      <version>1.0.25-SNAPSHOT</version>
       <classifier>library</classifier>
       <scope>test</scope>
     </dependency>
@@ -94,10 +95,11 @@
                 <goals>
                   <goal>java</goal>
                 </goals>
-                <phase>generate-resources</phase>
+                <phase>test-compile</phase>
                 <configuration>
                   <mainClass>gov.va.api.health.minimartmanager.DatamartExporter</mainClass>
                   <classpathScope>test</classpathScope>
+                  <cleanupDaemonThreads>false</cleanupDaemonThreads>
                   <arguments>
                     <argument>${configFile}</argument>
                     <argument>${outputFile}</argument>

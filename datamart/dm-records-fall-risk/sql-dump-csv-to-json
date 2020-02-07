@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [ -z "${1:-}" ]; then echo "$0 <sql-dump-csv-file>"; exit 1; fi
+
+CSV=${1}
+
+FILTER="2020"
+
+cd $(dirname $0)
+
+
+#
+# We need to ...
+# 1. Remove the header
+# 2. Remove the column bits before the payload, which is the last column
+# 3. Fix the qouated value, which is "{""field1"":""value"",""field2"",""value""}"
+# 4. Fix escaped \/ sequences
+#
+grep "$FILTER" $CSV \
+  | sed \
+  -e 's/^.*[0-9],"{"/{"/' \
+  -e 's/""/"/g' \
+  -e 's/}"/}/g' \
+  -e 's/\\\//\//' \
+  > dmFalRis$FILTER.ndjson

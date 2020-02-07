@@ -233,17 +233,37 @@ public class MitreMinimartMaker {
 
   @SneakyThrows
   private void insertByFallRisk(File file) {
-    DatamartFallRisk dm = JacksonConfig.createMapper().readValue(file, DatamartFallRisk.class);
+    insertByFallRiskPayload(fileToString(file));
+  }
+
+  @SneakyThrows
+  private void insertByFallRiskNd(File file) {
+    Files.lines(file.toPath()).forEach(this::insertByFallRiskPayload);
+  }
+
+  @SneakyThrows
+  private void insertByFallRiskPayload(String payload) {
+    DatamartFallRisk dm = JacksonConfig.createMapper().readValue(payload, DatamartFallRisk.class);
     String cdwId = dm.cdwId();
+    // TODO - ENTITY NEEDS TO BE UPDATED WITH NEW COLUMNS
+
     FallRiskEntity entity =
         FallRiskEntity.builder()
-            .cdwId(cdwId)
-            .patientFullIcn(dm.patientFullIcn())
-            .surveyGivenDateTime(dm.surveyGivenDateTimeUtc())
-            .station(dm.station())
-            .morseScore(dm.morseScore())
+            .admitDateTime(dm.admitDateTime())
+            .currentSpecialty(dm.admitSpecialty())
+            .attendingProvider(dm.attendingProvider())
+            .cdwId(dm.cdwId())
+            .currentWard(dm.currentWard())
+            .lastFour(dm.lastFour())
+            .morseAdmitDateTime(dm.morseAdmitDateTime())
+            .morseAdmitScore(dm.morseAdmitScore())
             .morseCategory(dm.morseCategory())
-            .payload(fileToString(file))
+            .patientFullIcn(dm.patientFullIcn())
+            .patientName(dm.patientName())
+            .roomBed(dm.roomBed())
+            .station(dm.station())
+            .stationName(dm.stationName().get())
+            .payload(payload)
             .build();
     save(entity, cdwId);
   }
@@ -440,6 +460,7 @@ public class MitreMinimartMaker {
         break;
       case "FallRisk":
         insertResourceByPattern(dmDirectory, "^dmFalRis.*json$", this::insertByFallRisk);
+        insertResourceByPattern(dmDirectory, "^dmFalRis.*ndjson$", this::insertByFallRiskNd);
         break;
       case "Immunization":
         insertResourceByPattern(dmDirectory, "^dmImm.*json$", this::insertByImmunization);
