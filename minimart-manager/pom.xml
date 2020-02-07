@@ -95,10 +95,11 @@
                 <goals>
                   <goal>java</goal>
                 </goals>
-                <phase>generate-resources</phase>
+                <phase>test-compile</phase>
                 <configuration>
                   <mainClass>gov.va.api.health.minimartmanager.DatamartExporter</mainClass>
                   <classpathScope>test</classpathScope>
+                  <cleanupDaemonThreads>false</cleanupDaemonThreads>
                   <arguments>
                     <argument>${configFile}</argument>
                     <argument>${outputFile}</argument>

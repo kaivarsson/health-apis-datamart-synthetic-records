@@ -6,10 +6,10 @@
 # standard spring database configuration the source Mitre database.
 #
 exportLocalMitreDb() {
+  local includedTypes="$1"
   cd $(dirname $0)
 
   LAB_PROPERTIES=config/lab.properties
-  OUTPUT=./src/test/resources/mitre
 
   [ ! -f "$LAB_PROPERTIES" ] && echo "Missing $LAB_PROPERTIES" && exit 1
 
@@ -18,21 +18,27 @@ exportLocalMitreDb() {
     ! grep -q "^$p=" $LAB_PROPERTIES && echo "Missing $p in $LAB_PROPERTIES" && exit 1
   done
 
-  [ -f $OUTPUT.mv.db ] && rm -v $OUTPUT.*
+  [ -f $LOCAL_DB.mv.db ] && rm -v $LOCAL_DB.*
 
   mvn \
     -P'!standard' \
     -Pmitre-export \
-    generate-resources \
+    test-compile \
     -DconfigFile=config/lab.properties \
-    -DoutputFile=./src/test/resources/mitre \
+    -DoutputFile=$LOCAL_DB \
     -DexportPatients=32000225,43000199,17,23,1017283180V801730 \
+    -Dexporter.included-types="$includedTypes" \
     -Dorg.jboss.logging.provider=jdk \
     -Djava.util.logging.config.file=nope
+
+  cat<<EOF
+You new H2 database is available.
+$LOCAL_DB.mv.db
+EOF
 }
 
 openLocalMitreDb() {
-  java -jar ~/.m2/repository/com/h2database/h2/1.4.200/h2-1.4.200.jar -url jdbc:h2:./src/test/resources/mitre -user sa -password sa  
+  java -jar ~/.m2/repository/com/h2database/h2/1.4.200/h2-1.4.200.jar -url jdbc:h2:$LOCAL_DB -user sa -password sa
 }
 
 # ============================================================
@@ -42,15 +48,24 @@ usage() {
 $0 <command>
 
 Commands:
-  export     Make a copy of db in a local h2 database (/src/test/resources/mitre.*)
-  open       Open the local mitre database (/src/test/resources/mitre.mv.db)
+  export-fall-risk   Make a copy of db in a local h2 database
+  export-data-query  Make a copy of db in a local h2 database
+  open               Open the local mitre database
+
+Local database: $LOCAL_DB
 
 EOF
 exit
 }
 
+
+BASE_DIR=$(dirname $(readlink -f $0))
+LOCAL_DB=$BASE_DIR/target/mitre
+
 case $1 in
-  export) exportLocalMitreDb;;
+  export-fall-risk) exportLocalMitreDb "FallRisk";;
+  export-data-mart) exportLocalMitreDb "AllergyIntolerance,Condition,Datamart,DiagnosticReportCross,DiagnosticReports,Immunization,Location,Medication,MedicationOrder,MedicationStatement,Observation,Organization,Patient,PatientSearch,Practitioner,Procedure
+";;
   open) openLocalMitreDb;;
   *) usage;;
 esac
