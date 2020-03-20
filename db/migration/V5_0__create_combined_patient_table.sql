@@ -5,6 +5,8 @@ Column Name      | Description
 -----------------|-----------------------------------------------------
 PatientFullICN   | The patient's VA internal control number
 -----------------|-----------------------------------------------------
+FullName         | The patients full name, first, middle and last
+-----------------|-----------------------------------------------------
 LastName         | the patient's last name
 -----------------|-----------------------------------------------------
 FirstName        | the patient's first and middle name
@@ -15,11 +17,11 @@ Birthdate        | the patient's date and time of birth in UTC.
 -----------------|-----------------------------------------------------
 Gender           | indicates the patient's gender. 'M' for male, 'F'
                  | for female
------------------------------------------------------------------------
+-----------------|-----------------------------------------------------
 LastUpdated      | indicates the last time this record was modified
------------------------------------------------------------------------
+-----------------|-----------------------------------------------------
 Patient          | json payload containing the patient record
------------------------------------------------------------------------
+-----------------|-----------------------------------------------------
 
 
 */
@@ -39,14 +41,17 @@ GO
 CREATE INDEX [IX_Patient_PatientFullICN] on [App].[Patient]([PatientFullICN])
 GO
 
-CREATE INDEX [IX_Patient_GivenAndGender] on [App].[Patient]([FirstName],[Gender])
+CREATE INDEX [IX_Patient_FullName] on [App].[Patient]([FullName])
 GO
 
-CREATE INDEX [IX_Patient_FamilyAndGender] on [App].[Patient]([LastName],[Gender])
+CREATE INDEX [IX_Patient_Family] on [App].[Patient]([LastName])
 GO
 
-CREATE INDEX [IX_Patient_NameAndBirthdate] on [App].[Patient]([LastName],[Birthdate])
+CREATE INDEX [IX_Patient_Given] on [App].[Patient]([FirstName])
 GO
 
-CREATE INDEX [IX_Patient_NameAndGender] on [App].[Patient]([LastName],[Gender])
+CREATE INDEX [IX_Patient_Birthdate] on [App].[Patient]([Birthdate])
+GO
+
+CREATE INDEX [IX_Patient_Gender] on [App].[Patient]([Gender])
 GO
