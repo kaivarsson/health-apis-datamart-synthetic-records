@@ -28,9 +28,7 @@ import gov.va.api.health.dataquery.service.controller.observation.ObservationEnt
 import gov.va.api.health.dataquery.service.controller.organization.DatamartOrganization;
 import gov.va.api.health.dataquery.service.controller.organization.OrganizationEntity;
 import gov.va.api.health.dataquery.service.controller.patient.DatamartPatient;
-import gov.va.api.health.dataquery.service.controller.patient.PatientEntity;
 import gov.va.api.health.dataquery.service.controller.patient.PatientEntityV2;
-import gov.va.api.health.dataquery.service.controller.patient.PatientSearchEntity;
 import gov.va.api.health.dataquery.service.controller.practitioner.DatamartPractitioner;
 import gov.va.api.health.dataquery.service.controller.practitioner.PractitionerEntity;
 import gov.va.api.health.dataquery.service.controller.procedure.DatamartProcedure;
@@ -79,8 +77,6 @@ public class MitreMinimartMaker {
           MedicationStatementEntity.class,
           ObservationEntity.class,
           OrganizationEntity.class,
-          PatientEntity.class,
-          PatientSearchEntity.class,
           PatientEntityV2.class,
           PractitionerEntity.class,
           ProcedureEntity.class);
@@ -375,24 +371,6 @@ public class MitreMinimartMaker {
   @SneakyThrows
   private void insertByPatient(File file) {
     DatamartPatient dm = JacksonConfig.createMapper().readValue(file, DatamartPatient.class);
-
-    // Old patient entity model, 2 tables
-    PatientEntity patEntity =
-        PatientEntity.builder().icn(dm.fullIcn()).payload(fileToString(file)).build();
-    save(patEntity);
-    PatientSearchEntity patientSearchEntity =
-        PatientSearchEntity.builder()
-            .icn(dm.fullIcn())
-            .firstName(dm.firstName())
-            .lastName(dm.lastName())
-            .name(dm.name())
-            .birthDateTime(Instant.parse(dm.birthDateTime()))
-            .gender(dm.gender())
-            .patient(patEntity)
-            .build();
-    save(patientSearchEntity);
-
-    // New combined entity model, 1 table
     PatientEntityV2 patientEntityV2 =
         PatientEntityV2.builder()
             .icn(dm.fullIcn())
