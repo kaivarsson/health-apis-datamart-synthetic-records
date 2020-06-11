@@ -60,6 +60,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MitreMinimartMaker {
+  private static int totalRecords;
 
   private final ThreadLocal<EntityManager> LOCAL_ENTITY_MANAGER = new ThreadLocal<>();
 
@@ -128,6 +129,7 @@ public class MitreMinimartMaker {
       }
     }
     log.info("{} unique files found", uniqueFiles.size());
+    totalRecords = uniqueFiles.size();
     return uniqueFiles.stream();
   }
 
@@ -379,7 +381,6 @@ public class MitreMinimartMaker {
             .firstName(dm.firstName())
             .birthDate(Instant.parse(dm.birthDateTime()))
             .gender(dm.gender())
-            // .lastUpdated() unused
             .payload(fileToString(file))
             .build();
     save(patientEntityV2);
@@ -526,6 +527,9 @@ public class MitreMinimartMaker {
       entityManager.merge(entity);
     }
     addedCount.incrementAndGet();
+    if ((totalRecords - addedCount.get()) % 10000 == 0) {
+      log.info("{} files remaining", totalRecords - addedCount.get());
+    }
     entityManager.flush();
     entityManager.clear();
   }
