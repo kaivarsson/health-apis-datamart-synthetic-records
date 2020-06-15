@@ -60,8 +60,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MitreMinimartMaker {
-  private static int totalRecords;
-
   private final ThreadLocal<EntityManager> LOCAL_ENTITY_MANAGER = new ThreadLocal<>();
 
   private final List<Class<?>> MANAGED_CLASSES =
@@ -81,6 +79,8 @@ public class MitreMinimartMaker {
           PatientEntityV2.class,
           PractitionerEntity.class,
           ProcedureEntity.class);
+
+  private int totalRecords;
 
   private String resourceToSync;
 
@@ -527,7 +527,7 @@ public class MitreMinimartMaker {
       entityManager.merge(entity);
     }
     addedCount.incrementAndGet();
-    if ((totalRecords - addedCount.get()) % 10000 == 0) {
+    if ((totalRecords - addedCount.get() != 0) && (totalRecords - addedCount.get()) % 10000 == 0) {
       log.info("{} files remaining", totalRecords - addedCount.get());
     }
     entityManager.flush();
