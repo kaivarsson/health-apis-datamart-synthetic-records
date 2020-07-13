@@ -107,7 +107,7 @@ $FLYWAY migrate \
 #
 # Now apply migrations
 #
-announce "Migrating database"
+announce "Migrating Database"
 $FLYWAY migrate \
     -url="${FLYWAY_BASE_URL};databaseName=$FLYWAY_PLACEHOLDERS_DB_NAME" \
     -table=flyway_schema_history \
@@ -137,4 +137,6 @@ cat $CONFIG_FILE
 #
 # Run test PopulateDb "test", which will launch the MMM
 #
+announce "Populating Database Tables"
+
 mvn -Dimport.directory=$DATAMART_DIR -Dconfig.file=$CONFIG_FILE -Dtest=PopulateDb test

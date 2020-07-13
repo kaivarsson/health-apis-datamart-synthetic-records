@@ -19,7 +19,7 @@ def saunter(scriptName) {
     usernamePassword(
       credentialsId: 'STGLABUSER_USERNAME_PASSWORD',
       usernameVariable: 'STGLABUSER_USERNAME',
-      passwordVariable: 'STGLABUSER_PASSWORD'),
+      passwordVariable: 'STGLABUSER_PASSWORD')
    ]) {
     sh script: scriptName
   }
@@ -62,6 +62,7 @@ pipeline {
     }
     stage('Build') {
       when {
+        expression { return env.CLEAN != 'true' }
         expression { return env.ENVIRONMENT != 'i-cant-even-w-this' }
       }
       steps {
@@ -69,10 +70,10 @@ pipeline {
       }
     }
   }
-    post {
+  post {
     always {
       script {
-         def buildName = sh returnStdout: true, script: '''[ -f .jenkins/build-name ] && cat .jenkins/build-name ; exit 0'''
+        def buildName = sh returnStdout: true, script: '''[ -f .jenkins/build-name ] && cat .jenkins/build-name ; exit 0'''
         currentBuild.displayName = "#${currentBuild.number} - ${buildName}"
         def description = sh returnStdout: true, script: '''[ -f .jenkins/description ] && cat .jenkins/description ; exit 0'''
         currentBuild.description = "${description}"
