@@ -41,14 +41,35 @@ createDatabase() {
   sleep 10
 }
 
-loadDatabase() {
-  docker run --rm -it \
+
+howToBuild() {
+  if [ -n "${BUILD_MODE:-}" ]; then echo $BUILD_MODE; return; fi
+  if [[ "$(uname)" == *Linux* ]]; then echo docker; return; fi
+  echo native
+}
+
+
+buildWithDocker() {
+  docker run --rm \
     -e ENVIRONMENT="local" \
     -v $(pwd):/root/synthetic-records \
     -v ~/.m2:/root/.m2 \
     --network host \
     vasdvp/health-apis-synthetic-records-builder:local \
     ./root/synthetic-records/build.sh $@
+}
+
+buildNatively() {
+  ENVIRONMENT=local ./build.sh $@
+}
+
+loadDatabase() {
+  if [ "$(howToBuild)" == "docker" ]
+  then
+    buildWithDocker $@
+  else
+    buildNatively $@
+  fi
 }
 
 main $@
