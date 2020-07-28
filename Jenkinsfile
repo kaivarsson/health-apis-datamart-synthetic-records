@@ -19,7 +19,7 @@ def saunter(scriptName) {
     usernamePassword(
       credentialsId: 'STGLABUSER_USERNAME_PASSWORD',
       usernameVariable: 'STGLABUSER_USERNAME',
-      passwordVariable: 'STGLABUSER_PASSWORD'),
+      passwordVariable: 'STGLABUSER_PASSWORD')
    ]) {
     sh script: scriptName
   }
@@ -37,12 +37,9 @@ pipeline {
     booleanParam(name: 'CLEAN', defaultValue: false, description: "Remove existing database and start from scratch.")
   }
   agent {
-    docker {
-      registryUrl 'https://index.docker.io/v1/'
-      registryCredentialsId 'DOCKER_USERNAME_PASSWORD'
-      image 'vasdvp/health-apis-synthetic-records-builder:latest'
+    dockerfile {
+      filename './docker/Dockerfile'
       args "--privileged --group-add 497 -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -v /data/jenkins/.m2/repository:/home/jenkins/.m2/repository -v /var/lib/jenkins/.ssh:/home/jenkins/.ssh -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker"
-      alwaysPull true
     }
   }
   environment {
@@ -65,6 +62,7 @@ pipeline {
     }
     stage('Build') {
       when {
+        expression { return env.CLEAN != 'true' }
         expression { return env.ENVIRONMENT != 'i-cant-even-w-this' }
       }
       steps {
@@ -72,15 +70,18 @@ pipeline {
       }
     }
   }
-    post {
+  post {
     always {
       script {
-         def buildName = sh returnStdout: true, script: '''[ -f .jenkins/build-name ] && cat .jenkins/build-name ; exit 0'''
+        def buildName = sh returnStdout: true, script: '''[ -f .jenkins/build-name ] && cat .jenkins/build-name ; exit 0'''
         currentBuild.displayName = "#${currentBuild.number} - ${buildName}"
         def description = sh returnStdout: true, script: '''[ -f .jenkins/description ] && cat .jenkins/description ; exit 0'''
         currentBuild.description = "${description}"
         if (env.ENVIRONMENT != 'i-cant-even-w-this') {
-          sendNotifications()
+          sendNotifications('shankins')
+        }
+        if (env.ENVIRONMENT == 'lab') {
+          sendNotifications('api_operations')
         }
       }
     }
