@@ -125,6 +125,7 @@ public class MitreMinimartMaker {
             .reference(Optional.of(wrapper.fullIcn()))
             .display(Optional.ofNullable(wrapper.patientName()))
             .build();
+
     DatamartReference accessionInstitution =
         report.accessionInstitutionSid() == null
             ? null
@@ -133,6 +134,7 @@ public class MitreMinimartMaker {
                 .reference(Optional.of(report.accessionInstitutionSid()))
                 .display(Optional.ofNullable(report.accessionInstitutionName()))
                 .build();
+
     // staff, topography, and visit are not present in source data
     checkState(report.verifyingStaffSid() == null);
     DatamartReference verifyingStaff = null;
@@ -140,6 +142,7 @@ public class MitreMinimartMaker {
     DatamartReference topography = null;
     checkState(report.visitSid() == null);
     DatamartReference visit = null;
+
     return DatamartDiagnosticReport.builder()
         .cdwId(report.identifier())
         .patient(patient)
