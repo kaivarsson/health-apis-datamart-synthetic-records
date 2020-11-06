@@ -13,6 +13,9 @@ import gov.va.api.health.dataquery.service.controller.condition.ConditionEntity;
 import gov.va.api.health.dataquery.service.controller.condition.DatamartCondition;
 import gov.va.api.health.dataquery.service.controller.datamart.DatamartEntity;
 import gov.va.api.health.dataquery.service.controller.datamart.DatamartReference;
+import gov.va.api.health.dataquery.service.controller.datamart.HasReplaceableId;
+import gov.va.api.health.dataquery.service.controller.device.DatamartDevice;
+import gov.va.api.health.dataquery.service.controller.device.DeviceEntity;
 import gov.va.api.health.dataquery.service.controller.diagnosticreport.DatamartDiagnosticReport;
 import gov.va.api.health.dataquery.service.controller.diagnosticreport.DiagnosticReportEntity;
 import gov.va.api.health.dataquery.service.controller.diagnosticreport.v1.DatamartDiagnosticReports;
@@ -59,6 +62,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -72,6 +76,7 @@ public class MitreMinimartMaker {
       Arrays.asList(
           AllergyIntoleranceEntity.class,
           ConditionEntity.class,
+          DeviceEntity.class,
           DiagnosticReportCrossEntity.class,
           DiagnosticReportEntity.class,
           DiagnosticReportsEntity.class,
@@ -99,6 +104,15 @@ public class MitreMinimartMaker {
   private List<EntityManager> entityManagers;
 
   private AtomicInteger addedCount = new AtomicInteger(0);
+
+  private Function<DatamartDevice, DatamartEntity> toDeviceEntity =
+      (dm) ->
+          DeviceEntity.builder()
+              .cdwId(dm.cdwId())
+              .icn(dm.patient().reference().orElse(null))
+              .lastUpdated(Instant.now())
+              .payload(datamartToString(dm))
+              .build();
 
   private MitreMinimartMaker(String resourceToSync, String configFile) {
     this.resourceToSync = resourceToSync;
@@ -175,6 +189,16 @@ public class MitreMinimartMaker {
                 .collect(toList()))
         .reportStatus(report.reportStatus())
         .build();
+  }
+
+  @SneakyThrows
+  private String datamartToString(HasReplaceableId e) {
+    return JacksonConfig.createMapper().writeValueAsString(e);
+  }
+
+  @SneakyThrows
+  private <R extends HasReplaceableId> R fileToDatamart(File f, Class<R> objectType) {
+    return JacksonConfig.createMapper().readValue(f, objectType);
   }
 
   @SneakyThrows
@@ -309,11 +333,11 @@ public class MitreMinimartMaker {
                   DiagnosticReportEntity.builder()
                       .cdwId(report.identifier())
                       .icn(dm.fullIcn())
-                      // DRs are sorted by ChemPanel (CH) and Microbiology (MB) in CDW
-                      // All currently existing data for LAB translates to CH
+                      /* DRs are sorted by ChemPanel (CH) and Microbiology (MB) in CDW
+                       * All currently existing data for LAB translates to CH. */
                       .category("CH")
-                      // DRs are all 'panel' in production. CDW does not have LOINC codes
-                      // available, so everything is hard coded as panel.
+                      /* DRs are all 'panel' in production. CDW does not have LOINC codes
+                       * available, so everything is hard coded as panel. */
                       .code("panel")
                       .dateUtc(Instant.parse(report.issuedDateTime()))
                       .lastUpdated(null)
@@ -544,6 +568,7 @@ public class MitreMinimartMaker {
 
   private void pushToDatabaseByResourceType(String directory) {
     File dmDirectory = new File(directory);
+    DatabaseLoader loader = new DatabaseLoader(dmDirectory);
     if (dmDirectory.listFiles() == null) {
       log.error("No files in directory {}", directory);
       throw new RuntimeException("No files found in directory: " + directory);
@@ -560,6 +585,9 @@ public class MitreMinimartMaker {
             dmDirectory,
             DatamartFilenamePatterns.get().json(DatamartCondition.class),
             this::insertByCondition);
+        break;
+      case "Device":
+        loader.insertResourceByType(DatamartDevice.class, toDeviceEntity);
         break;
       case "DiagnosticReport":
         insertByDiagnosticReport(dmDirectory);
@@ -680,5 +708,25 @@ public class MitreMinimartMaker {
     }
     entityManager.flush();
     entityManager.clear();
+  }
+
+  private class DatabaseLoader {
+    File datamartDirectory;
+
+    DatabaseLoader(File datamartDirectory) {
+      this.datamartDirectory = datamartDirectory;
+    }
+
+    public <DM extends HasReplaceableId> void insertResourceByType(
+        Class<DM> resourceType, Function<DM, DatamartEntity> toDatamartEntity) {
+      findUniqueFiles(datamartDirectory, DatamartFilenamePatterns.get().json(resourceType))
+          .parallel()
+          .forEach(
+              f -> {
+                DM dm = fileToDatamart(f, resourceType);
+                DatamartEntity entity = toDatamartEntity.apply(dm);
+                save(entity);
+              });
+    }
   }
 }
