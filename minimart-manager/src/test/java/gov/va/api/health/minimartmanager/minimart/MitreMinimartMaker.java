@@ -1,13 +1,14 @@
 package gov.va.api.health.minimartmanager.minimart;
 
 import static java.util.stream.Collectors.toList;
-import static org.apache.commons.lang3.StringUtils.trimToEmpty;
-import static org.apache.commons.lang3.StringUtils.trimToNull;
+import static org.apache.commons.lang3.StringUtils.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import gov.va.api.health.autoconfig.configuration.JacksonConfig;
 import gov.va.api.health.dataquery.service.controller.allergyintolerance.AllergyIntoleranceEntity;
 import gov.va.api.health.dataquery.service.controller.allergyintolerance.DatamartAllergyIntolerance;
+import gov.va.api.health.dataquery.service.controller.appointment.AppointmentEntity;
+import gov.va.api.health.dataquery.service.controller.appointment.DatamartAppointment;
 import gov.va.api.health.dataquery.service.controller.condition.ConditionEntity;
 import gov.va.api.health.dataquery.service.controller.condition.DatamartCondition;
 import gov.va.api.health.dataquery.service.controller.device.DatamartDevice;
@@ -40,12 +41,12 @@ import gov.va.api.health.fallrisk.service.controller.FallRiskEntity;
 import gov.va.api.health.minimartmanager.ExternalDb;
 import gov.va.api.health.minimartmanager.LatestResourceEtlStatusUpdater;
 import gov.va.api.health.minimartmanager.LocalH2;
+import gov.va.api.lighthouse.datamart.CompositeIdDatamartEntity;
 import gov.va.api.lighthouse.datamart.DatamartEntity;
 import gov.va.api.lighthouse.datamart.DatamartReference;
 import gov.va.api.lighthouse.datamart.HasReplaceableId;
-import gov.va.api.lighthouse.scheduling.service.controller.appointment.AppointmentEntity;
-import gov.va.api.lighthouse.scheduling.service.controller.appointment.DatamartAppointment;
 import java.io.File;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -59,7 +60,6 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -90,20 +90,29 @@ public class MitreMinimartMaker {
 
   private final ThreadLocal<EntityManager> LOCAL_ENTITY_MANAGER = new ThreadLocal<>();
 
-  // Based on the assumption that every appointment has a single patient participant
   private final Function<DatamartAppointment, AppointmentEntity> toAppointmentEntity =
-      (dm) ->
-          AppointmentEntity.builder()
-              .cdwId(dm.cdwId())
-              .icn(
-                  dm.participant().stream()
-                      .filter(p -> "PATIENT".equalsIgnoreCase(p.actor().type().orElse(null)))
-                      .map(p -> patientIcn(p.actor()))
-                      .collect(Collectors.toList())
-                      .get(0))
-              .lastUpdated(Instant.now())
-              .payload(datamartToString(dm))
-              .build();
+      (dm) -> {
+        if (isBlank(dm.cdwId())) {
+          throw new IllegalStateException("Cannot find cdwId");
+        }
+        var cdwIdParts = dm.cdwId().split(":");
+        if (cdwIdParts.length != 2) {
+          throw new IllegalStateException("Could not split cdwId into number and code");
+        }
+        return AppointmentEntity.builder()
+            .cdwIdNumber(new BigInteger(cdwIdParts[0]))
+            .cdwIdResourceCode(cdwIdParts[1].charAt(0))
+            .icn(
+                dm.participant().stream()
+                    .filter(p -> "PATIENT".equalsIgnoreCase(p.type().orElse(null)))
+                    .findFirst()
+                    .map(this::patientIcn)
+                    .orElseThrow(
+                        () -> new IllegalStateException("Cannot find PATIENT participant")))
+            .lastUpdated(Instant.now())
+            .payload(datamartToString(dm))
+            .build();
+      };
 
   private final Function<DatamartDevice, DeviceEntity> toDeviceEntity =
       (dm) ->
@@ -441,7 +450,7 @@ public class MitreMinimartMaker {
             this::insertByAllergyIntolerance);
         break;
       case "Appointment":
-        // loader.insertResourceByType(DatamartAppointment.class, toAppointmentEntity);
+        loader.insertResourceByType(DatamartAppointment.class, toAppointmentEntity);
         break;
       case "Condition":
         insertResourceByPattern(
@@ -540,10 +549,14 @@ public class MitreMinimartMaker {
     log.info("Added {} {} entities", addedCount.get(), resourceToSync);
   }
 
-  private <T extends DatamartEntity> void save(T entity) {
+  private <T extends DatamartEntity> void save(T datamartEntity) {
     EntityManager entityManager = getEntityManager();
-    boolean exists = entityManager.find(entity.getClass(), entity.cdwId()) != null;
-    updateOrAddEntity(exists, entityManager, entity);
+    Object pk =
+        (datamartEntity instanceof CompositeIdDatamartEntity)
+            ? ((CompositeIdDatamartEntity) datamartEntity).compositeCdwId()
+            : datamartEntity.cdwId();
+    boolean exists = entityManager.find(datamartEntity.getClass(), pk) != null;
+    updateOrAddEntity(exists, entityManager, datamartEntity);
   }
 
   private <T> void save(T entity, String identifier) {
