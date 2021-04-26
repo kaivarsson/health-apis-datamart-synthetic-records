@@ -362,6 +362,10 @@ public class MitreMinimartMaker {
             .city(dm.address().city())
             .state(dm.address().state())
             .postalCode(dm.address().postalCode())
+            .stationNumber(dm.facilityId().map(fid -> fid.stationNumber()).orElse(null))
+            .facilityType(
+                dm.facilityId().map(fid -> fid.type()).map(type -> type.toString()).orElse(null))
+            .locationIen(dm.locationIen().orElse(null))
             .payload(fileToString(file))
             .build();
     save(entity);
@@ -578,7 +582,7 @@ public class MitreMinimartMaker {
                     .build());
         break;
       default:
-        throw new RuntimeException("Couldnt determine resource type for file: " + resourceToSync);
+        throw new RuntimeException("Couldn't determine resource type for file: " + resourceToSync);
     }
     LatestResourceEtlStatusUpdater.create(getEntityManager()).updateEtlTable(resourceToSync);
     /*
