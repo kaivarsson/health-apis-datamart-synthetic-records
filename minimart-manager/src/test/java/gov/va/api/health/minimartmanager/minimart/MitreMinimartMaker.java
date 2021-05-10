@@ -150,6 +150,20 @@ public class MitreMinimartMaker {
             .build();
       };
 
+  private final Function<DatamartCondition, ConditionEntity> toConditionEntity =
+      (dm) -> {
+        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+        return ConditionEntity.builder()
+            .cdwId(dm.cdwId())
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
+            .icn(patientIcn(dm.patient()))
+            .category(jsonValue(dm.category()))
+            .clinicalStatus(jsonValue(dm.clinicalStatus()))
+            .payload(datamartToString(dm))
+            .build();
+      };
+
   private final Function<DatamartDevice, DeviceEntity> toDeviceEntity =
       (dm) ->
           DeviceEntity.builder()
@@ -286,20 +300,6 @@ public class MitreMinimartMaker {
         AllergyIntoleranceEntity.builder()
             .cdwId(dm.cdwId())
             .icn(patientIcn(dm.patient()))
-            .payload(fileToString(file))
-            .build();
-    save(entity);
-  }
-
-  @SneakyThrows
-  private void insertByCondition(File file) {
-    DatamartCondition dm = JacksonConfig.createMapper().readValue(file, DatamartCondition.class);
-    ConditionEntity entity =
-        ConditionEntity.builder()
-            .cdwId(dm.cdwId())
-            .icn(patientIcn(dm.patient()))
-            .category(jsonValue(dm.category()))
-            .clinicalStatus(jsonValue(dm.clinicalStatus()))
             .payload(fileToString(file))
             .build();
     save(entity);
@@ -495,10 +495,7 @@ public class MitreMinimartMaker {
         loader.insertResourceByType(DatamartAppointment.class, toAppointmentEntity);
         break;
       case "Condition":
-        insertResourceByPattern(
-            dmDirectory,
-            DatamartFilenamePatterns.get().json(DatamartCondition.class),
-            this::insertByCondition);
+        loader.insertResourceByType(DatamartCondition.class, toConditionEntity);
         break;
       case "Device":
         loader.insertResourceByType(DatamartDevice.class, toDeviceEntity);
