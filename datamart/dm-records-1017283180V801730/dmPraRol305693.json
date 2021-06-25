@@ -12,6 +12,7 @@
     "reference" : "305693:S",
     "display" : "REYNOLDS206,THOMAS359"
   },
+  "active" : true,
   "npi" : "0821016731",
   "role" : [
     {
@@ -56,6 +57,23 @@
       "type" : "Location",
       "reference" : "43841:L",
       "display" : "MENTAL HEALTH SERVICES"
+    }
+  ],
+  "telecom" : [
+    {
+      "system" : "phone",
+      "value" : "444-444-0026",
+      "use" : "work"
+    },
+    {
+      "system" : "phone",
+      "value" : "444-3944",
+      "use" : "home"
+    },
+    {
+      "system" : "pager",
+      "value" : "4-430",
+      "use" : "mobile"
     }
   ],
   "healthCareService" : "MEDICAL SERVICE"
