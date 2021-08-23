@@ -283,16 +283,21 @@ public class MitreMinimartMaker {
           };
 
   private Function<DatamartDiagnosticReport, DiagnosticReportEntity> toDiagnosticReportEntity =
-      (dm) ->
-          DiagnosticReportEntity.builder()
-              .cdwId(dm.cdwId())
-              .icn(dm.patient().reference().orElse(null))
-              .category("CH")
-              .code("panel")
-              .dateUtc(Instant.parse(dm.issuedDateTime()))
-              .lastUpdated(null)
-              .payload(datamartToString(dm))
-              .build();
+      dm -> {
+        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+
+        return DiagnosticReportEntity.builder()
+            .cdwId(dm.cdwId())
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
+            .icn(dm.patient().reference().orElse(null))
+            .category("CH")
+            .code("panel")
+            .dateUtc(Instant.parse(dm.issuedDateTime()))
+            .lastUpdated(null)
+            .payload(datamartToString(dm))
+            .build();
+      };
 
   private int totalRecords;
 
