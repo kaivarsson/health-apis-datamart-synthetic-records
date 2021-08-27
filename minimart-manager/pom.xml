@@ -11,9 +11,9 @@
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <properties>
-    <datamart-starter.version>3.0.0</datamart-starter.version>
     <apache-csv.version>1.8</apache-csv.version>
-    <data-query.version>3.0.223</data-query.version>
+    <data-query.version>3.0.226</data-query.version>
+    <datamart-starter.version>3.0.0</datamart-starter.version>
     <fall-risk.version>2.0.0</fall-risk.version>
     <git.allowedBranchNames><![CDATA[^(dependabot/.*|staging_lab|lab|PR-[0-9]+|(.*/)?[A-Z]{2,10}-[0-9]+-.*)$]]></git.allowedBranchNames>
     <javafaker.version>1.0.2</javafaker.version>
