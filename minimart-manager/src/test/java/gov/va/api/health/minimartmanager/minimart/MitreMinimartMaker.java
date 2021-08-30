@@ -110,17 +110,6 @@ public class MitreMinimartMaker {
 
   private final ThreadLocal<EntityManager> LOCAL_ENTITY_MANAGER = new ThreadLocal<>();
 
-  private final Function<CSVRecord, VitalVuidMappingEntity> toVitalVuidMapping =
-      (csvRecord) -> {
-        return VitalVuidMappingEntity.builder()
-            .codingSystemId(Short.valueOf(csvRecord.get("CodingSystemID")))
-            .sourceValue(csvRecord.get("SourceValue"))
-            .code(csvRecord.get("Code"))
-            .display(csvRecord.get("Display"))
-            .uri(csvRecord.get("URI"))
-            .build();
-      };
-
   private final Function<DatamartAppointment, AppointmentEntity> toAppointmentEntity =
       dm -> {
         Instant lastUpdated =
@@ -160,7 +149,7 @@ public class MitreMinimartMaker {
       };
 
   private final Function<DatamartCondition, ConditionEntity> toConditionEntity =
-      (dm) -> {
+      dm -> {
         CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
         return ConditionEntity.builder()
             .cdwIdNumber(compositeCdwId.cdwIdNumber())
@@ -173,13 +162,24 @@ public class MitreMinimartMaker {
       };
 
   private final Function<DatamartDevice, DeviceEntity> toDeviceEntity =
-      (dm) ->
+      dm ->
           DeviceEntity.builder()
               .cdwId(dm.cdwId())
               .icn(dm.patient().reference().orElse(null))
               .lastUpdated(Instant.now())
               .payload(datamartToString(dm))
               .build();
+
+  private final Function<DatamartMedication, MedicationEntity> toMedicationEntity =
+      dm -> {
+        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+        return MedicationEntity.builder()
+            .cdwId(dm.cdwId())
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
+            .payload(datamartToString(dm))
+            .build();
+      };
 
   private final Function<DatamartOrganization, OrganizationEntity> toOrganizationEntity =
       dm -> {
@@ -203,7 +203,7 @@ public class MitreMinimartMaker {
       };
 
   private final Function<DatamartPatient, PatientEntityV2> toPatientEntity =
-      (dm) ->
+      dm ->
           PatientEntityV2.builder()
               .icn(dm.fullIcn())
               .fullName(dm.name())
@@ -282,10 +282,20 @@ public class MitreMinimartMaker {
                 .collect(toList());
           };
 
+  private final Function<CSVRecord, VitalVuidMappingEntity> toVitalVuidMapping =
+      csvRecord -> {
+        return VitalVuidMappingEntity.builder()
+            .codingSystemId(Short.valueOf(csvRecord.get("CodingSystemID")))
+            .sourceValue(csvRecord.get("SourceValue"))
+            .code(csvRecord.get("Code"))
+            .display(csvRecord.get("Display"))
+            .uri(csvRecord.get("URI"))
+            .build();
+      };
+
   private Function<DatamartDiagnosticReport, DiagnosticReportEntity> toDiagnosticReportEntity =
       dm -> {
         CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
-
         return DiagnosticReportEntity.builder()
             .cdwId(dm.cdwId())
             .cdwIdNumber(compositeCdwId.cdwIdNumber())
@@ -499,14 +509,6 @@ public class MitreMinimartMaker {
   }
 
   @SneakyThrows
-  private void insertByMedication(File file) {
-    DatamartMedication dm = JacksonConfig.createMapper().readValue(file, DatamartMedication.class);
-    MedicationEntity entity =
-        MedicationEntity.builder().cdwId(dm.cdwId()).payload(fileToString(file)).build();
-    save(entity);
-  }
-
-  @SneakyThrows
   private void insertByMedicationOrder(File file) {
     DatamartMedicationOrder dm =
         JacksonConfig.createMapper().readValue(file, DatamartMedicationOrder.class);
@@ -661,10 +663,7 @@ public class MitreMinimartMaker {
             this::insertByLocation);
         break;
       case "Medication":
-        insertResourceByPattern(
-            dmDirectory,
-            DatamartFilenamePatterns.get().json(DatamartMedication.class),
-            this::insertByMedication);
+        loader.insertResourceByType(DatamartMedication.class, toMedicationEntity);
         break;
       case "MedicationOrder":
         insertResourceByPattern(
