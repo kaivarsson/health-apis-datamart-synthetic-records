@@ -33,6 +33,8 @@ public class AllergyIntoleranceClinicalAndVerificationStatusAugments {
 
   static DatamartAllergyIntolerance populateStatuses(
       Augmentation.Context<DatamartAllergyIntolerance> ctx) {
+    // Map status to clinicalStatus and verificationStatus
+    // Same logic as DQ R4AllergyIntoleranceTransformer
     ctx.resource().clinicalStatus(clinicalStatusCode(ctx.resource().status()));
     ctx.resource().verificationStatus(verificationStatusCode(ctx.resource().status()));
     return ctx.resource();
