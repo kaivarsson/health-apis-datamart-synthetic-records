@@ -12,6 +12,9 @@ def saunter(scriptName) {
       credentialsId: 'LABUSER_USERNAME_PASSWORD',
       usernameVariable: 'LABUSER_USERNAME',
       passwordVariable: 'LABUSER_PASSWORD'),
+    usernameColonPassword(
+      credentialsId: 'PROMOTATRON_USERNAME_PASSWORD',
+      variable: 'PROMOTATRON_USERNAME_PASSWORD'),
     usernamePassword(
       credentialsId: 'STGLABMASTER_USERNAME_PASSWORD',
       usernameVariable: 'STGLABMASTER_USERNAME',
@@ -35,6 +38,7 @@ pipeline {
   }
   parameters {
     booleanParam(name: 'CLEAN', defaultValue: false, description: "Remove existing database and start from scratch.")
+    booleanParam(name: 'RUN_DATA_QUERY_TESTS', defaultValue: true, description: "Run data-query-tests after loading the database.")
   }
   agent {
     dockerfile {

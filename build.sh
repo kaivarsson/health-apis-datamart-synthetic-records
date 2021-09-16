@@ -42,7 +42,7 @@ then
   export PATH="$LOCAL_INSTALL:$PATH"
 fi
 #
-# Load environment specific configuiration. See local.conf as an example
+# Load environment specific configuration. See local.conf as an example
 # of variables that need to be set.
 #
 echo "Loading configuration for ${ENVIRONMENT}"
@@ -53,7 +53,7 @@ case "${ENVIRONMENT}" in
   *) echo "Unknown environment: $ENVIRONMENT"; exit 1;;
 esac
 
-echo "$ENVIRONMENT synthentic database updated" >> $JENKINS_DESCRIPTION
+echo "$ENVIRONMENT synthetic database updated" >> $JENKINS_DESCRIPTION
 echo "$ENVIRONMENT" >> $JENKINS_BUILD_NAME
 
 #
@@ -96,6 +96,35 @@ then
     -locations='filesystem:db/destroyer' \
     -initSql="$FORCE_HACK"
 fi
+
+runDataQueryTests() {
+  if [[ "${ENVIRONMENT}" != "staging-lab" && "${ENVIRONMENT}" != "lab" ]]
+  then
+    echo "Not running Data Query tests for: $ENVIRONMENT" && return 1
+  fi
+
+  if [ "$RUN_DATA_QUERY_TESTS" == "true" ]
+  then
+    local job="job/department-of-veterans-affairs/job/health-apis-agent-j/job/master%252Frun-application-tests"
+    local url="$HUDSON_URL/$job/buildWithParameters?ENVIRONMENT=$ENVIRONMENT&PRODUCT=data-query"
+    announce "Launching Data Query application tests: $url"
+    local status=$(curl \
+      -s \
+      -X POST \
+      "$url" \
+      -w "%{http_code}" \
+      -o /dev/null \
+      --user "$PROMOTATRON_USERNAME_PASSWORD")
+
+    if [ "$status" != 201 ]
+    then
+      echo "Data Query test not started: $status"
+      return 1
+    fi
+  fi
+
+  return 0
+}
 
 
 #
@@ -154,3 +183,5 @@ fi
 if [ -n "${RESOURCES:-}" ]; then MVN_ARGS+=" -Dresources=$RESOURCES"; fi
 
 mvn ${MVN_ARGS:-} -Dimport.directory=$DATAMART_DIR -Dconfig.file=$CONFIG_FILE -Dtest=PopulateDb test
+
+if ! runDataQueryTests; then echo "aborting"; exit 1; fi
