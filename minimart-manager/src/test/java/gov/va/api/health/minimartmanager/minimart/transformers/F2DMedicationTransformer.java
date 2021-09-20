@@ -3,13 +3,12 @@ package gov.va.api.health.minimartmanager.minimart.transformers;
 import gov.va.api.health.dataquery.service.controller.medication.DatamartMedication;
 import gov.va.api.health.dstu2.api.datatypes.CodeableConcept;
 import gov.va.api.health.dstu2.api.resources.Medication;
-import gov.va.api.health.minimartmanager.minimart.*;
+import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class F2DMedicationTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   private Optional<DatamartMedication.Product> datamartProduct(Medication.Product product) {

@@ -6,7 +6,7 @@ import gov.va.api.health.dstu2.api.datatypes.Annotation;
 import gov.va.api.health.dstu2.api.datatypes.CodeableConcept;
 import gov.va.api.health.dstu2.api.datatypes.Coding;
 import gov.va.api.health.dstu2.api.resources.AllergyIntolerance;
-import gov.va.api.health.minimartmanager.minimart.*;
+import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
 import gov.va.api.lighthouse.datamart.DatamartCoding;
 import java.time.Instant;
 import java.util.List;
@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class F2DAllergyIntoleranceTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   private DatamartAllergyIntolerance.Category category(AllergyIntolerance.Category category) {
@@ -31,6 +30,23 @@ public class F2DAllergyIntoleranceTransformer {
       return null;
     }
     return EnumSearcher.of(DatamartAllergyIntolerance.Certainty.class).find(certainty.toString());
+  }
+
+  private DatamartAllergyIntolerance.ClinicalStatus clinicalStatus(
+      AllergyIntolerance.Status status) {
+    if (status == null) {
+      return null;
+    }
+    switch (status) {
+      case active:
+        return DatamartAllergyIntolerance.ClinicalStatus.active;
+      case inactive:
+        return DatamartAllergyIntolerance.ClinicalStatus.inactive;
+      case resolved:
+        return DatamartAllergyIntolerance.ClinicalStatus.resolved;
+      default:
+        return null;
+    }
   }
 
   private Optional<DatamartCoding> coding(Coding coding) {
@@ -71,7 +87,8 @@ public class F2DAllergyIntoleranceTransformer {
         .recordedDate(dateTime(allergyIntolerance.recordedDate()))
         .recorder(fauxIds.toDatamartReferenceWithCdwId(allergyIntolerance.recorder()))
         .substance(substance(allergyIntolerance.substance()))
-        .status(status(allergyIntolerance.status()))
+        .clinicalStatus(clinicalStatus(allergyIntolerance.status()))
+        .verificationStatus(verificationStatus(allergyIntolerance.status()))
         .type(type(allergyIntolerance.type()))
         .category(category(allergyIntolerance.category()))
         .notes(notes(allergyIntolerance.note()))
@@ -109,13 +126,6 @@ public class F2DAllergyIntoleranceTransformer {
             .build());
   }
 
-  private DatamartAllergyIntolerance.Status status(AllergyIntolerance.Status status) {
-    if (status == null) {
-      return null;
-    }
-    return EnumSearcher.of(DatamartAllergyIntolerance.Status.class).find(status.toString());
-  }
-
   private Optional<DatamartAllergyIntolerance.Substance> substance(CodeableConcept substance) {
     if (substance == null) {
       return null;
@@ -136,5 +146,25 @@ public class F2DAllergyIntoleranceTransformer {
       return null;
     }
     return EnumSearcher.of(DatamartAllergyIntolerance.Type.class).find(type.toString());
+  }
+
+  private DatamartAllergyIntolerance.VerificationStatus verificationStatus(
+      AllergyIntolerance.Status status) {
+    if (status == null) {
+      return null;
+    }
+
+    switch (status) {
+      case refuted:
+        return DatamartAllergyIntolerance.VerificationStatus.refuted;
+      case unconfirmed:
+        return DatamartAllergyIntolerance.VerificationStatus.unconfirmed;
+      case confirmed:
+        return DatamartAllergyIntolerance.VerificationStatus.confirmed;
+      case entered_in_error:
+        return DatamartAllergyIntolerance.VerificationStatus.entered_in_error;
+      default:
+        return null;
+    }
   }
 }

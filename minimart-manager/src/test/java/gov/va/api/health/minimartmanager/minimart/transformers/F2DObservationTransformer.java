@@ -10,7 +10,7 @@ import gov.va.api.health.dstu2.api.datatypes.Quantity;
 import gov.va.api.health.dstu2.api.datatypes.SimpleQuantity;
 import gov.va.api.health.dstu2.api.elements.Reference;
 import gov.va.api.health.dstu2.api.resources.Observation;
-import gov.va.api.health.minimartmanager.minimart.*;
+import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
 import gov.va.api.lighthouse.datamart.DatamartCoding;
 import gov.va.api.lighthouse.datamart.DatamartReference;
 import java.time.Instant;
@@ -21,7 +21,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class F2DObservationTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   private DatamartObservation.AntibioticComponent antibioticComponent(

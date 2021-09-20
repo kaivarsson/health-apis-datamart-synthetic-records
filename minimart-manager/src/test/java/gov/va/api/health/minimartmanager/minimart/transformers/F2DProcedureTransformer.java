@@ -4,7 +4,7 @@ import gov.va.api.health.dataquery.service.controller.procedure.DatamartProcedur
 import gov.va.api.health.dstu2.api.datatypes.CodeableConcept;
 import gov.va.api.health.dstu2.api.datatypes.Coding;
 import gov.va.api.health.dstu2.api.resources.Procedure;
-import gov.va.api.health.minimartmanager.minimart.*;
+import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
 import gov.va.api.lighthouse.datamart.DatamartCoding;
 import java.time.Instant;
 import java.util.List;
@@ -13,7 +13,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class F2DProcedureTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   private DatamartCoding coding(List<Coding> procCoding) {

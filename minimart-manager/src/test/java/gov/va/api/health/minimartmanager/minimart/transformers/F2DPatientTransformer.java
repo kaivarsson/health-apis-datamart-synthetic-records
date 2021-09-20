@@ -12,7 +12,7 @@ import gov.va.api.health.dstu2.api.datatypes.HumanName;
 import gov.va.api.health.dstu2.api.datatypes.Identifier;
 import gov.va.api.health.dstu2.api.elements.Extension;
 import gov.va.api.health.dstu2.api.resources.Patient;
-import gov.va.api.health.minimartmanager.minimart.*;
+import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
@@ -22,7 +22,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class F2DPatientTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   private DatamartPatient.Address address(Address address) {

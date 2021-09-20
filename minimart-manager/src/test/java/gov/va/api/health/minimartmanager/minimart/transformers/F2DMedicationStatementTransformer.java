@@ -5,7 +5,7 @@ import gov.va.api.health.dataquery.service.controller.medicationstatement.Datama
 import gov.va.api.health.dataquery.service.controller.medicationstatement.DatamartMedicationStatement.Dosage;
 import gov.va.api.health.dataquery.service.controller.medicationstatement.DatamartMedicationStatement.Status;
 import gov.va.api.health.dstu2.api.resources.MedicationStatement;
-import gov.va.api.health.minimartmanager.minimart.*;
+import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +14,6 @@ import org.apache.commons.lang3.StringUtils;
 
 @AllArgsConstructor
 public class F2DMedicationStatementTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   private Instant dateAsserted(String dateAsserted) {

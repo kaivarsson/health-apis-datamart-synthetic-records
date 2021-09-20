@@ -12,7 +12,7 @@ import gov.va.api.health.dstu2.api.elements.Reference;
 import gov.va.api.health.dstu2.api.resources.Immunization;
 import gov.va.api.health.dstu2.api.resources.Immunization.Reaction;
 import gov.va.api.health.dstu2.api.resources.Immunization.VaccinationProtocol;
-import gov.va.api.health.minimartmanager.minimart.*;
+import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class F2DImmunizationTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   private Instant date(String date) {

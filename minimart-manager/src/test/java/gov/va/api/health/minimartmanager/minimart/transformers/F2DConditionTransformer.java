@@ -10,7 +10,7 @@ import gov.va.api.health.dstu2.api.datatypes.CodeableConcept;
 import gov.va.api.health.dstu2.api.datatypes.Coding;
 import gov.va.api.health.dstu2.api.resources.Condition;
 import gov.va.api.health.dstu2.api.resources.Condition.ClinicalStatusCode;
-import gov.va.api.health.minimartmanager.minimart.*;
+import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -18,7 +18,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class F2DConditionTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   private Optional<Instant> abatementDateTime(String abatementDatetime) {

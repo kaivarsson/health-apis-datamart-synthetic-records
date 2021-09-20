@@ -10,7 +10,7 @@ import gov.va.api.health.dstu2.api.datatypes.Timing;
 import gov.va.api.health.dstu2.api.elements.Extension;
 import gov.va.api.health.dstu2.api.elements.Reference;
 import gov.va.api.health.dstu2.api.resources.MedicationOrder;
-import gov.va.api.health.minimartmanager.minimart.*;
+import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
 import gov.va.api.lighthouse.datamart.DatamartReference;
 import java.time.Instant;
 import java.util.List;
@@ -21,7 +21,6 @@ import org.apache.commons.lang3.StringUtils;
 
 @AllArgsConstructor
 public class F2DMedicationOrderTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   private String additionalInstructions(CodeableConcept additionalInstructions) {
