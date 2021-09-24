@@ -174,7 +174,6 @@ public class MitreMinimartMaker {
       dm -> {
         CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
         return MedicationEntity.builder()
-            .cdwId(dm.cdwId())
             .cdwIdNumber(compositeCdwId.cdwIdNumber())
             .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
             .payload(datamartToString(dm))
@@ -225,6 +224,7 @@ public class MitreMinimartMaker {
             .npi(dm.npi().orElse(null))
             .familyName(dm.name().family())
             .givenName(dm.name().given())
+            .fullName(dm.name().family() + "," + dm.name().given())
             .payload(datamartToString(dm))
             .build();
       };
@@ -235,8 +235,10 @@ public class MitreMinimartMaker {
             CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
             CompositeCdwId practitionerCdwId =
                 CompositeCdwId.fromCdwId(dm.practitioner().get().reference().get());
+
+            String fullName = dm.practitioner().get().display().get();
             List<String> names =
-                Arrays.stream(dm.practitioner().get().display().get().split(",", -1))
+                Arrays.stream(fullName.split(",", -1))
                     .map(StringUtils::trimToNull)
                     .filter(Objects::nonNull)
                     .collect(toList());
@@ -248,6 +250,7 @@ public class MitreMinimartMaker {
                 .practitionerResourceCode(practitionerCdwId.cdwIdResourceCode())
                 .givenName(names.get(1))
                 .familyName(names.get(0))
+                .fullName(fullName)
                 .npi(dm.npi().orElse(null))
                 .active(dm.active())
                 .lastUpdated(Instant.now())
@@ -297,7 +300,6 @@ public class MitreMinimartMaker {
       dm -> {
         CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
         return DiagnosticReportEntity.builder()
-            .cdwId(dm.cdwId())
             .cdwIdNumber(compositeCdwId.cdwIdNumber())
             .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
             .icn(dm.patient().reference().orElse(null))

@@ -1,0 +1,2 @@
+ALTER TABLE [App].[Medication] DROP COLUMN [CDWId]
+GO
