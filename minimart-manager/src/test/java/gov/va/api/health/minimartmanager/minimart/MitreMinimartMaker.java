@@ -170,6 +170,34 @@ public class MitreMinimartMaker {
               .payload(datamartToString(dm))
               .build();
 
+  private final Function<DatamartDiagnosticReport, DiagnosticReportEntity>
+      toDiagnosticReportEntity =
+          dm -> {
+            CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+            return DiagnosticReportEntity.builder()
+                .cdwIdNumber(compositeCdwId.cdwIdNumber())
+                .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
+                .icn(dm.patient().reference().orElse(null))
+                .category("CH")
+                .code("panel")
+                .dateUtc(Instant.parse(dm.issuedDateTime()))
+                .lastUpdated(null)
+                .payload(datamartToString(dm))
+                .build();
+          };
+
+  private final Function<DatamartImmunization, ImmunizationEntity> toImmunizationEntity =
+      dm -> {
+        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+        return ImmunizationEntity.builder()
+            .cdwId(dm.cdwId())
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
+            .icn(patientIcn(dm.patient()))
+            .payload(datamartToString(dm))
+            .build();
+      };
+
   private final Function<DatamartMedication, MedicationEntity> toMedicationEntity =
       dm -> {
         CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
@@ -293,21 +321,6 @@ public class MitreMinimartMaker {
             .code(csvRecord.get("Code"))
             .display(csvRecord.get("Display"))
             .uri(csvRecord.get("URI"))
-            .build();
-      };
-
-  private Function<DatamartDiagnosticReport, DiagnosticReportEntity> toDiagnosticReportEntity =
-      dm -> {
-        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
-        return DiagnosticReportEntity.builder()
-            .cdwIdNumber(compositeCdwId.cdwIdNumber())
-            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
-            .icn(dm.patient().reference().orElse(null))
-            .category("CH")
-            .code("panel")
-            .dateUtc(Instant.parse(dm.issuedDateTime()))
-            .lastUpdated(null)
-            .payload(datamartToString(dm))
             .build();
       };
 
@@ -465,19 +478,6 @@ public class MitreMinimartMaker {
             .payload(payload)
             .build();
     save(entity, cdwId);
-  }
-
-  @SneakyThrows
-  private void insertByImmunization(File file) {
-    DatamartImmunization dm =
-        JacksonConfig.createMapper().readValue(file, DatamartImmunization.class);
-    ImmunizationEntity entity =
-        ImmunizationEntity.builder()
-            .cdwId(dm.cdwId())
-            .icn(patientIcn(dm.patient()))
-            .payload(fileToString(file))
-            .build();
-    save(entity);
   }
 
   @SneakyThrows
@@ -653,10 +653,7 @@ public class MitreMinimartMaker {
             this::insertByFallRiskNd);
         break;
       case "Immunization":
-        insertResourceByPattern(
-            dmDirectory,
-            DatamartFilenamePatterns.get().json(DatamartImmunization.class),
-            this::insertByImmunization);
+        loader.insertResourceByType(DatamartImmunization.class, toImmunizationEntity);
         break;
       case "Location":
         insertResourceByPattern(
