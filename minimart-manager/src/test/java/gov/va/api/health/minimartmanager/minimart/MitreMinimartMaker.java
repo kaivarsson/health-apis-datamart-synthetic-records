@@ -190,7 +190,6 @@ public class MitreMinimartMaker {
       dm -> {
         CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
         return ImmunizationEntity.builder()
-            .cdwId(dm.cdwId())
             .cdwIdNumber(compositeCdwId.cdwIdNumber())
             .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
             .icn(patientIcn(dm.patient()))
