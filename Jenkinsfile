@@ -4,6 +4,9 @@ def saunter(scriptName) {
       credentialsId: 'HEALTH_APIS_RELEASES_NEXUS_USERNAME_PASSWORD',
       usernameVariable: 'NEXUS_USERNAME',
       passwordVariable: 'NEXUS_PASSWORD'),
+    usernameColonPassword(
+      credentialsId: 'PROMOTATRON_USERNAME_PASSWORD',
+      variable: 'PROMOTATRON_USERNAME_PASSWORD'),
     usernamePassword(
       credentialsId: 'LABMASTER_USERNAME_PASSWORD',
       usernameVariable: 'LABMASTER_USERNAME',
@@ -12,9 +15,6 @@ def saunter(scriptName) {
       credentialsId: 'LABUSER_USERNAME_PASSWORD',
       usernameVariable: 'LABUSER_USERNAME',
       passwordVariable: 'LABUSER_PASSWORD'),
-    usernameColonPassword(
-      credentialsId: 'PROMOTATRON_USERNAME_PASSWORD',
-      variable: 'PROMOTATRON_USERNAME_PASSWORD'),
     usernamePassword(
       credentialsId: 'STGLABMASTER_USERNAME_PASSWORD',
       usernameVariable: 'STGLABMASTER_USERNAME',
@@ -22,7 +22,15 @@ def saunter(scriptName) {
     usernamePassword(
       credentialsId: 'STGLABUSER_USERNAME_PASSWORD',
       usernameVariable: 'STGLABUSER_USERNAME',
-      passwordVariable: 'STGLABUSER_PASSWORD')
+      passwordVariable: 'STGLABUSER_PASSWORD'),
+    usernamePassword(
+      credentialsId: 'QAMASTER_USERNAME_PASSWORD',
+      usernameVariable: 'QAMASTER_USERNAME',
+      passwordVariable: 'QAMASTER_PASSWORD'),
+    usernamePassword(
+      credentialsId: 'QAUSER_USERNAME_PASSWORD',
+      usernameVariable: 'QAUSER_USERNAME',
+      passwordVariable: 'QAUSER_PASSWORD'),
    ]) {
     sh script: scriptName
   }
@@ -47,7 +55,7 @@ pipeline {
     }
   }
   environment {
-    ENVIRONMENT = "${["staging_lab", "lab"].contains(env.BRANCH_NAME) ? env.BRANCH_NAME.replaceAll('_','-') : "i-cant-even-w-this"}"
+    ENVIRONMENT = "${["qa", "staging_lab", "lab"].contains(env.BRANCH_NAME) ? env.BRANCH_NAME.replaceAll('_','-') : "i-cant-even-w-this"}"
   }
   stages {
     stage('Clean') {

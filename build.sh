@@ -49,6 +49,7 @@ echo "Loading configuration for ${ENVIRONMENT}"
 case "${ENVIRONMENT}" in
   lab) . environments/lab.conf;;
   staging-lab) . environments/staging-lab.conf;;
+  qa) . environments/qa.conf;;
   local) . environments/local.conf;;
   *) echo "Unknown environment: $ENVIRONMENT"; exit 1;;
 esac
