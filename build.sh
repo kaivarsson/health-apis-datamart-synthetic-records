@@ -99,7 +99,7 @@ then
 fi
 
 runDataQueryTests() {
-  if [[ "${ENVIRONMENT}" != "staging-lab" && "${ENVIRONMENT}" != "lab" ]]
+  if [[ "${ENVIRONMENT}" != "qa" && "${ENVIRONMENT}" != "staging-lab" && "${ENVIRONMENT}" != "lab" ]]
   then
     echo "Not running Data Query tests for: $ENVIRONMENT" && return 1
   fi
