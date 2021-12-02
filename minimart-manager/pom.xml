@@ -4,7 +4,7 @@
   <parent>
     <groupId>gov.va.api.health</groupId>
     <artifactId>test-starter</artifactId>
-    <version>8.0.26</version>
+    <version>9.0.3</version>
     <relativePath/>
   </parent>
   <artifactId>minimart-manager</artifactId>
@@ -12,12 +12,11 @@
   <packaging>jar</packaging>
   <properties>
     <apache-csv.version>1.8</apache-csv.version>
-    <data-query.version>3.0.261</data-query.version>
-    <datamart-starter.version>3.0.2</datamart-starter.version>
-    <fall-risk.version>2.0.0</fall-risk.version>
+    <data-query.version>4.0.7</data-query.version>
+    <datamart-starter.version>4.0.0</datamart-starter.version>
     <git.allowedBranchNames><![CDATA[^(dependabot/.*|staging_lab|lab|PR-[0-9]+|(.*/)?[A-Z]{2,10}-[0-9]+-.*)$]]></git.allowedBranchNames>
     <javafaker.version>1.0.2</javafaker.version>
-    <vista-fhir-query.version>1.0.0</vista-fhir-query.version>
+    <vista-fhir-query.version>2.0.0</vista-fhir-query.version>
   </properties>
   <dependencies>
     <dependency>
@@ -39,12 +38,6 @@
       <groupId>gov.va.api.health</groupId>
       <artifactId>data-query</artifactId>
       <version>${data-query.version}</version>
-      <classifier>library</classifier>
-    </dependency>
-    <dependency>
-      <groupId>gov.va.api.health</groupId>
-      <artifactId>fall-risk</artifactId>
-      <version>${fall-risk.version}</version>
       <classifier>library</classifier>
     </dependency>
     <dependency>
@@ -73,7 +66,7 @@
             </goals>
             <configuration>
               <outputDirectory>${project.build.directory}</outputDirectory>
-              <includeArtifactIds>h2,ids,data-query,fall-risk</includeArtifactIds>
+              <includeArtifactIds>h2,ids,data-query</includeArtifactIds>
               <stripVersion>true</stripVersion>
             </configuration>
           </execution>

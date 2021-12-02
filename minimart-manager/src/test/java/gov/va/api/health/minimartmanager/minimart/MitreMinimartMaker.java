@@ -43,8 +43,6 @@ import gov.va.api.health.dataquery.service.controller.practitionerrole.Practitio
 import gov.va.api.health.dataquery.service.controller.practitionerrole.SpecialtyMapCompositeId;
 import gov.va.api.health.dataquery.service.controller.procedure.DatamartProcedure;
 import gov.va.api.health.dataquery.service.controller.procedure.ProcedureEntity;
-import gov.va.api.health.fallrisk.service.controller.DatamartFallRisk;
-import gov.va.api.health.fallrisk.service.controller.FallRiskEntity;
 import gov.va.api.health.minimartmanager.ExternalDb;
 import gov.va.api.health.minimartmanager.LatestResourceEtlStatusUpdater;
 import gov.va.api.health.minimartmanager.LocalH2;
@@ -92,7 +90,6 @@ public class MitreMinimartMaker {
           ConditionEntity.class,
           DeviceEntity.class,
           DiagnosticReportEntity.class,
-          FallRiskEntity.class,
           ImmunizationEntity.class,
           LatestResourceEtlStatusEntity.class,
           LocationEntity.class,
@@ -262,7 +259,6 @@ public class MitreMinimartMaker {
             CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
             CompositeCdwId practitionerCdwId =
                 CompositeCdwId.fromCdwId(dm.practitioner().get().reference().get());
-
             String fullName = dm.practitioner().get().display().get();
             List<String> names =
                 Arrays.stream(fullName.split(",", -1))
@@ -445,40 +441,6 @@ public class MitreMinimartMaker {
     save(entity);
   }
 
-  private void insertByFallRisk(File file) {
-    insertByFallRiskPayload(fileToString(file));
-  }
-
-  @SneakyThrows
-  private void insertByFallRiskNd(File file) {
-    Files.lines(file.toPath()).forEach(this::insertByFallRiskPayload);
-  }
-
-  @SneakyThrows
-  private void insertByFallRiskPayload(String payload) {
-    DatamartFallRisk dm = JacksonConfig.createMapper().readValue(payload, DatamartFallRisk.class);
-    String cdwId = dm.cdwId();
-    FallRiskEntity entity =
-        FallRiskEntity.builder()
-            .admitDateTime(dm.admitDateTime())
-            .currentSpecialty(dm.admitSpecialty())
-            .attendingProvider(dm.attendingProvider())
-            .cdwId(dm.cdwId())
-            .currentWard(dm.currentWard())
-            .lastFour(dm.lastFour())
-            .morseAdmitDateTime(dm.morseAdmitDateTime())
-            .morseAdmitScore(dm.morseAdmitScore())
-            .morseCategory(dm.morseCategory())
-            .patientFullIcn(dm.patientFullIcn())
-            .patientName(dm.patientName())
-            .roomBed(dm.roomBed())
-            .station(dm.station())
-            .stationName(dm.stationName().get())
-            .payload(payload)
-            .build();
-    save(entity, cdwId);
-  }
-
   @SneakyThrows
   private void insertByLocation(File file) {
     DatamartLocation dm = JacksonConfig.createMapper().readValue(file, DatamartLocation.class);
@@ -640,16 +602,6 @@ public class MitreMinimartMaker {
         break;
       case "DiagnosticReport":
         loader.insertResourceByType(DatamartDiagnosticReport.class, toDiagnosticReportEntity);
-        break;
-      case "FallRisk":
-        insertResourceByPattern(
-            dmDirectory,
-            DatamartFilenamePatterns.get().json(DatamartFallRisk.class),
-            this::insertByFallRisk);
-        insertResourceByPattern(
-            dmDirectory,
-            DatamartFilenamePatterns.get().ndjson(DatamartFallRisk.class),
-            this::insertByFallRiskNd);
         break;
       case "Immunization":
         loader.insertResourceByType(DatamartImmunization.class, toImmunizationEntity);

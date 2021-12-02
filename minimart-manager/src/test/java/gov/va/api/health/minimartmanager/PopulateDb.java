@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Populate a database with datamart style data. Pull in the datamart entity models from Data-Query,
- * Fall-Risk, etc...
+ * etc...
  *
  * <p>The push to database is now integrated into the maven test lifecycle. This push requires a few
  * system properties to be provided:
@@ -37,7 +37,6 @@ public class PopulateDb {
           "Condition",
           "Device",
           "DiagnosticReport",
-          "FallRisk",
           "Immunization",
           "Location",
           "Medication",
