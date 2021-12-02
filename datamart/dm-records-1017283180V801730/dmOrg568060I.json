@@ -3,19 +3,19 @@
   "objectVersion" : "1",
   "cdwId" : "568060:I",
   "stationIdentifier" : "688",
-  "npi" : "1124078969",
+  "npi" : "1336198704",
   "active" : true,
   "type" : {
     "system" : "institution",
     "code" : "VAMC",
     "display" : "VA MEDICAL CENTER"
   },
-  "name" : "MANN-GRANDSTAFF VAMC",
+  "name" : "WASHINGTON VA MEDICAL CENTER",
   "address" : {
-    "line1" : "4815 N. ASSEMBLY",
-    "city" : "SPOKANE",
-    "state" : "WA",
-    "postalCode" : "99205-6185"
+    "line1" : "50 IRVING ST NW",
+    "city" : "WASHINGTON",
+    "state" : "DC",
+    "postalCode" : "20422-0001"
   },
   "facilityId" : {
     "stationNumber" : "688",
