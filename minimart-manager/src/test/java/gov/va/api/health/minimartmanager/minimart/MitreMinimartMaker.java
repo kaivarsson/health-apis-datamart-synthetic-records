@@ -204,6 +204,28 @@ public class MitreMinimartMaker {
             .build();
       };
 
+  private final Function<DatamartObservation, ObservationEntity> toObservationEntity =
+      dm -> {
+        Instant lastUpdated =
+            dm.effectiveDateTime().isPresent()
+                ? dm.effectiveDateTime().get().plus(30, ChronoUnit.DAYS)
+                : Instant.now();
+        checkState(dm.lastUpdated() == null);
+        dm.lastUpdated(lastUpdated.truncatedTo(ChronoUnit.MILLIS));
+        return ObservationEntity.builder()
+            .cdwId(dm.cdwId())
+            .icn(dm.subject().isPresent() ? patientIcn(dm.subject().get()) : null)
+            .lastUpdated(dm.lastUpdated())
+            .dateUtc(dm.effectiveDateTime().orElse(null))
+            .payload(datamartToString(dm))
+            .category(jsonValue(dm.category()))
+            .code(
+                dm.code().isPresent() && dm.code().get().coding().isPresent()
+                    ? dm.code().get().coding().get().code().orElse(null)
+                    : null)
+            .build();
+      };
+
   private final Function<DatamartOrganization, OrganizationEntity> toOrganizationEntity =
       dm -> {
         var address =
@@ -498,25 +520,6 @@ public class MitreMinimartMaker {
   }
 
   @SneakyThrows
-  private void insertByObservation(File file) {
-    DatamartObservation dm =
-        JacksonConfig.createMapper().readValue(file, DatamartObservation.class);
-    ObservationEntity entity =
-        ObservationEntity.builder()
-            .cdwId(dm.cdwId())
-            .icn(dm.subject().isPresent() ? patientIcn(dm.subject().get()) : null)
-            .dateUtc(dm.effectiveDateTime().orElse(null))
-            .payload(fileToString(file))
-            .category(jsonValue(dm.category()))
-            .code(
-                dm.code().isPresent() && dm.code().get().coding().isPresent()
-                    ? dm.code().get().coding().get().code().orElse(null)
-                    : null)
-            .build();
-    save(entity);
-  }
-
-  @SneakyThrows
   private void insertByPractitionerRoleSpecialtyMapping(File file) {
     DatamartPractitionerRole dm =
         JacksonConfig.createMapper().readValue(file, DatamartPractitionerRole.class);
@@ -628,10 +631,7 @@ public class MitreMinimartMaker {
             this::insertByMedicationStatement);
         break;
       case "Observation":
-        insertResourceByPattern(
-            dmDirectory,
-            DatamartFilenamePatterns.get().json(DatamartObservation.class),
-            this::insertByObservation);
+        loader.insertResourceByType(DatamartObservation.class, toObservationEntity);
         break;
       case "Organization":
         loader.insertResourceByType(DatamartOrganization.class, toOrganizationEntity);
