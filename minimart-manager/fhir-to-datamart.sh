@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-
-
 REPO="$(cd $(dirname $0)/../ && pwd)"
 
 transformFhirToDatamart() {
@@ -59,7 +57,6 @@ do
 done
 
 COMMAND=$1
-
 echo "Working from directory: $REPO"
 
 case $COMMAND in

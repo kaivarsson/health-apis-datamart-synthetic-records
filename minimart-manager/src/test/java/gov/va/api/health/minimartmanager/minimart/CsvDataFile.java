@@ -5,12 +5,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import lombok.Builder;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-@Slf4j
 public class CsvDataFile {
   File csvFile;
 

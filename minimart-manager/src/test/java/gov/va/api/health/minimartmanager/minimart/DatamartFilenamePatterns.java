@@ -5,6 +5,7 @@ import gov.va.api.health.dataquery.service.controller.appointment.DatamartAppoin
 import gov.va.api.health.dataquery.service.controller.condition.DatamartCondition;
 import gov.va.api.health.dataquery.service.controller.device.DatamartDevice;
 import gov.va.api.health.dataquery.service.controller.diagnosticreport.DatamartDiagnosticReport;
+import gov.va.api.health.dataquery.service.controller.encounter.DatamartEncounter;
 import gov.va.api.health.dataquery.service.controller.immunization.DatamartImmunization;
 import gov.va.api.health.dataquery.service.controller.location.DatamartLocation;
 import gov.va.api.health.dataquery.service.controller.medication.DatamartMedication;
@@ -34,6 +35,7 @@ public class DatamartFilenamePatterns {
     jsonFileRegex.put(DatamartCondition.class, "^dmCon.*json$");
     jsonFileRegex.put(DatamartDevice.class, "^dmDev.*json$");
     jsonFileRegex.put(DatamartDiagnosticReport.class, "^dmDiaRep.*json$");
+    jsonFileRegex.put(DatamartEncounter.class, "^dmEnc.*json$");
     jsonFileRegex.put(DatamartImmunization.class, "^dmImm.*json$");
     jsonFileRegex.put(DatamartLocation.class, "^dmLoc.*json$");
     jsonFileRegex.put(DatamartMedication.class, "^dmMed(?!Sta|Ord).*json$");

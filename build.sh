@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-
 cd $(readlink -f $(dirname $0))
-
 BASE_DIR=$(pwd)
 export PATH=$BASE_DIR:$PATH
-
 trap onExit EXIT
 
 onExit() {
@@ -127,7 +124,6 @@ runDataQueryTests() {
   return 0
 }
 
-
 #
 # Bootstrap the database
 #
@@ -146,7 +142,6 @@ $FLYWAY migrate \
     -table=flyway_schema_history \
     -locations='filesystem:db/migration' \
     -schemas=app
-
 
 DATAMART_DIR=$BASE_DIR/datamart
 

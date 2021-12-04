@@ -4,7 +4,6 @@ import gov.va.api.health.dataquery.service.controller.patient.DatamartPatient;
 import java.util.List;
 
 public class PatientEthnicityAugments {
-
   private static final List<DatamartPatient.Ethnicity> DATAMART_ETHNICITIES =
       List.of(
           DatamartPatient.Ethnicity.builder()

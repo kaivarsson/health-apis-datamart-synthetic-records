@@ -1,5 +1,6 @@
 package gov.va.api.health.minimartmanager;
 
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import gov.va.api.health.dataquery.service.controller.allergyintolerance.AllergyIntoleranceEntity;
@@ -7,6 +8,7 @@ import gov.va.api.health.dataquery.service.controller.appointment.AppointmentEnt
 import gov.va.api.health.dataquery.service.controller.condition.ConditionEntity;
 import gov.va.api.health.dataquery.service.controller.device.DeviceEntity;
 import gov.va.api.health.dataquery.service.controller.diagnosticreport.DiagnosticReportEntity;
+import gov.va.api.health.dataquery.service.controller.encounter.EncounterEntity;
 import gov.va.api.health.dataquery.service.controller.etlstatus.LatestResourceEtlStatusEntity;
 import gov.va.api.health.dataquery.service.controller.immunization.ImmunizationEntity;
 import gov.va.api.health.dataquery.service.controller.location.LocationEntity;
@@ -24,7 +26,6 @@ import gov.va.api.health.vistafhirquery.service.controller.observation.VitalVuid
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.persistence.EntityManager;
 import lombok.AllArgsConstructor;
@@ -43,7 +44,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class DatamartExporter {
-
   /** Add classes to this list to copy them from Mitre to H2 */
   private static final List<ExportCriteria> EXPORT_CRITERIA =
       Arrays.asList(
@@ -52,11 +52,12 @@ public class DatamartExporter {
           ExportForPatientCriteria.of(ConditionEntity.class),
           ExportForPatientCriteria.of(DeviceEntity.class),
           ExportForPatientCriteria.of(DiagnosticReportEntity.class),
+          ExportForPatientCriteria.of(EncounterEntity.class),
           ExportForPatientCriteria.of(ImmunizationEntity.class),
           ExportAllCriteria.of(LatestResourceEtlStatusEntity.class),
           ExportAllCriteria.of(LocationEntity.class),
-          ExportForPatientCriteria.of(MedicationOrderEntity.class),
           ExportAllCriteria.of(MedicationEntity.class),
+          ExportForPatientCriteria.of(MedicationOrderEntity.class),
           ExportForPatientCriteria.of(MedicationStatementEntity.class),
           ExportForPatientCriteria.of(ObservationEntity.class),
           ExportAllCriteria.of(OrganizationEntity.class),
@@ -103,7 +104,7 @@ public class DatamartExporter {
   }
 
   private static List<Class<?>> managedClasses() {
-    return EXPORT_CRITERIA.stream().map(ExportCriteria::type).collect(Collectors.toList());
+    return EXPORT_CRITERIA.stream().map(ExportCriteria::type).collect(toList());
   }
 
   public void export() {
@@ -139,7 +140,6 @@ public class DatamartExporter {
   }
 
   private interface ExportCriteria {
-
     Stream<String> queries();
 
     Class<?> type();
@@ -148,7 +148,6 @@ public class DatamartExporter {
   @Value
   @AllArgsConstructor(staticName = "of")
   private static class ExportAllCriteria implements ExportCriteria {
-
     Class<?> type;
 
     @Override
@@ -160,7 +159,6 @@ public class DatamartExporter {
   @Value
   @AllArgsConstructor(staticName = "of")
   private static class ExportForPatientCriteria implements ExportCriteria {
-
     Class<?> type;
 
     @Override

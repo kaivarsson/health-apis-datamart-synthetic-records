@@ -7,7 +7,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class PractitionerQualificationTextAndPeriodAugments {
-
   private static final List<Optional<DatamartPractitioner.Period>> PERIODS =
       List.of(period(null, null), period("2010-01-01", null), period("2010-01-01", "2015-04-02"));
 
@@ -29,7 +28,6 @@ public class PractitionerQualificationTextAndPeriodAugments {
 
   static DatamartPractitioner qualificationTextAndPeriod(
       Augmentation.Context<DatamartPractitioner> ctx) {
-
     if (ctx.resource().address().isEmpty()) {
       System.out.println("No addresses exist for practitioner.cdwId: " + ctx.resource().cdwId());
       return ctx.resource();

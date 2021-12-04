@@ -9,7 +9,6 @@ import java.util.Optional;
 import org.springframework.data.util.Pair;
 
 public class ConditionCodeAugments {
-
   private static final Map<String, Pair<String, String>> SNOMED_TO_ICD_MAPPINGS =
       new ImmutableMap.Builder<String, Pair<String, String>>()
           .put("109838007", Pair.of("C18.8", "Malignant neoplasm of overlapping sites of colon"))

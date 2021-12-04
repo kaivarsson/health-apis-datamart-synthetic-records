@@ -17,7 +17,6 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 @Slf4j
 @AllArgsConstructor
 public class LocalH2 implements Supplier<EntityManagerFactory> {
-
   private final String outputFile;
 
   private final List<Class<?>> managedClasses;

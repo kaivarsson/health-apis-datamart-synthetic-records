@@ -12,11 +12,9 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class F2DDiagnosticReportTransformer {
-
   FhirToDatamartUtils fauxIds;
 
   public DatamartDiagnosticReport fhirToDatamart(DiagnosticReport diagnosticReport) {
-
     return DatamartDiagnosticReport.builder()
         .cdwId(fauxIds.unmaskByReference(diagnosticReport.id()))
         .patient(

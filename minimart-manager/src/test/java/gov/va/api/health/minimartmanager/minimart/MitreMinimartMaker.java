@@ -18,6 +18,8 @@ import gov.va.api.health.dataquery.service.controller.device.DatamartDevice;
 import gov.va.api.health.dataquery.service.controller.device.DeviceEntity;
 import gov.va.api.health.dataquery.service.controller.diagnosticreport.DatamartDiagnosticReport;
 import gov.va.api.health.dataquery.service.controller.diagnosticreport.DiagnosticReportEntity;
+import gov.va.api.health.dataquery.service.controller.encounter.DatamartEncounter;
+import gov.va.api.health.dataquery.service.controller.encounter.EncounterEntity;
 import gov.va.api.health.dataquery.service.controller.etlstatus.LatestResourceEtlStatusEntity;
 import gov.va.api.health.dataquery.service.controller.immunization.DatamartImmunization;
 import gov.va.api.health.dataquery.service.controller.immunization.ImmunizationEntity;
@@ -90,6 +92,7 @@ public class MitreMinimartMaker {
           ConditionEntity.class,
           DeviceEntity.class,
           DiagnosticReportEntity.class,
+          EncounterEntity.class,
           ImmunizationEntity.class,
           LatestResourceEtlStatusEntity.class,
           LocationEntity.class,
@@ -182,6 +185,20 @@ public class MitreMinimartMaker {
                 .payload(datamartToString(dm))
                 .build();
           };
+
+  private final Function<DatamartEncounter, EncounterEntity> toEncounterEntity =
+      dm -> {
+        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+        return EncounterEntity.builder()
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
+            .icn(patientIcn(dm.patient()))
+            .startDateTime(Instant.now())
+            .endDateTime(Instant.now().plus(30, ChronoUnit.MINUTES))
+            .lastUpdated(Instant.now())
+            .payload(datamartToString(dm))
+            .build();
+      };
 
   private final Function<DatamartImmunization, ImmunizationEntity> toImmunizationEntity =
       dm -> {
@@ -605,6 +622,9 @@ public class MitreMinimartMaker {
         break;
       case "DiagnosticReport":
         loader.insertResourceByType(DatamartDiagnosticReport.class, toDiagnosticReportEntity);
+        break;
+      case "Encounter":
+        loader.insertResourceByType(DatamartEncounter.class, toEncounterEntity);
         break;
       case "Immunization":
         loader.insertResourceByType(DatamartImmunization.class, toImmunizationEntity);

@@ -40,7 +40,6 @@ public class ImmunizationDoseQuantityAugments {
   }
 
   private static Optional<DatamartImmunization.Quantity> quantity(double dosage, String doseUnits) {
-
     return Optional.of(
         DatamartImmunization.Quantity.builder()
             .system(Optional.of("http://unitsofmeasure.org"))

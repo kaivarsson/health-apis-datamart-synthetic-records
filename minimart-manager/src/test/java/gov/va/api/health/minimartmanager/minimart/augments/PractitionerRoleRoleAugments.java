@@ -4,7 +4,6 @@ import gov.va.api.health.dataquery.service.controller.practitionerrole.DatamartP
 import java.util.Objects;
 
 public class PractitionerRoleRoleAugments {
-
   public static void main(String[] args) {
     Augmentation.forResources(DatamartPractitionerRole.class)
         .whenMatching(Objects::nonNull)

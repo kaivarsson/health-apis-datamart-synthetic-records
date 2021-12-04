@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 import java.util.Properties;
 
 public class SqlExecutor {
-
   static long start = currentTimeMillis();
 
   public static void main(String[] args) throws Exception {

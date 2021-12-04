@@ -18,7 +18,6 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 
 @Slf4j
 public class ExternalDb implements Supplier<EntityManagerFactory> {
-
   private final Properties config;
 
   private final List<Class<?>> managedClasses;
@@ -35,7 +34,6 @@ public class ExternalDb implements Supplier<EntityManagerFactory> {
 
   @Override
   public EntityManagerFactory get() {
-
     PersistenceUnitInfo info =
         PersistenceUnit.builder()
             .persistenceUnitName("mitre")

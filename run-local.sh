@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -e
-
 WORKING_DIR=$(readlink -f $(dirname $0))
 cd $WORKING_DIR
 
@@ -56,13 +55,11 @@ createDatabase() {
   sleep 10
 }
 
-
 howToBuild() {
   if [ -n "${BUILD_MODE:-}" ]; then echo $BUILD_MODE; return; fi
   if [[ "$(uname)" == *Linux* ]]; then echo docker; return; fi
   echo native
 }
-
 
 buildWithDocker() {
   docker run --rm \

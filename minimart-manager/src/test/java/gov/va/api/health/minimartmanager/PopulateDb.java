@@ -37,6 +37,7 @@ public class PopulateDb {
           "Condition",
           "Device",
           "DiagnosticReport",
+          "Encounter",
           "Immunization",
           "Location",
           "Medication",

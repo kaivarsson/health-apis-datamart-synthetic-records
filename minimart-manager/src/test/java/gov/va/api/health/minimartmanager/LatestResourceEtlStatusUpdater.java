@@ -8,11 +8,9 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(staticName = "create")
 public class LatestResourceEtlStatusUpdater {
-
   @NonNull private EntityManager entityManager;
 
   public void updateEtlTable(String resource) {
-
     boolean exists = entityManager.find(LatestResourceEtlStatusEntity.class, resource) != null;
     Instant now = Instant.now();
     LatestResourceEtlStatusEntity statusEntity =

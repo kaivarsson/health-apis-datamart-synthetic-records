@@ -1,10 +1,11 @@
 package gov.va.api.health.minimartmanager;
 
+import static java.util.Collections.emptyList;
+import static java.util.stream.Collectors.toList;
+
 import java.net.URL;
-import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
-import java.util.stream.Collectors;
 import javax.persistence.SharedCacheMode;
 import javax.persistence.ValidationMode;
 import javax.persistence.spi.ClassTransformer;
@@ -18,8 +19,8 @@ import lombok.experimental.Accessors;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
 @Value
-@Accessors(fluent = false)
 @Builder
+@Accessors(fluent = false)
 public class PersistenceUnit implements PersistenceUnitInfo {
   String persistenceUnitName;
 
@@ -30,8 +31,8 @@ public class PersistenceUnit implements PersistenceUnitInfo {
   PersistenceUnitTransactionType transactionType = PersistenceUnitTransactionType.RESOURCE_LOCAL;
 
   DataSource jtaDataSource;
-  @Builder.Default List<String> mappingFileNames = Collections.emptyList();
-  @Builder.Default List<URL> jarFileUrls = Collections.emptyList();
+  @Builder.Default List<String> mappingFileNames = emptyList();
+  @Builder.Default List<URL> jarFileUrls = emptyList();
   URL persistenceUnitRootUrl;
   @Singular List<Class<?>> managedClasses;
   @Builder.Default boolean excludeUnlistedClasses = false;
@@ -51,7 +52,7 @@ public class PersistenceUnit implements PersistenceUnitInfo {
 
   @Override
   public List<String> getManagedClassNames() {
-    return managedClasses.stream().map(Class::getName).collect(Collectors.toList());
+    return managedClasses.stream().map(Class::getName).collect(toList());
   }
 
   @Override

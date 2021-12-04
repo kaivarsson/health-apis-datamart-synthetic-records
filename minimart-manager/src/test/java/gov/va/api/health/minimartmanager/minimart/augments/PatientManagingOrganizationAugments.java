@@ -9,7 +9,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class PatientManagingOrganizationAugments {
-
   private static final List<Optional<String>> ORGANIZATION_REFERENCES = loadOrganizations();
 
   static DatamartPatient addManagingOrganization(Augmentation.Context<DatamartPatient> ctx) {
