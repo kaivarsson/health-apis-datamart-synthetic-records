@@ -1,0 +1,40 @@
+{
+  "objectType" : "Encounter",
+  "objectVersion" : 1,
+  "cdwId" : "800022196947:O",
+  "status" : "finished",
+  "class" : "AMB",
+  "serviceType" : "ambulatory",
+  "patient" : {
+    "type" : "Patient",
+    "reference" : "1008711084V002120",
+    "display" : "Mr. Ralph E Lee"
+  },
+  "participants" : [
+    {
+      "participant" : {
+        "type" : "Practitioner",
+        "reference" : "294582:S",
+        "display" : "DR. JOHN248 SMITH811 MD"
+      }
+    }
+  ],
+  "period" : {
+    "start" : "2010-06-08T23:24:02"
+  },
+  "locations" : [
+    {
+      "location" : {
+        "type" : "Location",
+        "reference" : "43829:L",
+        "display" : "TEM MH PSO TRS IND93EH 2"
+      }
+    }
+  ],
+  "serviceProvider" : {
+    "type" : "Organization",
+    "reference" : "568060:I",
+    "display" : "WASHINGTON VA MEDICAL CENTER"
+  },
+  "lastUpdated" : "2021-09-19T00:00:00.000Z"
+}

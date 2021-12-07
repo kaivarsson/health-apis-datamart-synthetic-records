@@ -1,0 +1,46 @@
+{
+  "objectType" : "Encounter",
+  "objectVersion" : 1,
+  "cdwId" : "2147483643:I",
+  "status" : "finished",
+  "class" : "IMP",
+  "serviceType" : "inpatient",
+  "patient" : {
+    "type" : "Patient",
+    "reference" : "1008711084V002120",
+    "display" : "Mr. Ralph E Lee"
+  },
+  "period" : {
+    "start" : "2021-11-29T14:00:00",
+    "end" : "2021-12-01T17:00:00"
+  },
+  "reasonCode" : [
+    {
+      "codeVersion" : "9",
+      "code" : "780.4",
+      "display" : "DIZZINESS AND GIDDINESS"
+    }
+  ],
+  "locations" : [
+    {
+      "location" : {
+        "type" : "Location",
+        "reference" : "43841:L",
+        "display" : "MENTAL HEALTH SERVICES"
+      }
+    }
+  ],
+  "serviceProvider" : {
+    "type" : "Organization",
+    "reference" : "568060:I",
+    "display" : "WASHINGTON VA MEDICAL CENTER"
+  },
+  "hospitalization" : {
+    "dischargeDisposition" : {
+      "system" : "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+      "code" : "X",
+      "display" : "RETURN TO COMMUNITY-INDEPENDENT"
+    }
+  },
+  "lastUpdated" : "2021-12-01T00:00:00.000Z"
+}
