@@ -26,7 +26,7 @@ exportLocalMitreDb() {
     test-compile \
     -DconfigFile=config/lab.properties \
     -DoutputFile=$LOCAL_DB \
-    -DexportPatients=32000225,43000199,17,23,1017283180V801730,1008711084V002120 \
+    -DexportPatients=32000225,43000199,17,23,1017283180V801730 \
     -Dexporter.included-types="$includedTypes" \
     -Dorg.jboss.logging.provider=jdk \
     -Djava.util.logging.config.file=nope
