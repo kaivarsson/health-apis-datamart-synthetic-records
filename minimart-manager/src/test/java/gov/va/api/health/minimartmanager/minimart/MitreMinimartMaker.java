@@ -347,6 +347,25 @@ public class MitreMinimartMaker {
                 .collect(toList());
           };
 
+  private final Function<DatamartProcedure, ProcedureEntity> toProcedure =
+      dm -> {
+        Instant lastUpdated =
+            dm.performedDateTime().isPresent()
+                ? dm.performedDateTime().get().plus(30, ChronoUnit.DAYS)
+                : Instant.now();
+        checkState(dm.lastUpdated() == null);
+        dm.lastUpdated(lastUpdated.truncatedTo(ChronoUnit.MILLIS));
+        Long performedOnEpoch =
+            dm.performedDateTime().isPresent() ? dm.performedDateTime().get().toEpochMilli() : null;
+        return ProcedureEntity.builder()
+            .cdwId(dm.cdwId())
+            .icn(patientIcn(dm.patient()))
+            .lastUpdated(dm.lastUpdated())
+            .performedOnEpochTime(performedOnEpoch)
+            .payload(datamartToString(dm))
+            .build();
+      };
+
   private final Function<CSVRecord, VitalVuidMappingEntity> toVitalVuidMapping =
       csvRecord -> {
         return VitalVuidMappingEntity.builder()
@@ -556,21 +575,6 @@ public class MitreMinimartMaker {
   }
 
   @SneakyThrows
-  private void insertByProcedure(File file) {
-    DatamartProcedure dm = JacksonConfig.createMapper().readValue(file, DatamartProcedure.class);
-    Long performedOnEpoch =
-        dm.performedDateTime().isPresent() ? dm.performedDateTime().get().toEpochMilli() : null;
-    ProcedureEntity entity =
-        ProcedureEntity.builder()
-            .cdwId(dm.cdwId())
-            .icn(patientIcn(dm.patient()))
-            .performedOnEpochTime(performedOnEpoch)
-            .payload(fileToString(file))
-            .build();
-    save(entity);
-  }
-
-  @SneakyThrows
   private void insertResourceByPattern(
       File dmDirectory, String filePattern, Consumer<File> fileWriter) {
     findUniqueFiles(dmDirectory, filePattern).parallel().forEach(fileWriter);
@@ -673,10 +677,7 @@ public class MitreMinimartMaker {
             this::insertByPractitionerRoleSpecialtyMapping);
         break;
       case "Procedure":
-        insertResourceByPattern(
-            dmDirectory,
-            DatamartFilenamePatterns.get().json(DatamartProcedure.class),
-            this::insertByProcedure);
+        loader.insertResourceByType(DatamartProcedure.class, toProcedure);
         break;
       case "VitalVuidMapping":
         loader.insertByCsvColumnNames(
