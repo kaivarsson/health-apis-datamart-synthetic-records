@@ -60,6 +60,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Instant;
+import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -189,12 +190,24 @@ public class MitreMinimartMaker {
   private final Function<DatamartEncounter, EncounterEntity> toEncounterEntity =
       dm -> {
         CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+
+        Instant start =
+            dm.period()
+                .map(p -> p.start().orElse(null))
+                .map(s -> s.atStartOfDay().toInstant(ZoneOffset.UTC))
+                .orElse(null);
+        Instant end =
+            dm.period()
+                .map(p -> p.end().orElse(null))
+                .map(e -> e.atStartOfDay().toInstant(ZoneOffset.UTC))
+                .orElse(null);
+
         return EncounterEntity.builder()
             .cdwIdNumber(compositeCdwId.cdwIdNumber())
             .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
             .icn(patientIcn(dm.patient()))
-            .startDateTime(Instant.now())
-            .endDateTime(Instant.now().plus(30, ChronoUnit.MINUTES))
+            .startDateTime(start)
+            .endDateTime(end)
             .lastUpdated(Instant.now())
             .payload(datamartToString(dm))
             .build();
