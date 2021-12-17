@@ -1,5 +1,9 @@
 package gov.va.api.health.minimartmanager.minimart.transformers;
 
+import static gov.va.api.health.dataquery.service.controller.Transformers.allBlank;
+import static gov.va.api.health.dataquery.service.controller.Transformers.emptyToNull;
+import static java.util.stream.Collectors.toList;
+
 import gov.va.api.health.dataquery.service.controller.EnumSearcher;
 import gov.va.api.health.dataquery.service.controller.immunization.DatamartImmunization;
 import gov.va.api.health.dataquery.service.controller.immunization.DatamartImmunization.Status;
@@ -7,12 +11,15 @@ import gov.va.api.health.dataquery.service.controller.immunization.DatamartImmun
 import gov.va.api.health.dataquery.service.controller.immunization.DatamartImmunization.VaccineCode;
 import gov.va.api.health.dstu2.api.datatypes.Annotation;
 import gov.va.api.health.dstu2.api.datatypes.CodeableConcept;
+import gov.va.api.health.dstu2.api.datatypes.Coding;
 import gov.va.api.health.dstu2.api.elements.Extension;
 import gov.va.api.health.dstu2.api.elements.Reference;
 import gov.va.api.health.dstu2.api.resources.Immunization;
 import gov.va.api.health.dstu2.api.resources.Immunization.Reaction;
 import gov.va.api.health.dstu2.api.resources.Immunization.VaccinationProtocol;
+import gov.va.api.health.fhir.api.Safe;
 import gov.va.api.health.minimartmanager.minimart.FhirToDatamartUtils;
+import gov.va.api.lighthouse.datamart.DatamartCoding;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +28,17 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class F2DImmunizationTransformer {
   FhirToDatamartUtils fauxIds;
+
+  private static DatamartCoding toCoding(Coding coding) {
+    if (coding == null || allBlank(coding.system(), coding.code(), coding.display())) {
+      return null;
+    }
+    return DatamartCoding.builder()
+        .system(Optional.ofNullable(coding.system()))
+        .code(Optional.ofNullable(coding.code()))
+        .display(Optional.ofNullable(coding.display()))
+        .build();
+  }
 
   private Instant date(String date) {
     if (date == null) {
@@ -90,12 +108,14 @@ public class F2DImmunizationTransformer {
     if (vaccineCode == null) {
       return null;
     }
-    if (vaccineCode.coding() == null || vaccineCode.coding().isEmpty()) {
+    var codings =
+        emptyToNull(
+            Safe.stream(vaccineCode.coding())
+                .map(F2DImmunizationTransformer::toCoding)
+                .collect(toList()));
+    if (codings == null) {
       return null;
     }
-    return VaccineCode.builder()
-        .code(vaccineCode.coding().get(0).code())
-        .text(vaccineCode.text())
-        .build();
+    return VaccineCode.builder().coding(codings).build();
   }
 }

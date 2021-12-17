@@ -1,6 +1,9 @@
 package gov.va.api.health.minimartmanager.minimart.augments;
 
+import static java.util.stream.Collectors.toList;
+
 import gov.va.api.health.dataquery.service.controller.immunization.DatamartImmunization;
+import gov.va.api.health.fhir.api.Safe;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,8 +24,14 @@ public class ImmunizationDoseQuantityAugments {
 
   static DatamartImmunization addQuantity(Augmentation.Context<DatamartImmunization> ctx) {
     var quantity = ctx.random(QUANTITIES);
-
-    if (COVID_VACCINE_CODES.contains(ctx.resource().vaccineCode().code())) {
+    var codes =
+        Safe.stream(
+                Optional.ofNullable(ctx.resource().vaccineCode())
+                    .map(vc -> vc.coding())
+                    .orElse(null))
+            .map(c -> c.code().get())
+            .collect(toList());
+    if (COVID_VACCINE_CODES.stream().anyMatch(codes::contains)) {
       while (quantity.isEmpty()) {
         quantity = ctx.random(QUANTITIES);
       }

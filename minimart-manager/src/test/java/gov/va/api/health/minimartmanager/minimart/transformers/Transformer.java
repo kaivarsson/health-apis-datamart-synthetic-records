@@ -1,4 +1,4 @@
-package gov.va.api.health.minimartmanager.minimart.transformation;
+package gov.va.api.health.minimartmanager.minimart.transformers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.va.api.health.autoconfig.configuration.JacksonConfig;
@@ -95,7 +95,7 @@ class Transformer<T, S> {
 
     Random random;
 
-    <T> T random(List<T> choices) {
+    <TT> TT random(List<TT> choices) {
       return choices.get(random.nextInt(choices.size()));
     }
   }
