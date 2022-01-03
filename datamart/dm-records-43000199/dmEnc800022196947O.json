@@ -3,6 +3,15 @@
   "objectVersion" : 1,
   "cdwId" : "800022196947:O",
   "status" : "finished",
+  "type" : [
+    {
+      "coding" : {
+        "code" : "99212",
+        "display" : "OFFICE O/P EST SF 10-19 MIN"
+      },
+      "text" : "OFFICE OR OTHER OUTPATIENT VISIT FOR THE EVALUATION AND MANAGEMENT OF AN ESTABLISHED PATIENT, WHICH REQUIRES A MEDICALLY APPROPRIATE HISTORY AND/OR EXAMINATION AND STRAIGHTFORWARD MEDICAL DECISION MAKING. WHEN USING TIME FOR CODE SELECTION, 10-19 MINUTES OF TOTAL TIME IS SPENT ON THE DATE OF THE ENCOUNTER."
+    }
+  ],
   "class" : "AMB",
   "serviceType" : "ambulatory",
   "patient" : {

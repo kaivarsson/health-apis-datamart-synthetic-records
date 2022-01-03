@@ -94,7 +94,7 @@ class Augmentation<T> {
 
     Random random;
 
-    <T> T random(List<T> choices) {
+    <TT> TT random(List<TT> choices) {
       return choices.get(random.nextInt(choices.size()));
     }
   }
