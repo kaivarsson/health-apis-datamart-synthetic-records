@@ -8,6 +8,7 @@ import static org.apache.commons.lang3.StringUtils.trimToNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import gov.va.api.health.autoconfig.configuration.JacksonConfig;
+import gov.va.api.health.dataquery.service.controller.CompositeCdwIds;
 import gov.va.api.health.dataquery.service.controller.allergyintolerance.AllergyIntoleranceEntity;
 import gov.va.api.health.dataquery.service.controller.allergyintolerance.DatamartAllergyIntolerance;
 import gov.va.api.health.dataquery.service.controller.appointment.AppointmentEntity;
@@ -114,7 +115,9 @@ public class MitreMinimartMaker {
   private final Function<DatamartAllergyIntolerance, AllergyIntoleranceEntity>
       toAllergyIntoleranceEntity =
           dm -> {
-            CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+            CompositeCdwId compositeCdwId =
+                CompositeCdwIds.optionalFromCdwId(dm.cdwId())
+                    .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":A"));
             return AllergyIntoleranceEntity.builder()
                 .cdwId(dm.cdwId())
                 .cdwIdNumber(compositeCdwId.cdwIdNumber())
@@ -177,7 +180,9 @@ public class MitreMinimartMaker {
 
   private final Function<DatamartDevice, DeviceEntity> toDeviceEntity =
       dm -> {
-        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+        CompositeCdwId compositeCdwId =
+            CompositeCdwIds.optionalFromCdwId(dm.cdwId())
+                .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":I"));
         return DeviceEntity.builder()
             .cdwId(dm.cdwId())
             .cdwIdNumber(compositeCdwId.cdwIdNumber())
@@ -281,7 +286,10 @@ public class MitreMinimartMaker {
 
   private final Function<DatamartMedicationOrder, MedicationOrderEntity> toMedicationOrderEntity =
       dm -> {
-        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+        CompositeCdwId compositeCdwId =
+            dm.cdwId().endsWith(":FP")
+                ? CompositeCdwId.fromCdwId(dm.cdwId().substring(0, dm.cdwId().length() - 3) + ":O")
+                : CompositeCdwId.fromCdwId(dm.cdwId());
         return MedicationOrderEntity.builder()
             .cdwId(dm.cdwId())
             .cdwIdNumber(compositeCdwId.cdwIdNumber())
@@ -294,11 +302,12 @@ public class MitreMinimartMaker {
   private final Function<DatamartMedicationStatement, MedicationStatementEntity>
       toMedicationStatementEntity =
           dm -> {
-            CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+            // API-4891 what is resource code for MedicationStatement?
+            // CompositeCdwId compositeCdwId =
+            // CompositeCdwIds.optionalFromCdwId(dm.cdwId())
+            // .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":Z"));
             return MedicationStatementEntity.builder()
                 .cdwId(dm.cdwId())
-                .cdwIdNumber(compositeCdwId.cdwIdNumber())
-                .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
                 .icn(patientIcn(dm.patient()))
                 .payload(datamartToString(dm))
                 .build();
@@ -435,7 +444,9 @@ public class MitreMinimartMaker {
 
   private final Function<DatamartProcedure, ProcedureEntity> toProcedure =
       dm -> {
-        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
+        CompositeCdwId compositeCdwId =
+            CompositeCdwIds.optionalFromCdwId(dm.cdwId())
+                .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":S"));
         Instant lastUpdated =
             dm.performedDateTime().isPresent()
                 ? dm.performedDateTime().get().plus(30, ChronoUnit.DAYS)
