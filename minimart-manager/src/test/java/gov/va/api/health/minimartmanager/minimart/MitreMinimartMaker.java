@@ -8,6 +8,7 @@ import static org.apache.commons.lang3.StringUtils.trimToNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import gov.va.api.health.autoconfig.configuration.JacksonConfig;
+import gov.va.api.health.dataquery.service.controller.CompositeCdwIds;
 import gov.va.api.health.dataquery.service.controller.allergyintolerance.AllergyIntoleranceEntity;
 import gov.va.api.health.dataquery.service.controller.allergyintolerance.DatamartAllergyIntolerance;
 import gov.va.api.health.dataquery.service.controller.appointment.AppointmentEntity;
@@ -113,12 +114,18 @@ public class MitreMinimartMaker {
 
   private final Function<DatamartAllergyIntolerance, AllergyIntoleranceEntity>
       toAllergyIntoleranceEntity =
-          dm ->
-              AllergyIntoleranceEntity.builder()
-                  .cdwId(dm.cdwId())
-                  .icn(patientIcn(dm.patient()))
-                  .payload(datamartToString(dm))
-                  .build();
+          dm -> {
+            CompositeCdwId compositeCdwId =
+                CompositeCdwIds.optionalFromCdwId(dm.cdwId())
+                    .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":A"));
+            return AllergyIntoleranceEntity.builder()
+                .cdwId(dm.cdwId())
+                .cdwIdNumber(compositeCdwId.cdwIdNumber())
+                .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
+                .icn(patientIcn(dm.patient()))
+                .payload(datamartToString(dm))
+                .build();
+          };
 
   private final Function<DatamartAppointment, AppointmentEntity> toAppointmentEntity =
       dm -> {
@@ -172,13 +179,19 @@ public class MitreMinimartMaker {
       };
 
   private final Function<DatamartDevice, DeviceEntity> toDeviceEntity =
-      dm ->
-          DeviceEntity.builder()
-              .cdwId(dm.cdwId())
-              .icn(dm.patient().reference().orElse(null))
-              .lastUpdated(Instant.now())
-              .payload(datamartToString(dm))
-              .build();
+      dm -> {
+        CompositeCdwId compositeCdwId =
+            CompositeCdwIds.optionalFromCdwId(dm.cdwId())
+                .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":I"));
+        return DeviceEntity.builder()
+            .cdwId(dm.cdwId())
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
+            .icn(dm.patient().reference().orElse(null))
+            .lastUpdated(Instant.now())
+            .payload(datamartToString(dm))
+            .build();
+      };
 
   private final Function<DatamartDiagnosticReport, DiagnosticReportEntity>
       toDiagnosticReportEntity =
@@ -233,6 +246,7 @@ public class MitreMinimartMaker {
 
   private final Function<DatamartLocation, LocationEntity> toLocationEntity =
       dm -> {
+        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
         Optional<CompositeCdwId> orgCompositeId =
             Optional.ofNullable(dm.managingOrganization())
                 .map(org -> org.reference().orElse(null))
@@ -243,6 +257,8 @@ public class MitreMinimartMaker {
             orgCompositeId.map(id -> id.cdwIdResourceCode()).orElse(null);
         return LocationEntity.builder()
             .cdwId(dm.cdwId())
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
             .name(dm.name())
             .street(dm.address().line1())
             .city(dm.address().city())
@@ -269,21 +285,33 @@ public class MitreMinimartMaker {
       };
 
   private final Function<DatamartMedicationOrder, MedicationOrderEntity> toMedicationOrderEntity =
-      dm ->
-          MedicationOrderEntity.builder()
-              .cdwId(dm.cdwId())
-              .icn(patientIcn(dm.patient()))
-              .payload(datamartToString(dm))
-              .build();
+      dm -> {
+        CompositeCdwId compositeCdwId =
+            dm.cdwId().endsWith(":FP")
+                ? CompositeCdwId.fromCdwId(dm.cdwId().substring(0, dm.cdwId().length() - 3) + ":O")
+                : CompositeCdwId.fromCdwId(dm.cdwId());
+        return MedicationOrderEntity.builder()
+            .cdwId(dm.cdwId())
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
+            .icn(patientIcn(dm.patient()))
+            .payload(datamartToString(dm))
+            .build();
+      };
 
   private final Function<DatamartMedicationStatement, MedicationStatementEntity>
       toMedicationStatementEntity =
-          dm ->
-              MedicationStatementEntity.builder()
-                  .cdwId(dm.cdwId())
-                  .icn(patientIcn(dm.patient()))
-                  .payload(datamartToString(dm))
-                  .build();
+          dm -> {
+            // API-4891 what is resource code for MedicationStatement?
+            // CompositeCdwId compositeCdwId =
+            // CompositeCdwIds.optionalFromCdwId(dm.cdwId())
+            // .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":Z"));
+            return MedicationStatementEntity.builder()
+                .cdwId(dm.cdwId())
+                .icn(patientIcn(dm.patient()))
+                .payload(datamartToString(dm))
+                .build();
+          };
 
   private final Function<DatamartObservation, ObservationEntity> toObservationEntity =
       dm -> {
@@ -309,11 +337,14 @@ public class MitreMinimartMaker {
 
   private final Function<DatamartOrganization, OrganizationEntity> toOrganizationEntity =
       dm -> {
+        CompositeCdwId compositeCdwId = CompositeCdwId.fromCdwId(dm.cdwId());
         var address =
             Optional.ofNullable(dm.address())
                 .orElse(DatamartOrganization.Address.builder().build());
         return OrganizationEntity.builder()
             .cdwId(dm.cdwId())
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
             .npi(dm.npi().orElse(null))
             .name(dm.name())
             .street(trimToNull(trimToEmpty(address.line1()) + " " + trimToEmpty(address.line2())))
@@ -413,6 +444,9 @@ public class MitreMinimartMaker {
 
   private final Function<DatamartProcedure, ProcedureEntity> toProcedure =
       dm -> {
+        CompositeCdwId compositeCdwId =
+            CompositeCdwIds.optionalFromCdwId(dm.cdwId())
+                .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":S"));
         Instant lastUpdated =
             dm.performedDateTime().isPresent()
                 ? dm.performedDateTime().get().plus(30, ChronoUnit.DAYS)
@@ -423,6 +457,8 @@ public class MitreMinimartMaker {
             dm.performedDateTime().isPresent() ? dm.performedDateTime().get().toEpochMilli() : null;
         return ProcedureEntity.builder()
             .cdwId(dm.cdwId())
+            .cdwIdNumber(compositeCdwId.cdwIdNumber())
+            .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
             .icn(patientIcn(dm.patient()))
             .lastUpdated(dm.lastUpdated())
             .performedOnEpochTime(performedOnEpoch)
