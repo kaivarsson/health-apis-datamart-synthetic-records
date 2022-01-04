@@ -302,12 +302,13 @@ public class MitreMinimartMaker {
   private final Function<DatamartMedicationStatement, MedicationStatementEntity>
       toMedicationStatementEntity =
           dm -> {
-            // API-4891 what is resource code for MedicationStatement?
-            // CompositeCdwId compositeCdwId =
-            // CompositeCdwIds.optionalFromCdwId(dm.cdwId())
-            // .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":Z"));
+            CompositeCdwId compositeCdwId =
+                CompositeCdwIds.optionalFromCdwId(dm.cdwId())
+                    .orElse(CompositeCdwId.fromCdwId(dm.cdwId() + ":M"));
             return MedicationStatementEntity.builder()
                 .cdwId(dm.cdwId())
+                .cdwIdNumber(compositeCdwId.cdwIdNumber())
+                .cdwIdResourceCode(compositeCdwId.cdwIdResourceCode())
                 .icn(patientIcn(dm.patient()))
                 .payload(datamartToString(dm))
                 .build();
