@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-cd $(readlink -f $(dirname $0))
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+  cd $(greadlink -f $(dirname $0))
+else
+  cd $(readlink -f $(dirname $0))
+fi
 BASE_DIR=$(pwd)
 export PATH=$BASE_DIR:$PATH
 trap onExit EXIT
@@ -32,7 +37,12 @@ if [ -f /flyway/flyway ]; then FLYWAY="bash /flyway/flyway"; fi
 #
 # To support local testing, add a local install to the front of the path
 #
-LOCAL_INSTALL=$(find -maxdepth 1 -name "flyway-[67]*" | sort -V | head -1)
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+  LOCAL_INSTALL=$(find . -maxdepth 1 -name "flyway-[67]*" | sort -V | head -1)
+else
+  LOCAL_INSTALL=$(find -maxdepth 1 -name "flyway-[67]*" | sort -V | head -1)
+fi
 if [ -n "$LOCAL_INSTALL" ]
 then
   if [[ "$LOCAL_INSTALL" == *flyway-6* ]]; then echo "WARNING: Upgrade Flyway To Version 7"; fi;

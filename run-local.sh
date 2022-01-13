@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
 set -e
-WORKING_DIR=$(readlink -f $(dirname $0))
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+  brew install coreutils
+  WORKING_DIR=$(greadlink -f $(dirname $0))
+else
+  WORKING_DIR=$(readlink -f $(dirname $0))
+fi
 cd $WORKING_DIR
 
 usage() {
