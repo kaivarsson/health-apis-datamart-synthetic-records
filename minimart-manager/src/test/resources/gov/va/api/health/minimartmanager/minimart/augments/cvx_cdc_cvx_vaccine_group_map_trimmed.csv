@@ -1,0 +1,196 @@
+CVXCode,ImmunizationName,CVXForVaccineGroup,VaccineGroupName,ShortDescription,VaccineStatus,ROW_NUM
+1,DTP,107,DTAP,DTP,Inactive,1
+2,TRIVALENT OPV,89,POLIO,OPV,Inactive,1
+3,MMR,3,MMR,MMR,Active,1
+4,M/R,3,MMR,M/R,Inactive,1
+5,MEASLES,3,MMR,measles,Inactive,1
+6,RUBELLA,3,MMR,rubella,Inactive,1
+7,MUMPS,3,MMR,mumps,Inactive,1
+8,"HEP B, ADOLESCENT OR PEDIATRIC",45,HepB,"Hep B, adolescent or pediatric",Active,1
+9,"TD (ADULT), 2 LF TETANUS TOXOID, PRESERVATIVE FREE, ADSORBED",139,Td,"Td (adult), 2 Lf tetanus toxoid, preservative free, adsorbed",Active,1
+10,POLIOMYELITIS (SALK) (HISTORICAL),89,POLIO,IPV,Active,1
+15,"INFLUENZA, SPLIT (INCL. PURIFIED SURFACE ANTIGEN)",88,FLU,"influenza, split (incl. purified surface antigen)",Inactive,1
+16,"INFLUENZA, WHOLE",88,FLU,"influenza, whole",Inactive,1
+17,"HIB, UNSPECIFIED FORMULATION",17,HIB,"Hib, unspecified formulation",Inactive,1
+18,"RABIES, INTRAMUSCULAR INJECTION",90,RABIES,"rabies, intramuscular injection",Inactive,1
+19,BCG (HISTORICAL),19,BCG,BCG,Active,1
+20,DTAP,107,DTAP,DTaP,Active,1
+21,VARICELLA,21,VARICELLA,varicella,Active,1
+22,DTP-HIB,17,HIB,DTP-Hib,Inactive,1
+22,DTP-HIB,107,DTAP,DTP-Hib,Inactive,1
+23,PLAGUE,23,Plague,plague,Inactive,1
+24,ANTHRAX,24,ANTHRAX,anthrax,Active,1
+25,"TYPHOID, ORAL",91,TYPHOID,"typhoid, oral",Active,1
+26,"CHOLERA, UNSPECIFIED FORMULATION",26,cholera,"cholera, unspecified formulation",Inactive,1
+28,DT (PEDIATRIC),107,DTAP,DT (pediatric),Active,1
+31,"HEP A, PEDIATRIC, UNSPECIFIED FORMULATION",85,HepA,"Hep A, pediatric, unspecified formulation",Inactive,1
+32,MENINGOCOCCAL MPSV4,108,MENING,meningococcal MPSV4,Inactive,1
+33,PNEUMOCOCCAL POLYSACCHARIDE PPV23,33,PneumoPPV,pneumococcal polysaccharide PPV23,Active,1
+37,YELLOW FEVER,184,YELLOWFEVER,yellow fever,Active,1
+38,RUBELLA/MUMPS,3,MMR,rubella/mumps,Inactive,1
+39,JAPANESE ENCEPHALITIS SC,129,Japanese encephalitis,Japanese encephalitis SC,Inactive,1
+40,"RABIES, INTRADERMAL INJECTION",90,RABIES,"rabies, intradermal injection",Inactive,1
+41,"TYPHOID, PARENTERAL",91,TYPHOID,"typhoid, parenteral",Inactive,1
+42,"HEP B, ADOLESCENT/HIGH RISK INFANT",45,HepB,"Hep B, adolescent/high risk infant",Inactive,1
+43,"HEP B, ADULT",45,HepB,"Hep B, adult",Active,1
+44,"HEP B, DIALYSIS",45,HepB,"Hep B, dialysis",Active,1
+45,"HEP B, UNSPECIFIED FORMULATION",45,HepB,"Hep B, unspecified formulation",Inactive,1
+46,HIB (PRP-D),17,HIB,Hib (PRP-D),Inactive,1
+47,HIB (HBOC),17,HIB,Hib (HbOC),Inactive,1
+48,HIB (PRP-T),17,HIB,Hib (PRP-T),Active,1
+49,HIB (PRP-OMP),17,HIB,Hib (PRP-OMP),Active,1
+50,DTAP-HIB,17,HIB,DTaP-Hib,Inactive,1
+50,DTAP-HIB,107,DTAP,DTaP-Hib,Inactive,1
+51,HIB-HEP B,17,HIB,Hib-Hep B,Inactive,1
+51,HIB-HEP B,45,HepB,Hib-Hep B,Inactive,1
+52,"HEP A, ADULT",85,HepA,"Hep A, adult",Active,1
+53,"TYPHOID, PARENTERAL, AKD (U.S. MILITARY)",91,TYPHOID,"typhoid, parenteral, AKD (U.S. military)",Inactive,1
+54,"ADENOVIRUS, TYPE 4",82,ADENO,"adenovirus, type 4",Inactive,1
+55,"ADENOVIRUS, TYPE 7",82,ADENO,"adenovirus, type 7",Inactive,1
+56,DENGUE FEVER,56,DENGUE,dengue fever,Active,1
+62,"HPV, QUADRIVALENT",137,HPV,"HPV, quadrivalent",Active,1
+66,LYME DISEASE,66,Lyme disease,Lyme disease,Inactive,1
+74,"ROTAVIRUS, TETRAVALENT",122,ROTAVIRUS,"rotavirus, tetravalent",Inactive,1
+75,VACCINIA (SMALLPOX),75,VACCINIA,vaccinia (smallpox),Active,1
+77,TICK-BORNE ENCEPHALITIS,77,Tick-borne encephalitis,tick-borne encephalitis,Active,1
+80,"VEE, LIVE",92,VEE,"VEE, live",Inactive,1
+81,"VEE, INACTIVATED",92,VEE,"VEE, inactivated",Inactive,1
+82,"ADENOVIRUS, UNSPECIFIED FORMULATION",82,ADENO,"adenovirus, unspecified formulation",Inactive,1
+83,"HEP A, PED/ADOL, 2 DOSE",85,HepA,"Hep A, ped/adol, 2 dose",Active,1
+84,"HEP A, PED/ADOL, 3 DOSE",85,HepA,"Hep A, ped/adol, 3 dose",Inactive,1
+85,"HEP A, UNSPECIFIED FORMULATION",85,HepA,"Hep A, unspecified formulation",Inactive,1
+88,"INFLUENZA, UNSPECIFIED FORMULATION",88,FLU,"influenza, unspecified formulation",Inactive,1
+89,"POLIO, UNSPECIFIED FORMULATION",89,POLIO,"polio, unspecified formulation",Inactive,1
+90,"RABIES, UNSPECIFIED FORMULATION",90,RABIES,"rabies, unspecified formulation",Inactive,1
+91,TYPHOID (HISTORICAL),91,TYPHOID,"typhoid, unspecified formulation",Inactive,1
+92,"VEE, UNSPECIFIED FORMULATION",92,VEE,"VEE, unspecified formulation",Inactive,1
+94,MMRV,3,MMR,MMRV,Active,1
+94,MMRV,21,VARICELLA,MMRV,Active,1
+100,PNEUMOCOCCAL CONJUGATE PCV 7,152,PneumoPCV,pneumococcal conjugate PCV 7,Inactive,1
+101,"TYPHOID, VICPS",91,TYPHOID,"typhoid, ViCPs",Active,1
+102,DTP-HIB-HEP B,17,HIB,DTP-Hib-Hep B,Non-US,1
+102,DTP-HIB-HEP B,45,HepB,DTP-Hib-Hep B,Non-US,1
+102,DTP-HIB-HEP B,107,DTAP,DTP-Hib-Hep B,Non-US,1
+103,MENINGOCOCCAL C CONJUGATE,108,MENING,meningococcal C conjugate,Inactive,1
+104,HEP A-HEP B,45,HepB,Hep A-Hep B,Active,1
+104,HEP A-HEP B,85,HepA,Hep A-Hep B,Active,1
+105,VACCINIA (SMALLPOX) DILUTED,75,VACCINIA,vaccinia (smallpox) diluted,Inactive,1
+106,"DTAP, 5 PERTUSSIS ANTIGENS",107,DTAP,"DTaP, 5 pertussis antigens",Active,1
+107,"DTAP, UNSPECIFIED FORMULATION",107,DTAP,"DTaP, unspecified formulation",Inactive,1
+108,"MENINGOCOCCAL ACWY, UNSPECIFIED FORMULATION",108,MENING,"meningococcal ACWY, unspecified formulation",Inactive,1
+109,"PNEUMOCOCCAL, UNSPECIFIED FORMULATION",33,PneumoPPV,"pneumococcal, unspecified formulation",Inactive,1
+109,"PNEUMOCOCCAL, UNSPECIFIED FORMULATION",152,PneumoPCV,"pneumococcal, unspecified formulation",Inactive,1
+110,DTAP-HEP B-IPV,45,HepB,DTaP-Hep B-IPV,Active,1
+110,DTAP-HEP B-IPV,89,POLIO,DTaP-Hep B-IPV,Active,1
+110,DTAP-HEP B-IPV,107,DTAP,DTaP-Hep B-IPV,Active,1
+111,"INFLUENZA, LIVE, INTRANASAL",88,FLU,"influenza, live, intranasal",Inactive,1
+113,"TD (ADULT), 5 LF TETANUS TOXOID, PRESERVATIVE FREE, ADSORBED",139,Td,"Td (adult), 5 Lf tetanus toxoid, preservative free, adsorbed",Active,1
+114,MENINGOCOCCAL MCV4P,108,MENING,meningococcal MCV4P,Active,1
+115,TDAP,115,TDAP,Tdap,Active,1
+116,"ROTAVIRUS, PENTAVALENT",122,ROTAVIRUS,"rotavirus, pentavalent",Active,1
+118,"HPV, BIVALENT",137,HPV,"HPV, bivalent",Inactive,1
+119,"ROTAVIRUS, MONOVALENT",122,ROTAVIRUS,"rotavirus, monovalent",Active,1
+120,DTAP-HIB-IPV,17,HIB,DTaP-Hib-IPV,Active,1
+120,DTAP-HIB-IPV,89,POLIO,DTaP-Hib-IPV,Active,1
+120,DTAP-HIB-IPV,107,DTAP,DTaP-Hib-IPV,Active,1
+121,ZOSTER LIVE,188,ZOSTER,zoster live,Active,1
+122,"ROTAVIRUS, UNSPECIFIED FORMULATION",122,ROTAVIRUS,"rotavirus, unspecified formulation",Inactive,1
+123,"INFLUENZA, H5N1-1203",123,H5N1 flu,"influenza, H5N1-1203",Inactive,1
+125,"NOVEL INFLUENZA-H1N1-09, NASAL",128,H1N1 flu,"Novel Influenza-H1N1-09, nasal",Inactive,1
+126,"NOVEL INFLUENZA-H1N1-09, PRESERVATIVE-FREE",128,H1N1 flu,"Novel influenza-H1N1-09, preservative-free",Inactive,1
+127,NOVEL INFLUENZA-H1N1-09,128,H1N1 flu,Novel influenza-H1N1-09,Inactive,1
+128,"NOVEL INFLUENZA-H1N1-09, ALL FORMULATIONS",128,H1N1 flu,"Novel Influenza-H1N1-09, all formulations",Inactive,1
+129,"JAPANESE ENCEPHALITIS, UNSPECIFIED FORMULATION",129,Japanese encephalitis,"Japanese Encephalitis, unspecified formulation",Inactive,1
+130,DTAP-IPV,89,POLIO,DTaP-IPV,Active,1
+130,DTAP-IPV,107,DTAP,DTaP-IPV,Active,1
+132,"DTAP-IPV-HIB-HEP B, HISTORICAL",17,HIB,"DTaP-IPV-HIB-HEP B, historical",Inactive,1
+132,"DTAP-IPV-HIB-HEP B, HISTORICAL",45,HepB,"DTaP-IPV-HIB-HEP B, historical",Inactive,1
+132,"DTAP-IPV-HIB-HEP B, HISTORICAL",89,POLIO,"DTaP-IPV-HIB-HEP B, historical",Inactive,1
+132,"DTAP-IPV-HIB-HEP B, HISTORICAL",107,DTAP,"DTaP-IPV-HIB-HEP B, historical",Inactive,1
+133,PNEUMOCOCCAL CONJUGATE PCV 13,152,PneumoPCV,Pneumococcal conjugate PCV 13,Active,1
+134,JAPANESE ENCEPHALITIS IM,129,Japanese encephalitis,Japanese Encephalitis IM,Active,1
+135,"INFLUENZA, HIGH DOSE SEASONAL",88,FLU,"Influenza, high dose seasonal",Active,1
+136,MENINGOCOCCAL MCV4O,108,MENING,Meningococcal MCV4O,Active,1
+137,"HPV, UNSPECIFIED FORMULATION",137,HPV,"HPV, unspecified formulation",Inactive,1
+138,TD (ADULT),139,Td,Td (adult),Inactive,1
+139,TD(ADULT) UNSPECIFIED FORMULATION,139,Td,Td(adult) unspecified formulation,Inactive,1
+140,"INFLUENZA, SEASONAL, INJECTABLE, PRESERVATIVE FREE",88,FLU,"Influenza, seasonal, injectable, preservative free",Active,1
+141,"INFLUENZA, SEASONAL, INJECTABLE",88,FLU,"Influenza, seasonal, injectable",Active,1
+143,ADENOVIRUS TYPES 4 AND 7,82,ADENO,Adenovirus types 4 and 7,Active,1
+144,"INFLUENZA, SEASONAL, INTRADERMAL, PRESERVATIVE FREE",88,FLU,"influenza, seasonal, intradermal, preservative free",Active,1
+146,"DTAP,IPV,HIB,HEPB",17,HIB,"DTaP,IPV,Hib,HepB",Active,1
+146,"DTAP,IPV,HIB,HEPB",45,HepB,"DTaP,IPV,Hib,HepB",Active,1
+146,"DTAP,IPV,HIB,HEPB",89,POLIO,"DTaP,IPV,Hib,HepB",Active,1
+146,"DTAP,IPV,HIB,HEPB",107,DTAP,"DTaP,IPV,Hib,HepB",Active,1
+147,"MENINGOCOCCAL MCV4, UNSPECIFIED FORMULATION",108,MENING,"meningococcal MCV4, unspecified formulation",Inactive,1
+148,MENINGOCOCCAL C/Y-HIB PRP,17,HIB,Meningococcal C/Y-HIB PRP,Inactive,1
+148,MENINGOCOCCAL C/Y-HIB PRP,108,MENING,Meningococcal C/Y-HIB PRP,Inactive,1
+149,"INFLUENZA, LIVE, INTRANASAL, QUADRIVALENT",88,FLU,"influenza, live, intranasal, quadrivalent",Active,1
+150,"INFLUENZA, INJECTABLE, QUADRIVALENT, PRESERVATIVE FREE",88,FLU,"influenza, injectable, quadrivalent, preservative free",Active,1
+151,"INFLUENZA NASAL, UNSPECIFIED FORMULATION",88,FLU,"influenza nasal, unspecified formulation",Inactive,1
+152,"PNEUMOCOCCAL,PED T (HISTORICAL)",152,PneumoPCV,"Pneumococcal Conjugate, unspecified formulation",Inactive,1
+153,"INFLUENZA, INJECTABLE, MDCK, PRESERVATIVE FREE",88,FLU,"Influenza, injectable, MDCK, preservative free",Inactive,1
+155,"INFLUENZA, RECOMBINANT, INJECTABLE, PRESERVATIVE FREE",88,FLU,"influenza, recombinant, injectable, preservative free",Active,1
+158,"INFLUENZA, INJECTABLE, QUADRIVALENT",88,FLU,"influenza, injectable, quadrivalent",Active,1
+160,"INFLUENZA A MONOVALENT (H5N1), ADJUVANTED-2013",123,H5N1 flu,"Influenza A monovalent (H5N1), ADJUVANTED-2013",Active,1
+161,"INFLUENZA, INJECTABLE,QUADRIVALENT, PRESERVATIVE FREE, PEDIATRIC",88,FLU,"Influenza, injectable,quadrivalent, preservative free, pediatric",Active,1
+162,"MENINGOCOCCAL B, RECOMBINANT",164,MeningB,"meningococcal B, recombinant",Active,1
+163,"MENINGOCOCCAL B, OMV",164,MeningB,"meningococcal B, OMV",Active,1
+164,"MENINGOCOCCAL B, UNSPECIFIED",164,MeningB,"meningococcal B, unspecified",Inactive,1
+165,HPV9,137,HPV,HPV9,Active,1
+166,"INFLUENZA, INTRADERMAL, QUADRIVALENT, PRESERVATIVE FREE",88,FLU,"influenza, intradermal, quadrivalent, preservative free",Active,1
+168,"INFLUENZA, TRIVALENT, ADJUVANTED",88,FLU,"influenza, trivalent, adjuvanted",Active,1
+170,DTAP/IPV/HIB - NON-US,17,HIB,DTAP/IPV/HIB - non-US,Non-US,1
+170,DTAP/IPV/HIB - NON-US,89,POLIO,DTAP/IPV/HIB - non-US,Non-US,1
+170,DTAP/IPV/HIB - NON-US,107,DTAP,DTAP/IPV/HIB - non-US,Non-US,1
+171,"INFLUENZA, INJECTABLE, MDCK, PRESERVATIVE FREE, QUADRIVALENT",88,FLU,"Influenza, injectable, MDCK, preservative free, quadrivalent",Active,1
+172,"CHOLERA, WC-RBS",26,cholera,"cholera, WC-rBS",Non-US,1
+173,"CHOLERA, BIVWC",26,cholera,"cholera, BivWC",Non-US,1
+174,"CHOLERA, LIVE ATTENUATED",26,cholera,"cholera, live attenuated",Active,1
+175,RABIES - IM DIPLOID CELL CULTURE,90,RABIES,Rabies - IM Diploid cell culture,Active,1
+176,RABIES - IM FIBROBLAST CULTURE,90,RABIES,Rabies - IM fibroblast culture,Active,1
+183,YELLOW FEVER VACCINE - ALT,184,YELLOWFEVER,Yellow fever vaccine - alt,Active,1
+184,"YELLOW FEVER, UNSPECIFIED FORMULATION",184,YELLOWFEVER,"Yellow fever, unspecified formulation",Inactive,1
+185,"INFLUENZA, RECOMBINANT, QUADRIVALENT,INJECTABLE, PRESERVATIVE FREE",88,FLU,"influenza, recombinant, quadrivalent,injectable, preservative free",Active,1
+186,"INFLUENZA, INJECTABLE, MDCK, QUADRIVALENT",88,FLU,"Influenza, injectable, MDCK, quadrivalent, preservative",Active,1
+187,ZOSTER RECOMBINANT,188,ZOSTER,zoster recombinant,Active,1
+188,"ZOSTER, UNSPECIFIED FORMULATION",188,ZOSTER,"zoster, unspecified formulation",Inactive,1
+189,HEPB-CPG,45,HepB,HepB-CpG,Active,1
+193,"HEP A-HEP B, PEDIATRIC/ADOLESCENT",45,HepB,"Hep A-Hep B, pediatric/adolescent",Non-US,1
+193,"HEP A-HEP B, PEDIATRIC/ADOLESCENT",85,HepA,"Hep A-Hep B, pediatric/adolescent",Non-US,1
+194,"INFLUENZA, SOUTHERN HEMISPHERE",88,FLU,"Influenza, Southern Hemisphere",Inactive,1
+195,"DT, IPV ADSORBED",89,POLIO,"DT, IPV adsorbed",Non-US,1
+195,"DT, IPV ADSORBED",139,Td,"DT, IPV adsorbed",Non-US,1
+196,"TD, ADSORBED, PRESERVATIVE FREE, ADULT USE, LF UNSPECIFIED",139,Td,"Td, adsorbed, preservative free, adult use, Lf unspecified",Active,1
+197,"INFLUENZA, HIGH-DOSE, QUADRIVALENT",88,FLU,"influenza, high-dose, quadrivalent",Active,1
+200,"INFLUENZA, SOUTHERN HEMISPHERE, PEDIATRIC, PRESERVATIVE FREE",88,FLU,"influenza, Southern Hemisphere, pediatric, preservative free",Active,1
+201,"INFLUENZA, SOUTHERN HEMISPHERE, PRESERVATIVE FREE",88,FLU,"influenza, Southern Hemisphere, preservative free",Active,1
+202,"INFLUENZA, SOUTHERN HEMISPHERE, QUADRIVALENT, WITH PRESERVATIVE",88,FLU,"influenza, Southern Hemisphere, quadrivalent, with preservative",Active,1
+203,"MENINGOCOCCAL POLYSACCHARIDE (GROUPS A, C, Y, W-135) TT CONJUGATE",108,MENING,"meningococcal polysaccharide (groups A, C, Y, W-135) TT conjugate",Active,1
+204,"EBOLA ZAIRE VACCINE, LIVE, RECOMBINANT, 1ML DOSE",214,Ebola,"Ebola Zaire vaccine, live, recombinant, 1mL dose",Active,1
+205,"INFLUENZA VACCINE, QUADRIVALENT, ADJUVANTED",88,FLU,"Influenza vaccine, quadrivalent, adjuvanted",Active,1
+206,SMALLPOX MONKEYPOX VACCINE (NATIONAL STOCKPILE),75,VACCINIA,Smallpox monkeypox vaccine (National Stockpile),Active,1
+207,"COVID-19 (MODERNA), MRNA, LNP-S, PF, 100 MCG OR 50 MCG DOSE",213,COVID-19,"COVID-19, mRNA, LNP-S, PF, 100 mcg or 50 mcg dose",Active,1
+208,"COVID-19 (PFIZER), MRNA, LNP-S, PF, 30 MCG/0.3 ML DOSE",213,COVID-19,"COVID-19, mRNA, LNP-S, PF, 30 mcg/0.3 mL dose",Active,1
+210,"COVID-19 (ASTRAZENECA), VECTOR-NR, RS-CHADOX1, PF, 0.5 ML",213,COVID-19,"COVID-19 vaccine, vector-nr, rS-ChAdOx1, PF, 0.5 mL ",Non-US,1
+211,"COVID-19 (NOVAVAX), SUBUNIT, RS-NANOPARTICLE+MATRIX-M1 ADJUVANT, PF, 0.5 ML",213,COVID-19,"COVID-19 vaccine, Subunit, rS-nanoparticle+Matrix-M1 Adjuvant, PF, 0.5 mL",Pending,1
+212,"COVID-19 (JANSSEN), VECTOR-NR, RS-AD26, PF, 0.5 ML",213,COVID-19,"COVID-19 vaccine, vector-nr, rS-Ad26, PF, 0.5 mL",Active,1
+213,"SARS-COV-2 (COVID-19) VACCINE, UNSPECIFIED",213,COVID-19,"SARS-COV-2 (COVID-19) vaccine, UNSPECIFIED",Inactive,1
+214,"EBOLA, UNSPECIFIED",214,Ebola,"Ebola, unspecified",Inactive,1
+215,"PNEUMOCOCCAL CONJUGATE PCV15, POLYSACCHARIDE CRM197 CONJUGATE, ADJUVANT, PF",152,PneumoPCV,"Pneumococcal conjugate PCV15, polysaccharide CRM197 conjugate, adjuvant, PF",Active,1
+216,"PNEUMOCOCCAL CONJUGATE PCV20, POLYSACCHARIDE CRM197 CONJUGATE, ADJUVANT, PF",152,PneumoPCV,"Pneumococcal conjugate PCV20, polysaccharide CRM197 conjugate, adjuvant, PF",Active,1
+217,"COVID-19 (PFIZER), MRNA, LNP-S, PF, 30 MCG/0.3 ML DOSE, TRIS-SUCROSE (AGES 12+ YEARS)",213,COVID-19,"COVID-19, mRNA, LNP-S, PF, 30 mcg/0.3 mL dose, tris-sucrose",Active,1
+218,"COVID-19 (PFIZER), MRNA, LNP-S, PF, 10 MCG/0.2 ML DOSE, TRIS-SUCROSE (AGES 5-11 YEARS)",213,COVID-19,"COVID-19, mRNA, LNP-S, PF, 10 mcg/0.2 mL dose, tris-sucrose",Active,1
+219,"COVID-19 (PFIZER), MRNA, LNP-S, PF, 3 MCG/0.2 ML DOSE, TRIS-SUCROSE (AGES 2-4 YEARS)",213,COVID-19,"COVID-19, mRNA, LNP-S, PF, 3 mcg/0.2 mL dose, tris-sucrose",Active,1
+500,"COVID-19 NON-US VACCINE, PRODUCT UNKNOWN",213,COVID-19,"COVID-19 Non-US Vaccine, Product Unknown",Non-US,1
+501,COVID-19 (QAZCOVID-IN) IV NON-US VACCINE,213,COVID-19,COVID-19 IV Non-US Vaccine (QAZCOVID-IN),Non-US,1
+502,COVID-19 (COVAXIN) IV NON-US VACCINE,213,COVID-19,COVID-19 IV Non-US Vaccine (COVAXIN),Non-US,1
+503,COVID-19 (COVIVAC) LAV NON-US VACCINE,213,COVID-19,COVID-19 LAV Non-US Vaccine (COVIVAC),Non-US,1
+504,COVID-19 (SPUTNIK LIGHT) VVNR NON-US VACCINE,213,COVID-19,COVID-19 VVnr Non-US Vaccine (Sputnik Light),Non-US,1
+505,COVID-19 (SPUTNIK V) VVNR NON-US VACCINE,213,COVID-19,COVID-19 VVnr Non-US Vaccine (Sputnik V),Non-US,1
+506,COVID-19 (CANSINO BIOLOGICAL INC./BEIJING INSTITUTE OF BIOTECHNOLOGY) VVNR NON-US VACCINE,213,COVID-19,COVID-19 VVnr Non-US Vaccine (CanSino Biological Inc./Beijing Institute of Biotechnology),Non-US,1
+507,COVID-19 (ANHUI ZHIFEI LONGCOM BIOPHARMACEUTICAL + INSTITUTE OF MICROBIOLOGY) PS NON-US VACCINE,213,COVID-19,"COVID-19 PS Non-US Vaccine (Anhui Zhifei Longcom Biopharm + Inst of Micro, Chinese Acad of Sciences)",Non-US,1
+508,COVID-19 (JIANGSU PROVINCE CENTERS FOR DISEASE CONTROL AND PREVENTION) PS NON-US VACCINE,213,COVID-19,COVID-19 PS Non-US Vaccine (Jiangsu Province Centers for Disease Control and Prevention),Non-US,1
+509,COVID-19 (EPIVACCORONA) PS NON-US VACCINEX,213,COVID-19,COVID-19 PS Non-US Vaccine (EpiVacCorona),Non-US,1
+510,"COVID-19 (BIBP, SINOPHARM) IV NON-US VACCINE",213,COVID-19,"COVID-19 IV Non-US Vaccine (BIBP, Sinopharm)",Non-US,1
+511,"COVID-19 (SINOVAC), INACTIVATED VIRUS, NON-US",213,COVID-19,"COVID-19 IV Non-US Vaccine (CoronaVac, Sinovac)",Non-US,1
